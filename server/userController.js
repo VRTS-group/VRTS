@@ -1,9 +1,9 @@
 module.exports = {
     register: async(req,res) => {
-        const {name, password, Email, Bio, Cover, profile_pic, contact, real_name} = req.body;
+        const {email, password, username, bio, cover_pic, profile_pic, contact, real_name} = req.body;
         const db = req.app.get('db')
 
-        let foundUser = await db.checkUser(name);
+        let foundUser = await db.checkEmail(email);
         foundUser = foundUser[0]
         if(foundUser){
             res.status(409).send("Email already in use :[")
@@ -12,7 +12,7 @@ module.exports = {
             const salt = bcrypt.genSaltSync(10);
             const hash = bcrypt.hashSync(password,salt)
 
-            let newUser = await db.register({name, password:hash, Email, Bio, Cover, profile_pic, contact, real_name});
+            let newUser = await db.register({username, cover_pic, password:hash, email, bio, Cover, profile_pic, contact, real_name});
             newUser = newUser[0];
             req.session.user = {...newUser};
             res.status(200).send(req.session.user)
@@ -21,7 +21,7 @@ module.exports = {
     login: async(req,res) => {
         const{Email, password} = req.body;
         const db = req.app.get('db')
-        let foundUser = await db.checkUser(Email);
+        let foundUser = await db.checkEmail(Email);
         foundUser = foundUser[0];
         if(!foundUser){
             res.status(401).send("Username does not exists")
