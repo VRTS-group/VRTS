@@ -10,10 +10,10 @@ import Auth from './Component/Auth';
 export default (
     <Switch>
         <Route exact path = './' component={Home}/>
-        <Route path = './auth' component={Auth}/>
-        <Route path = './indivpost' component={IndivPost}/>
-        <Route path = './profile' component={Profile}/>
-        <Route path = './settings' component={Settings}/>
-        <Route path = './myposts' component={MyPosts}/>
+        <Route path = '/auth' component={Auth}/>
+        <Route path = '/indivpost' component={IndivPost}/>
+        <Route path = '/profile' component={Profile}/>
+        <Route path = '/settings' component={Settings}/>
+        <Route path = '/myposts' component={MyPosts}/>
     </Switch>
 )
