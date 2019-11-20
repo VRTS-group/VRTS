@@ -1,7 +1,16 @@
 import axios from "axios";
 
 const initialState = {
-  user: {}
+  user: {
+    id: 0,
+    email: "",
+    username: "",
+    profile: "",
+    cover: "",
+    real_name: "",
+    contact: "",
+    bio: ""
+  }
 };
 
 export default function userReducer(state = initialState, action) {
