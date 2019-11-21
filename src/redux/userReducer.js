@@ -18,7 +18,9 @@ const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const GET_USER = "GET_USER";
 const EDIT_USER = "EDIT_USER";
-const UPDATE_USER = "UPDATE_USER"
+const UPDATE_USER = "UPDATE_USER";
+const GET_USER_BY_ID = "GET_USER_BY_ID";
+
 
 //functions
 
@@ -83,6 +85,16 @@ export function editUser(
     payload: data
   };
 }
+
+export const getUserById = (id) => {
+  let data = axios.get(`/auth/getUserById/${id}`)
+  .then(res => res.data)
+  console.log(data)
+  return {
+    type: GET_USER_BY_ID,
+    payload: data
+  }
+}
 // default function
 export default function userReducer(state = initialState, action) {
   const { type, payload } = action;
@@ -99,6 +111,8 @@ export default function userReducer(state = initialState, action) {
         return{...state, user:payload}
     default:
       return state;
+      case GET_USER_BY_ID + '_FULFILLED':
+        return {...state, user: payload}
       
   }
 }
