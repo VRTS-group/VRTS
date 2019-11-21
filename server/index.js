@@ -1,15 +1,16 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
-const {SERVER_PORT, CONNECTING_STRING, SESSION_SECRET} = process.env
+const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const session = require('express-session')
 const UserCTRL = require('./userController')
+const PostCTRL = require('./postController')
 
 const app = express()
 
 app.use(express.json())
 
-massive(CONNECTING_STRING).then(db => {
+massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
     console.log('db up my guy')
 })
@@ -28,7 +29,10 @@ app.post('/auth/login', UserCTRL.login)
 app.post('/auth/logout', UserCTRL.logout)
 app.post('/auth/user', UserCTRL.getUser)
 
-
+app.get('/auth/getPosts', PostCTRL.getPosts)
+app.post('/auth/addPosts', PostCTRL.addPosts)
+app.put('/auth/editPosts/:id', PostCTRL.editPosts)
+app.delete('/auth/deletePosts/:id', PostCTRL.deletePosts)
 
 
 
