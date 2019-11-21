@@ -1,0 +1,70 @@
+.Settings {
+    height: 100vh;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+
+}
+
+.SettingsContainer {
+    /* height: 100vh; */
+    width: 414px;
+    border: solid black;
+    background-color: rgb(143, 92, 92);
+    box-sizing: border-box;
+
+}
+
+.SettingsTitle {
+    height: 70px;
+    width: 100%;
+    background-color: rgb(143, 92, 92);
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    text-shadow: 2px 2px rgb(12, 43, 78);
+    color: white;
+
+}
+
+.SettingsCover {
+    height: 200px;
+    width: 100%;
+    background-color: rgb(146, 55, 55);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: solid rgb(70, 66, 66);
+    box-sizing: border-box;
+}
+
+.SettingsPic {
+    height: 115px;
+    width: 115px;
+    border-radius: 50%;
+    background-color: rgb(190, 131, 131);
+    border: solid rgb(70, 66, 66);
+   
+}
+
+.SettingsInfo {
+    /* height: 250px; */
+    width: 100%;
+    background-color: rgb(189, 186, 186);
+    display: flex;
+    border: solid rgb(70, 66, 66);
+    box-sizing: border-box;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.SettingsBtns {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

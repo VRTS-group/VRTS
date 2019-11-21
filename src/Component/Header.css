@@ -12,8 +12,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 2vh;
-    padding-right: 4vh;
+    padding-left: 1vh;
+    padding-right: 2vh;
     box-sizing: border-box;
     box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25),
     0 10px 10px 0 rgba(0, 0, 0, 0.26); 
@@ -23,6 +23,66 @@
     font-family: 'Dancing Script', cursive;
     font-size: 30px;
     text-shadow: 2px 2px rgb(12, 43, 78);
+    display: flex;
 
 
 }
+.header-logo{
+  height: 25px;
+  width: 50px;
+  padding-left:  10px;
+
+}
+
+.header-profile-pic{
+  height: 25px;
+  width: 50px; 
+}
+
+.dropdown {
+  height: 0px; 
+  overflow: hidden; 
+  position: fixed;
+  top: 50px;
+  right: 0;
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  
+  flex-direction: column;
+  border-bottom-left-radius: 6px;
+  color: white
+}
+.hide-animation {
+  animation-name: hide;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.show-animation {
+  animation-name: show;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes hide {
+  0% {
+    height: 100px;
+  }
+  100% {
+    height: 0px;
+  }
+}
+@keyframes show {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 200px;
+  }
+}
+
+
+  
