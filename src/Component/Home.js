@@ -21,6 +21,7 @@ class Home extends Component {
 
   }
   
+  //gets all posts
   componentDidMount = () => {
     Axios.get('/auth/getPosts').then(res => {
       this.setState({
@@ -66,7 +67,7 @@ class Home extends Component {
         </div>
         <div className="dashboard">
           {this.state.posts.map(e => {
-            {console.log(e)}
+            // {console.log(e)}
             return(
               <div className="home-posts">
                 <img onClick={this.togglePopup} className='media' src={e.media} alt=""/>

@@ -6,7 +6,8 @@ import Profile from "./Component/Profile";
 import Settings from "./Component/Settings";
 import MyPosts from "./Component/MyPosts";
 import Auth from "./Component/Auth";
-import Register from "./Component/Register"
+import Register from "./Component/Register";
+import popUp from './Component/HomePopUp';
 
 export default (
   <Switch>
@@ -17,5 +18,6 @@ export default (
     <Route path="/settings" component={Settings} />
     <Route path="/myposts" component={MyPosts} />
     <Route path="/register" component={Register}/>
+    <Route path="/popUp/:id" component={popUp}/>
   </Switch>
 );

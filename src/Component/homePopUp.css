@@ -2,6 +2,6 @@
     width: 400px;
     height: 500px;
     background-color: white;
-    color: white;
-    
+    color: black;
+    z-index: 2; 
 }

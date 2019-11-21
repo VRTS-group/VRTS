@@ -27,7 +27,13 @@ module.exports = {
         db.deletePost([id])
         .then(db=> res.status(200).send(db))
 
-    }
+    },
+    getPostById: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        db.getPostById([id])
+        .then(db => res.status(200).send(db)).catch(err => console.log(err))
+    },
 
 
 
