@@ -37,7 +37,10 @@ module.exports = {
         }
     },
     logout: (req,res) => {
+        console.log('hit')
+        console.log(req.session)
         req.session.destroy()
+        console.log(req.session)
         res.sendStatus(200)
     },
     getUser: (req,res) => {

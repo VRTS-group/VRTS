@@ -8,19 +8,25 @@ class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      profile_pic: "",
-      cover_pic: "",
-      cover_pic: "",
-      real_name: "",
-      contact: "",
-      bio: "",
+      username: this.props.user.username,
+      profile_pic: this.props.user.profile_pic,
+      cover_pic: this.props.user.cover_pic,
+      real_name: this.props.user.real_name,
+      contact: this.props.user.contact,
+      bio: this.props.user.bio
     };
   }
 
   componentDidMount() {
     this.props.getUserById();
+    // this.setState({
+    //   bio: this.props.user.bio
+    // })
   }
+
+  componentDidUpdate(prevProps){
+if (this.props.user !== prevProps.user)
+{this.render()}  }
 
   handleInput = e => {
     this.setState({
@@ -30,6 +36,9 @@ class Settings extends Component {
 
   render() {
     console.log(this.props)
+    console.log(this.state.username)
+    console.log(this.props.user.username)
+    // const bio = this.props.user.bio
     return (
       <div className="Settings">
         <div className="SettingsContainer">
@@ -39,6 +48,7 @@ class Settings extends Component {
           </div>
           <div className="SettingsInfo">
             <h4>Profile Pic</h4>
+
             <input
               type="text"
               value={this.state.profile_pic}
@@ -66,6 +76,7 @@ class Settings extends Component {
             <textarea
               type="text"
               value={this.state.bio}
+              // placeholder = {this.props.user.bio}
               onChange={e => this.setState({ bio: e.target.value })}
             />
           </div>

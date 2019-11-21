@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './Header.css'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {updateUser} from '../redux/userReducer'
+import {updateUser, logout} from '../redux/userReducer'
 import axios from "axios";
 
 class Header extends Component {
@@ -34,7 +34,7 @@ handleInput = (e) => {
 }
 
 handleLogin = () => {
-  axios.post('auth/login', {email: this.state.email, password: this.state.password}).then(res=>{
+  axios.post('/auth/login', {email: this.state.email, password: this.state.password}).then(res=>{
     this.setState({
       username: '',
       password: ''
@@ -46,10 +46,9 @@ handleLogin = () => {
 }
 
 handleLogout = () => {
-  axios.post('/auth/logout').then(res => {
+  this.props.logout()
     this.props.history.push('/')
-  })
-  .catch(err => console.log(this.props))
+  
 }
   
  
@@ -132,7 +131,7 @@ const mapStateToProps = reduxState => {
 }
 
 const mapDispatchToProps = {
-  updateUser
+  updateUser, logout
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))

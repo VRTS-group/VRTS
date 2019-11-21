@@ -57,10 +57,15 @@ export function getUser(id) {
 }
 
 export function logout() {
+  let data = axios.delete('/auth/logout').then(res => {
+ return res
+});
   return {
+
     type: LOGOUT,
-    payload: null
+    payload: data
   };
+
 }
 
 export function editUser(
@@ -101,7 +106,7 @@ export default function userReducer(state = initialState, action) {
   switch (type) {
     case LOGIN + "_FULFILLED":
       return { ...state, user: payload };
-    case LOGOUT:
+    case LOGOUT + "_FULFILLED":
       return { ...state, user: { signedIn: false } };
     case GET_USER + "_FULFILLED":
       return { ...state, user: payload };
