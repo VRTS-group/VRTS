@@ -18,8 +18,17 @@ const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const GET_USER = "GET_USER";
 const EDIT_USER = "EDIT_USER";
+const UPDATE_USER = "UPDATE_USER"
 
 //functions
+
+export function updateUser(user){
+  return{
+    type: UPDATE_USER,
+    payload: user
+  }
+}
+
 export function login(email, password) {
   let data = axios
     .post("/auth/login", {
@@ -86,7 +95,10 @@ export default function userReducer(state = initialState, action) {
       return { ...state, user: payload };
     case EDIT_USER:
       return { ...state, user: payload };
+      case UPDATE_USER:
+        return{...state, user:payload}
     default:
       return state;
+      
   }
 }

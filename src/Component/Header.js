@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import './Header.css'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {updateUser} from '../redux/userReducer'
+import axios from "axios";
 
 class Header extends Component {
   constructor(){
     super()
+    this.state = {
+      email: "",
+      password: ""
+    }
     this.dropdown = React.createRef()
   }
 
@@ -20,7 +27,30 @@ class Header extends Component {
     }
   };
 
+handleInput = (e) => {
+  this.setState({
+    [e.target.name]: e.target.value
+  })
+}
 
+handleLogin = () => {
+  axios.post('auth/login', {email: this.state.email, password: this.state.password}).then(res=>{
+    this.setState({
+      username: '',
+      password: ''
+    })
+    console.log(this.props)
+    this.props.updateUser(res.data)
+  })
+  .catch(err => console.log(this.props))
+}
+
+handleLogout = () => {
+  axios.post('/auth/logout').then(res => {
+    this.props.history.push('/')
+  })
+  .catch(err => console.log(this.props))
+}
   
  
 
@@ -45,6 +75,32 @@ class Header extends Component {
         <img  className = "header-logo"src = "https://cdn.shopify.com/s/files/1/1017/2183/t/19/assets/live-preview-potato.png?3009"/>
         </div>
         
+      {this.props.user.email ? (
+        <div>
+          <button onClick={this.handleLogout} >Log out</button>
+
+
+        </div>
+      ): (
+        <div> 
+          <input
+          value = {this.state.email}
+          name = "email"
+          onChange = {(e) => this.handleInput(e)}
+          className = "ret"/>
+           <input
+          value = {this.state.password}
+          name = "password"
+          onChange = {(e) => this.handleInput(e)}
+          className = "ret"/>
+
+          <button className="loginButton" onClick={this.handleLogin}>login</button>
+        </div>
+      )
+    
+    }
+
+
 
         <div>
           <Link to="/myposts"> <button>+
@@ -64,4 +120,18 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = reduxState => {
+  console.log(reduxState)
+  const {user} = reduxState.userReducer;
+  console.log(user)
+  console.log(reduxState.userReducer)
+  return{
+    user
+  }
+}
+
+const mapDispatchToProps = {
+  updateUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
