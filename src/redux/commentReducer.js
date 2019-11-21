@@ -9,6 +9,7 @@ const initialState = {
 };
 
 const ADD_COMMENT = "ADD_COMMENT";
+const DELETE_COMMENT = "DELETE_COMMENT";
 
 export function addComment(user_id, post_id, comment) {
   let add = axios
@@ -19,6 +20,14 @@ export function addComment(user_id, post_id, comment) {
   return {
     type: ADD_COMMENT,
     payload: add
+  };
+}
+
+export function deleteComment(comment_id) {
+  let gone = axios.delete(`/api/comment/${comment_id}`).then(res => res.data);
+  return {
+    type: DELETE_COMMENT,
+    payload: gone
   };
 }
 
