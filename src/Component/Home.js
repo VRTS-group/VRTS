@@ -2,17 +2,37 @@ import React, { Component } from "react";
 import './Home.css';
 import save from '../photos/save.svg';
 import downArrow from '../photos/downArrow.svg';
+import {connect} from 'react-redux';
+import {getPost} from '../redux/postReducer';
+import Axios from "axios";
+import HomePopup from './HomePopUp';
 
 class Home extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state={
       leftFilter: 'All',
       rightFilter: 'All',
-      filter1: 'filter1'
+      filter1: 'filter1',
+      posts: [],
+      showPopup: false
     }
 
+  }
+  
+  componentDidMount = () => {
+    Axios.get('/auth/getPosts').then(res => {
+      this.setState({
+        posts: res.data
+      })
+    })
+  }
+
+  togglePopup = () =>{
+    this.setState({
+        showPopup: !this.state.showPopup
+    })
   }
 
   // trying to have it so when you select an item in 
@@ -37,22 +57,34 @@ class Home extends Component {
               <span>{this.state.rightFilter}</span>
               <img className='drop-btn' src={downArrow} alt=""/> 
             <div className="dropdown-content">
-                <div  onClick={this.onFilterClick}>{this.state.filter1}</div>
+                <h4></h4>
                 <h4></h4>
                 <h4></h4>
             </div>
 
           </div>
-
-
         </div>
         <div className="dashboard">
-          <div className="home-posts">
-              <img className='drop-btn' src={save} alt="save"/>
-          </div>
-          <div className="home-posts">
-              <img className='drop-btn' src={save} alt="save"/>
-          </div>
+          {this.state.posts.map(e => {
+            {console.log(e)}
+            return(
+              <div className="home-posts">
+                <img onClick={this.togglePopup} className='media' src={e.media} alt=""/>
+                  
+              <img id='save' className='drop-btn' src={save} alt="save"/>
+
+              {this.state.showPopup ? 
+              <HomePopup
+                closePopup={this.togglePopup.bind(this)}
+              /> 
+              : null
+            }
+            </div>              
+            )
+          })}
+            
+          
+          
           
         </div>
 
@@ -62,4 +94,14 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return{
+    redux: state,
+    posts: state.posts
+  }
+}
+const mapDispatchToProps = {
+  getPost
+} 
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

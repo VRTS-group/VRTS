@@ -59,15 +59,20 @@ display: block;
     
 }
 .home-posts{
-    background-color: green;
+    /* background-color: green; */
+    border: 1px solid white;
     height: 170px;
     width: 170px;
     position: relative;
     margin: 15px;
 }
-.home-posts img{
+#save{
     width: 36px;
     position: absolute;
     bottom: 0px;
     right: 0px;
+}
+.media{
+    width: 170px;
+    height: 100%;
 }
