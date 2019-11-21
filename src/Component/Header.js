@@ -78,7 +78,8 @@ handleLogout = () => {
       {this.props.user.email ? (
         <div>
           <button onClick={this.handleLogout} >Log out</button>
-
+          <p>{this.props.user.username}</p>
+          {/* <p>pppppppp</p> */}
 
         </div>
       ): (
