@@ -5,11 +5,12 @@ import "./IndivPost.css";
 
 class IndivPost extends Component {
   render() {
-    let { media } = this.props.redux.postReducer.media;
+    let { media } = this.props.redux.postReducer.posts.media;
+    // console.log(this.props.redux.postReducer.posts)
     return (
       <section className="indiv-post">
         <section className="img-">
-          <img src={media} className="post-picture" />
+          {/* <img src={media} className="post-picture" /> */}
           <section className="button-on-top">
             <button className="img-button">Save</button>
             <button className="img-button">•••</button>

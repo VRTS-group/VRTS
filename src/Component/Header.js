@@ -122,10 +122,10 @@ handleLogout = () => {
 }
 
 const mapStateToProps = reduxState => {
-  console.log(reduxState)
+  // console.log(reduxState)
   const {user} = reduxState.userReducer;
-  console.log(user)
-  console.log(reduxState.userReducer)
+  // console.log(user)
+  // console.log(reduxState.userReducer)
   return{
     user
   }
