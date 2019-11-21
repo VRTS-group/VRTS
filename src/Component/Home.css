@@ -1,0 +1,73 @@
+.home{
+    background-color: black;
+    height: 100vh;
+    width: 414px;
+}
+.home-pic{
+    height: 30vh;
+    background-color: rgb(216, 111, 111);
+}
+.sub-header{
+    height: 50px;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.filter-dropdown{
+    height: 30px;
+    width: 120px;
+    background-color: rgb(99, 98, 98);
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    align-items: center;
+    position: relative;
+}
+
+.filter-dropdown img{
+    width: 25px;
+    margin-right: 5px;
+}
+.dropdown-content {
+    display: none;
+    top: 31px;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content h4 {
+    color: black;
+    /* padding: 12px 16px; */
+    text-decoration: none;
+    display: block;
+}
+.filter-dropdown:hover .dropdown-content {
+display: block;
+}
+
+    
+.dashboard{
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-evenly;
+    margin: 15px 0px;
+    flex-wrap: wrap;
+    
+}
+.home-posts{
+    background-color: green;
+    height: 170px;
+    width: 170px;
+    position: relative;
+    margin: 15px;
+}
+.home-posts img{
+    width: 36px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
