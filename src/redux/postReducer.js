@@ -1,15 +1,17 @@
 import axios from "axios";
 
 const initialState = {
-  posts: [""],
+  posts: {
   post_id: 0,
-  user_ud: 0,
+  user_id: 0,
   media: "",
   title: "",
   description: "",
   tags: "",
   views: "",
   saves: false
+  }
+  
 };
 
 const GET_POST = "GET_POST";
