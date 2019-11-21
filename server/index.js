@@ -29,7 +29,7 @@ app.use(
 
 app.post("/auth/register", UserCTRL.register);
 app.post("/auth/login", UserCTRL.login);
-app.post("/auth/logout", UserCTRL.logout);
+app.delete("/auth/logout", UserCTRL.logout);
 app.post("/auth/user", UserCTRL.getUser);
 app.put('/auth/edituser', UserCTRL.editUser);
 app.get('/auth/getUserById/:id', UserCTRL.getUserById)
