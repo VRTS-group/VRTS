@@ -44,5 +44,42 @@ module.exports = {
         if(req.session.user){
             res.status(200).send(req.session.user)
         }
+    },
+
+    editUser: async (req, res) => {
+        let db = req.app.get('db');
+        const {
+            username,
+            profile_pic,
+            cover_pic,
+            real_name,
+            contact,
+            bio
+        } = req.body;
+        db.editUser([
+            username,
+            profile_pic,
+            cover_pic,
+            real_name,
+            contact,
+            bio
+        ])
+        .then(response => {
+            res.send(response).status(200);
+
+        })
+        .catch(err => {
+            res.send(err).status(500);
+        })
+    },
+
+    getUserById: async (req, res) => {
+        console.log('hit')
+        let db = req.app.get('db');
+        const {id} = req.params
+        let user = await db.getUserById(+id)
+        console.log(user)
+        res.status(200).send(user)
+        
     }
 }
