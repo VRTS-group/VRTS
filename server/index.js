@@ -39,6 +39,7 @@ app.post("/auth/addPosts", PostCTRL.addPosts);
 app.put("/auth/editPosts/:id", PostCTRL.editPosts);
 app.delete("/auth/deletePosts/:id", PostCTRL.deletePosts);
 app.get("/auth/getPostById/:id", PostCTRL.getPostById); //for the popup thing
+app.get("/auth/getPostByUser/:id", PostCTRL.getPostByUser);
 
 app.get("/api/comment", CommentCTRL.getComments);
 app.post("/api/comment", CommentCTRL.addComment);

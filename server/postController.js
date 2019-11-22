@@ -34,6 +34,12 @@ module.exports = {
         db.getPostById([id])
         .then(db => res.status(200).send(db)).catch(err => console.log(err))
     },
+    getPostByUser: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        db.getPostbyUser([id])
+        .then(db => res.status(200).send(db)).catch(err => console.log(err))
+    }
 
 
 
