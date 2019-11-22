@@ -21,19 +21,23 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 1vh;
-    padding-right: 2vh;
+    padding-right: 3vh;
     box-sizing: border-box;
     box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25),
     0 10px 10px 0 rgba(0, 0, 0, 0.26); 
     position: fixed;
+    z-index: 5000;
 }
 
-.Title {
+.headerTitle {
+    width: 115px;
+    /* background-color: gray; */
     font-family: 'Dancing Script', cursive;
     font-size: 28px;
     color: white;
     text-shadow:  2px 2px var(--grey);
     display: flex;
+    justify-content: center;
 
 
 }
@@ -69,14 +73,14 @@
   border-radius: 50px;
 }
 
-.dropdown {
+.dropProfile {
   height: 0px; 
   width: 20vh;
   overflow: hidden; 
   position: fixed;
   top: 9vh;
   /* right: 0; */
-  left: 0px;
+  right: 0px;
   background-color: black;
   background-image: linear-gradient(
     99deg,
@@ -93,7 +97,7 @@
   color: white
 }
 
-.dropProfile {
+.dropLog {
   height: 0px; 
   width: 20vh;
   overflow: hidden; 
@@ -133,6 +137,60 @@
   color: white;
   font-family: 'Cinzel', serif;
 
+}
+
+.loggedInShiz {
+  width: 350px;
+  height: 60px;
+  /* background-color: gray; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  
+
+}
+
+.headerNewPost {
+  font-size: 12px;
+  font-family: 'Cinzel', serif;
+  /* text-decoration-line: none; */
+  color: white;
+}
+
+.headerPlusBtn {
+  /* background-color: var(--grey); */
+  color: white;
+  /* border: solid rgb(31, 31, 31); */
+  background-color: transparent;
+  border: none;
+  /* font-family: 'Cinzel', serif; */
+}
+
+.loggedInPicBox {
+  width: 45px;
+  height: 45px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.loggedInPic {
+  height: auto;
+  width: 100%;
+  
+}
+
+.logoutBtn {
+  background-color: var(--grey);
+  color: white;
+  /* border: solid rgb(31, 31, 31); */
+  font-size: 12px;
+  font-family: 'Cinzel', serif;
+  background-color: transparent;
+  border: none;
 }
 
 .hide-animation {

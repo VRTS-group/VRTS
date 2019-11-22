@@ -75,12 +75,7 @@ class Home extends Component {
                   
               <img id='save' className='drop-btn' src={save} alt="save"/>
 
-              {/* {this.state.showPopup ? 
-              <HomePopup
-                closePopup={this.togglePopup.bind(this)}
-              /> 
-              : null
-            } */}
+              
             </div>              
             )
           })}
@@ -89,8 +84,6 @@ class Home extends Component {
           
           
         </div>
-
-
       </div> // closing tag for home
     )
   }

@@ -12,12 +12,12 @@ class Header extends Component {
       email: "",
       password: ""
     };
-    this.dropdown = React.createRef();
     this.dropProfile = React.createRef();
+    this.dropLog = React.createRef();
   }
 
-  toggleShow = () => {
-    let { current } = this.dropdown;
+  toggleProfile = () => {
+    let { current } = this.dropProfile;
     if (current.classList.contains("show-animation")) {
       current.classList.add("hide-animation");
       current.classList.remove("show-animation");
@@ -27,8 +27,8 @@ class Header extends Component {
     }
   };
 
-  toggleProfile = () => {
-    let { current } = this.dropProfile;
+  toggleLog = () => {
+    let { current } = this.dropLog;
     if (current.classList.contains("show-animation")) {
       current.classList.add("hide-animation");
       current.classList.remove("show-animation");
@@ -72,9 +72,12 @@ class Header extends Component {
         <i
           id="hamburger-icon"
           className="fas fa-bars fa-2x"
-          onClick={this.toggleShow}
+          // onClick={this.toggleProfile}
         />
-        <div className="dropdown" ref={this.dropdown}>
+        <Link to='/'>
+        <div className="headerTitle">Artistry</div>
+        </Link>
+        <div className="dropProfile" ref={this.dropProfile}>
           <Link to="/profile">
             <button className="linksBtn">profile</button>
           </Link>
@@ -86,53 +89,62 @@ class Header extends Component {
           </Link>
         </div>
 
-        <div className="Title">Artistry</div>
-
         {this.props.user.email ? (
-          <div>
-            <button onClick={this.handleLogout}>Log out</button>
-            <p>{this.props.user.username}</p>
+          <div className="loggedInShiz">
+            <Link to="/myposts">
+              <div className="headerNewPost">
+                New Post{" "}
+                <button className="headerPlusBtn">
+                  +{/* upload image link */}
+                </button>
+              </div>
+            </Link>
+            {/* <p>User: {this.props.user.username}</p> */}
+            <div className="loggedInPicBox" onClick={this.toggleProfile}>
+              {" "}
+              <img className="loggedInPic" src={this.props.user.profile_pic} />
+              
+              
+            </div>
+            <button className="logoutBtn" onClick={this.handleLogout}>
+              Log out
+            </button>
           </div>
         ) : (
-          <div onClick={this.toggleProfile}>
-            <img
-              className="headerProfilePic"
-              src="https://www.buyorsellnamibia.com.na/wp-content/uploads/2017/03/Default-User.png"
-            />
-            <div className="dropProfile" ref={this.dropProfile}>
+          <>
+            <div onClick={this.toggleLog}>
+              <img
+                className="headerProfilePic"
+                src="https://www.buyorsellnamibia.com.na/wp-content/uploads/2017/03/Default-User.png"
+              />
+            </div>
+            <div className="dropLog" ref={this.dropLog}>
               <div className="loginInputs">
-              <input
-                value={this.state.email}
-                name="email"
-                onChange={e => this.handleInput(e)}
-                className="inputBox"
-                placeholder="email"
-              />
-              <input
-                value={this.state.password}
-                name="password"
-                onChange={e => this.handleInput(e)}
-                className="inputBox"
-                placeholder="password"
-              />
+                <input
+                  value={this.state.email}
+                  name="email"
+                  onChange={e => this.handleInput(e)}
+                  className="inputBox"
+                  placeholder="email"
+                />
+                <input
+                  value={this.state.password}
+                  name="password"
+                  onChange={e => this.handleInput(e)}
+                  className="inputBox"
+                  placeholder="password"
+                />
               </div>
 
               <button className="linksBtn" onClick={this.handleLogin}>
                 login
               </button>
-              <Link to='/register'>
-              <button className="registerBtn">sign-up</button>
+              <Link to="/register">
+                <button className="registerBtn">sign-up</button>
               </Link>
             </div>
-          </div>
+          </>
         )}
-
-        <div>
-          <Link to="/myposts">
-            {" "}
-            <button>+{/* upload image link */}</button>
-          </Link>
-        </div>
       </div>
     );
   }
