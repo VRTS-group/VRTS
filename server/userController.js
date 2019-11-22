@@ -51,6 +51,7 @@ module.exports = {
 
     editUser: async (req, res) => {
         let db = req.app.get('db');
+        const{id} = req.params
         const {
             username,
             profile_pic,
@@ -59,7 +60,8 @@ module.exports = {
             contact,
             bio
         } = req.body;
-        db.editUser([
+        let user = await db.editUser([
+            id,
             username,
             profile_pic,
             cover_pic,
@@ -67,13 +69,15 @@ module.exports = {
             contact,
             bio
         ])
-        .then(response => {
-            res.send(response).status(200);
 
-        })
-        .catch(err => {
-            res.send(err).status(500);
-        })
+        res.send(user).status(200);
+        // .then(response => {
+        //     res.send(response).status(200);
+
+        // })
+        // .catch(err => {
+        //     res.send(err).status(500);
+        // })
     },
 
     getUserById: async (req, res) => {

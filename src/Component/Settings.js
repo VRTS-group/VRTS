@@ -8,12 +8,12 @@ class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: this.props.user.username,
-      profile_pic: this.props.user.profile_pic,
-      cover_pic: this.props.user.cover_pic,
-      real_name: this.props.user.real_name,
-      contact: this.props.user.contact,
-      bio: this.props.user.bio
+      username: this.props.store.userReducer.user.username,
+      profile_pic: this.props.store.userReducer.user.profile_pic,
+      cover_pic: this.props.store.userReducer.user.cover_pic,
+      real_name: this.props.store.userReducer.user.real_name,
+      contact: this.props.store.userReducer.user.contact,
+      bio: this.props.store.userReducer.user.bio
     };
   }
 
@@ -25,7 +25,7 @@ class Settings extends Component {
   }
 
   componentDidUpdate(prevProps){
-if (this.props.user !== prevProps.user)
+if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
 {this.render()}  }
 
   handleInput = e => {
@@ -35,10 +35,12 @@ if (this.props.user !== prevProps.user)
   };
 
   render() {
-    console.log(this.props)
-    console.log(this.state.username)
-    console.log(this.props.user.username)
+    // console.log(this.props.editUser)
+    // console.log(this.state.username)
+    console.log(this.props.store.userReducer)
+    // console.log(this.props.store.userReducer.user.user_id)
     // const bio = this.props.user.bio
+    const {username} = this.state
     return (
       <div className="Settings">
         <div className="SettingsContainer">
@@ -63,8 +65,9 @@ if (this.props.user !== prevProps.user)
             <h4>Username</h4>
             <input
               type="text"
+              name="username"
               value={this.state.username}
-              onChange={e => this.setState({ username: e.target.value })}
+              onChange={e => this.handleInput(e)}
             />
             <h4>Real Name</h4>
             <input
@@ -81,7 +84,11 @@ if (this.props.user !== prevProps.user)
             />
           </div>
           <div className="SettingsBtns">
-            <button>Save</button>
+            <button onClick={() => {
+              this.props.editUser(this.props.store.userReducer.user.user_id, username, this.state.profile_pic, this.state.cover_pic,
+                this.state.real_name, this.state.contact, this.state.bio)
+              this.render()
+            }}>Save</button>
           </div>
           {/* //end */}
         </div>
@@ -91,18 +98,17 @@ if (this.props.user !== prevProps.user)
 }
 
 
-const mapStateToProps = reduxState => {
-  const {user} = reduxState.userReducer;
+function mapStateToProps (state){
   return {
-    user
-  };
-};
+    store: state
+  }
+}
 
-const mapDispatchToProps = {
-  getUserById
-};
+// const mapDispatchToProps = {
+//   getUserById
+// };
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  mapStateToProps, {getUserById, editUser}
+  
 )(Settings)
 

@@ -68,27 +68,42 @@ export function logout() {
 
 }
 
-export function editUser(
-  id,
-  username,
-  profile_pic,
-  cover_pic,
-  real_name,
-  contact,
-  bio
-) {
-  let data = axios.put(`/auth/editUser/${id}`, {
-    username,
-    profile_pic,
-    cover_pic,
-    real_name,
-    contact,
-    bio
-  });
-  return {
+// export function editUser(
+//   id,
+//   username,
+//   profile_pic,
+//   cover_pic,
+//   real_name,
+//   contact,
+//   bio
+// ) {
+//   let data = axios.put(`/auth/editUser/${id}`, {
+//     username,
+//     profile_pic,
+//     cover_pic,
+//     real_name,
+//     contact,
+//     bio
+//   });
+//   return {
+//     type: EDIT_USER,
+//     payload: data
+//   };
+// }
+
+
+export const editUser = (id, username, profile_pic, cover_pic, real_name, contact, bio) => {
+  console.log(username)
+  let data =  axios.put(`/auth/edituser/${id}`, {username, profile_pic, cover_pic, real_name, contact, bio})
+  .then(res => {
+    console.log(res)
+    return res.data[0]
+  })
+  console.log(data, 'edit')
+  return{
     type: EDIT_USER,
     payload: data
-  };
+  }
 }
 
 export const getUserById = (id) => {
@@ -101,8 +116,9 @@ export const getUserById = (id) => {
   }
 }
 // default function
-export default function userReducer(state = initialState, action) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
+  console.log(payload, "payload")
   switch (type) {
     case LOGIN + "_FULFILLED":
       return { ...state, user: payload };
@@ -110,8 +126,9 @@ export default function userReducer(state = initialState, action) {
       return { ...state, user: { signedIn: false } };
     case GET_USER + "_FULFILLED":
       return { ...state, user: payload };
-    case EDIT_USER:
-      return { ...state, user: payload };
+    case EDIT_USER + "_FULFILLED" :
+      console.log(payload, 'edit')
+      return {user: {...payload, signedIn: true}};
       case UPDATE_USER:
         return{...state, user:payload}
     default:

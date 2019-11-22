@@ -30,9 +30,9 @@ app.use(
 app.post("/auth/register", UserCTRL.register);
 app.post("/auth/login", UserCTRL.login);
 app.delete("/auth/logout", UserCTRL.logout);
-app.post("/auth/user", UserCTRL.getUser);
-app.put("/auth/edituser", UserCTRL.editUser);
-app.get("/auth/getUserById/:id", UserCTRL.getUserById);
+app.get("/auth/user", UserCTRL.getUser);
+app.put('/auth/edituser/:id', UserCTRL.editUser);
+app.get('/auth/getUserById/:id', UserCTRL.getUserById)
 
 app.get("/auth/getPosts", PostCTRL.getPosts);
 app.post("/auth/addPosts", PostCTRL.addPosts);
