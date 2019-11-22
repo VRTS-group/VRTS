@@ -16,6 +16,7 @@
 }
 
 .post-picture {
+  margin-top: 20%;
   width: 400px;
   height: 300px;
   display: flex;
