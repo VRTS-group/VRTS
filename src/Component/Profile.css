@@ -127,3 +127,7 @@
     object-fit: cover;
 }
 
+.profile_filler{
+    height: 9vh;
+    width: 100%;
+}

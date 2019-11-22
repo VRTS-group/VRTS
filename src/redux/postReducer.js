@@ -17,7 +17,9 @@ const GET_POST = "GET_POST";
 const ADD_POST = "ADD_POST";
 const EDIT_POST = "EDIT_POST";
 const DELETE_POST = "DELETE_POST";
-const GET_POST_BY_ID = "GET_POST_BY_ID";
+const GET_POST_BY_ID = 'GET_POST_BY_ID';
+const GET_POST_BY_USER = 'GET_POST_BY_USER';
+
 
 export function getPost() {
   let get = axios.get(`/auth/getPosts`).then(res => {
@@ -35,6 +37,17 @@ export function getPostById(id) {
   });
   return {
     type: GET_POST_BY_ID,
+    payload: get
+  };
+}
+
+export function getPostByUser(id) {
+  let get = axios.get(`/auth/getPostByUser/${id}`)
+  .then(res => {
+    return res.data
+  });
+  return{
+    type: GET_POST_BY_USER,
     payload: get
   };
 }
@@ -98,8 +111,10 @@ export default function postReducer(state = initialState, action) {
       return { ...state, post: payload };
     case DELETE_POST + "_FULFILLED":
       return { post: payload };
-    case GET_POST_BY_ID + "_FULFILLED":
-      return { post: payload };
+      case GET_POST_BY_ID + '_FULFILLED':
+        return{ ...state, post: payload }
+        case GET_POST_BY_USER + '_FULFILLED':
+        return{ ...state, post: payload }
     default:
       return state;
   }

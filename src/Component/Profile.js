@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Profile.css";
 import {connect} from 'react-redux';
 import {getUserById} from '../redux/userReducer';
+import {getPostByUser} from '../redux/postReducer'
 import Axios from "axios";
 
 class Profile extends Component {
@@ -9,9 +10,12 @@ class Profile extends Component {
     super();
     this.state = {
       user: [],
-      username: ''
+      username: '',
+      posts: []
     }
   }
+
+
   componentDidMount = () => {
     console.log(this.props.match.params.id)
     Axios.get(`/auth/getUserById/${this.props.match.params.id}`).then(res => {
@@ -20,15 +24,20 @@ class Profile extends Component {
         user: res.data
       })
     })
+    Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res=> {
+      this.setState({
+        posts: res.data
+      })
+    })
   }
 
   render() {
-    
+    console.log(this.state.posts)
     return (
       <div className="Profile">
-        
+       
         <div className="ProfileContainer">
-      
+        <div className="profile_filler">p</div>
       
           <div className="ProfileCover">
           {this.state.user.map(e => {
@@ -96,15 +105,14 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = reduxState => {
-  const {user} = reduxState.userReducer;
-  return {
-    user
-  };
-};
+function mapStateToProps (state){
+return{
+  store: state
+}
+}
 
 const mapDispatchToProps = {
-  getUserById
+  getUserById, getPostByUser
 };
 export default connect(
   mapStateToProps,
