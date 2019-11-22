@@ -2,16 +2,15 @@ import axios from "axios";
 
 const initialState = {
   posts: {
-  post_id: 0,
-  user_id: 0,
-  media: "",
-  title: "",
-  description: "",
-  tags: "",
-  views: "",
-  saves: false
+    post_id: 0,
+    user_id: 0,
+    media: "",
+    title: "",
+    description: "",
+    tags: "",
+    views: "",
+    saves: false
   }
-  
 };
 
 const GET_POST = "GET_POST";
@@ -33,11 +32,10 @@ export function getPost() {
 }
 
 export function getPostById(id) {
-  let get = axios.get(`/auth/getPostById/${id}`)
-  .then(res => {
-    return res.data
+  let get = axios.get(`/auth/getPostById/${id}`).then(res => {
+    return res.data;
   });
-  return{
+  return {
     type: GET_POST_BY_ID,
     payload: get
   };
