@@ -2,6 +2,9 @@
     background-color: blue;
     height: 100vh;
     width: 414px;
+    
+    flex-direction: column;
+    align-items: center;
 }
 .home-pic{
     height: 30vh;
