@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPostById } from "../redux/postReducer";
 import { addComment } from "../redux/commentReducer";
-
+import axios from "axios";
 import "./IndivPost.css";
 import Comments from "./Comments";
 
@@ -10,21 +10,34 @@ class IndivPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: {
-        post_id: 0,
-        user_id: 0,
-        media: "",
-        title: "",
-        description: "",
-        views: 0,
-        comment: ""
-      }
+      posts: [],
+      media: "",
+      title: "",
+      description: "",
+      views: 0,
+      save: false,
+      user: [],
+      username: ""
     };
   }
 
-  // componentDidMount(id) {
-  //   this.props.getPostById(id);
-  // }
+  componentDidMount = () => {
+    //   console.log(this.props.match.params.id)
+    axios.get(`/auth/getPostById/${this.props.match.params.id}`).then(res => {
+      console.log(res.data);
+      this.setState({
+        posts: res.data
+      });
+    });
+  };
+
+  getUsername = id => {
+    axios.get(`/auth/getUserById/${id}`).then(res => {
+      this.setState({
+        user: res.data
+      });
+    });
+  };
 
   handleText = e => {
     this.setState({
@@ -38,39 +51,38 @@ class IndivPost extends Component {
   };
 
   render() {
-    let {
-      media,
-      title,
-      description,
-      views
-    } = this.props.redux.postReducer.posts;
-    console.log(this.props);
-
     let { comment } = this.state;
+    console.log(this.state.user.username);
     return (
       <section className="indiv-post">
-        <h4>Title: {title}</h4>
-        <section className="img-n-button">
-          <img src={media} className="post-picture" />
-          <section className="button-on-top">
-            <button className="img-button">Save</button>
-            <p>views:{views}</p>
-            <button className="img-button">•••</button>
-          </section>
-        </section>
-        <p>Description: {description}</p>
-        <section>
-          {/* <a>
-            {" "}
-            {this.state.post.map(e => {
-              return <Comments />;
-            })}
-          </a> */}
+        {this.state.user.map(e => {
+          return (
+            <div>
+              <h3>Username: {e.username}</h3>
+            </div>
+          );
+        })}
+        {this.state.posts.map(e => {
+          return (
+            <div id="mapped">
+              <div id="title-box">
+                <h3>{e.title}</h3>
+              </div>
+              <img src={e.media} className="post-picture" />
 
+              <div>
+                <p>{e.description}</p>
+              </div>
+            </div>
+          );
+        })}
+
+        <section>
           <button onClick={this.handleComment}>Write a comment</button>
           <textarea
             name="comment"
             value={comment}
+            placeholder="Add a comment here :)"
             onChange={this.handleText}
           ></textarea>
 
@@ -87,4 +99,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getPostById, addComment })(IndivPost);
+export default connect(mapStateToProps, { addComment })(IndivPost);
