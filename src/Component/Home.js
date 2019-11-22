@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {getPost} from '../redux/postReducer';
 import Axios from "axios";
 import HomePopup from './HomePopUp';
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
   constructor(props){
@@ -30,11 +31,11 @@ class Home extends Component {
     })
   }
 
-  togglePopup = () =>{
-    this.setState({
-        showPopup: !this.state.showPopup
-    })
-  }
+  // togglePopup = () =>{
+  //   this.setState({
+  //       showPopup: !this.state.showPopup
+  //   })
+  // }
 
   // trying to have it so when you select an item in 
   // the drop down it will change the value of the filter
@@ -67,19 +68,19 @@ class Home extends Component {
         </div>
         <div className="dashboard">
           {this.state.posts.map(e => {
-            // {console.log(e)}
+            {console.log(e)}
             return(
               <div className="home-posts">
-                <img onClick={this.togglePopup} className='media' src={e.media} alt=""/>
+                <Link to={`/popup/${e.post_id}`}><img onClick={this.togglePopup} className='media' src={e.media} alt=""/></Link>
                   
               <img id='save' className='drop-btn' src={save} alt="save"/>
 
-              {this.state.showPopup ? 
+              {/* {this.state.showPopup ? 
               <HomePopup
                 closePopup={this.togglePopup.bind(this)}
               /> 
               : null
-            }
+            } */}
             </div>              
             )
           })}

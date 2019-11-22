@@ -1,12 +1,20 @@
+:root{
+  --black: #222222;
+  --dark-red: #2C0703;
+  --light-red: #6F1A07;
+  --grey: #363636;
+  --white: #FFFFFF;
+}
+
 .Header {
     height: 9vh;
     width: 100vw;
-    background: gray;
+    /* background-color: var(--light-red); */
     background-image: linear-gradient(
       99deg,
-      rgb(56, 102, 121),
-      rgb(114, 158, 187) 40%,
-      rgb(62, 116, 138)
+      rgb(59, 6, 2),
+      rgb(61, 39, 34) 40%,
+      rgb(29, 28, 28)
     );
     color: rgb(255, 255, 255);
     display: flex;
@@ -17,12 +25,14 @@
     box-sizing: border-box;
     box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25),
     0 10px 10px 0 rgba(0, 0, 0, 0.26); 
+    position: fixed;
 }
 
 .Title {
     font-family: 'Dancing Script', cursive;
-    font-size: 30px;
-    text-shadow: 2px 2px rgb(12, 43, 78);
+    font-size: 28px;
+    color: white;
+    text-shadow:  2px 2px var(--grey);
     display: flex;
 
 
@@ -34,27 +44,97 @@
 
 }
 
-.header-profile-pic{
+.linksBtn {
+  height: 40px;
+  width: 100px;
+  background-color: var(--grey);
+  color: white;
+  border: solid rgb(31, 31, 31);
+  font-family: 'Cinzel', serif;
+}
+
+.registerBtn {
   height: 25px;
-  width: 50px; 
+  width: 80px;
+  background-color: var(--grey);
+  color: white;
+  border: solid rgb(31, 31, 31);
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+}
+
+.headerProfilePic{
+  height: 35px;
+  width: 35px; 
+  border-radius: 50px;
 }
 
 .dropdown {
   height: 0px; 
+  width: 20vh;
   overflow: hidden; 
   position: fixed;
-  top: 50px;
-  right: 0;
+  top: 9vh;
+  /* right: 0; */
+  left: 0px;
   background-color: black;
-  width: 100%;
+  background-image: linear-gradient(
+    99deg,
+    rgb(26, 21, 21),
+    rgb(61, 39, 34) 40%,
+    rgb(65, 28, 28)
+  );
   display: flex;
   justify-content: space-around;
-  align-content: center;
+  align-items: center;
   
   flex-direction: column;
   border-bottom-left-radius: 6px;
   color: white
 }
+
+.dropProfile {
+  height: 0px; 
+  width: 20vh;
+  overflow: hidden; 
+  /* position: fixed; */
+  top: 9vh;
+  right: 0;
+  background-color: rgb(221, 213, 213);
+  background-image: linear-gradient(
+    99deg,
+    rgb(26, 21, 21),
+    rgb(61, 39, 34) 40%,
+    rgb(65, 28, 28)
+  );
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  flex-direction: column;
+  border-bottom-left-radius: 6px;
+  color: white;
+
+}
+
+.loginInputs {
+  height: 10vh;
+  width: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+.inputBox {
+  width: 15vh;
+  background-color: var(--grey);
+  border: solid rgb(31, 31, 31);
+  color: white;
+  font-family: 'Cinzel', serif;
+
+}
+
 .hide-animation {
   animation-name: hide;
   animation-duration: 0.5s;
