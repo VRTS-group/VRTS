@@ -15,7 +15,7 @@ class IndivPost extends Component {
       title: "",
       description: "",
       views: 0,
-      save: false,
+      saves: false,
       user: [],
       username: "",
       comment: "",
@@ -58,6 +58,12 @@ class IndivPost extends Component {
     });
   };
 
+  handleSave = e => {
+    this.setState({
+      saves: true
+    });
+  };
+
   newComment = () => {
     axios
       .post("/api/comment", {
@@ -69,58 +75,57 @@ class IndivPost extends Component {
         alert("Comment added");
         this.setState({ comment: "" });
       });
-    console.log(this.state);
+    // console.log(this.state);
   };
 
   render() {
     let { comment } = this.state;
-    // console.log(this.state.user.username);
+    console.log(this.state.username);
     return (
       <section className="indiv-post">
-        {this.state.user.map(e => {
-          return (
-            <div>
-              <h3>Username: {e.username}</h3>
-            </div>
-          );
-        })}
-        {this.state.posts.map(e => {
-          return (
-            <div id="mapped">
-              <div id="title-box">
-                <h3>{e.title}</h3>
+        <div className="username">
+          <h3>Username: {this.state.username}</h3>
+        </div>
+        <div className="post-section ">
+          {this.state.posts.map(e => {
+            return (
+              <div id="post-info">
+                <div id="title-box">
+                  <h3>{e.title}</h3>
+                </div>
+                <img src={e.media} className="post-picture" />
+                <button onClick={this.handleSave} className="button-on-top">
+                  Save
+                </button>
+                <div className="description">
+                  <p>{e.description}</p>
+                </div>
               </div>
-              <img src={e.media} className="post-picture" />
-
-              <div>
-                <p>{e.description}</p>
-              </div>
-            </div>
-          );
-        })}
-
-        <section>
-          <button onClick={this.newComment}>Write a comment</button>
+            );
+          })}
+        </div>
+        <section id="comment-section">
           <textarea
+            className="text-box"
             name="comment"
             value={comment}
             placeholder="Add a comment here :)"
             onChange={this.handleText}
           ></textarea>
-
+          <br />
+          <button onClick={this.newComment}>Write a comment</button>
+          <br />
           {this.state.user_id ? (
             <div>
-              Comment AREA
               {this.state.comments.map(e => {
-                return <div>{e.comment}</div>;
+                return <div className="comment-area">{e.comment}</div>;
               })}
             </div>
           ) : (
             <div>
-              Comment AREA
               {this.state.comments.map(e => {
                 return (
-                  <div>
+                  <div className="comment-area">
                     {e.comment}
                     <button
                       onClick={() => {
@@ -135,7 +140,7 @@ class IndivPost extends Component {
             </div>
           )}
 
-          <button>Show more</button>
+          {/* <button>Show more</button> */}
         </section>
       </section>
     );
