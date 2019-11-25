@@ -10,7 +10,7 @@ class Upload extends Component {
     constructor() {
         super();
         this.state = {
-            user_id: 7,
+            user_id: 0,
             media: "",
             title: "",
             description: "",
@@ -31,7 +31,8 @@ class Upload extends Component {
           })
         })
         axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res=> {
-          console.log(res.data[0].user_id)
+            console.log(res.data)
+          
           this.setState({
             posts: res.data,
             user_id: res.data[0].user_id,
@@ -39,6 +40,8 @@ class Upload extends Component {
          
           })
           console.log(this.state)
+          console.log(res.data[0].user_id)
+
         })
       }
 
