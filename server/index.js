@@ -31,8 +31,8 @@ app.post("/auth/register", UserCTRL.register);
 app.post("/auth/login", UserCTRL.login);
 app.delete("/auth/logout", UserCTRL.logout);
 app.get("/auth/user", UserCTRL.getUser);
-app.put('/auth/edituser/:id', UserCTRL.editUser);
-app.get('/auth/getUserById/:id', UserCTRL.getUserById)
+app.put("/auth/edituser/:id", UserCTRL.editUser);
+app.get("/auth/getUserById/:id", UserCTRL.getUserById);
 
 app.get("/auth/getPosts", PostCTRL.getPosts);
 app.post("/auth/addPosts", PostCTRL.addPosts);
@@ -44,6 +44,7 @@ app.get("/auth/getPostByUser/:id", PostCTRL.getPostByUser);
 app.get("/api/comment", CommentCTRL.getComments);
 app.post("/api/comment", CommentCTRL.addComment);
 app.delete("/api/comment/:id", CommentCTRL.deleteComment);
+app.get("/api/comments/:id", CommentCTRL.getCommentById);
 
 // app.get('/auth/getList', ListCTRL.getList)
 // app.post('/auth/addList', ListCTRL.addList)

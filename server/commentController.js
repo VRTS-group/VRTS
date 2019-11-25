@@ -1,21 +1,33 @@
 module.exports = {
-  getComments: (req, res) => {
+  getComments: async (req, res) => {
+    console.log("hit");
     const db = req.app.get("db");
-    let comments = db.getComments();
-    res.status(200).send(comments);
+    let data = await db.getComments();
+    console.log(data);
+    res.status(200).send(data);
   },
   addComment: (req, res) => {
     const db = req.app.get("db");
-    let { user_id, post_id, comment } = req.body;
-    db.addComment(user_id, post_id, comment)
+    const { user_id, post_id, comment } = req.body;
+    db.addComment([user_id, post_id, comment])
       .then(db => res.status(200).send(db))
-      .catch(err => console.log(err));
+      .catch(err => {
+        res.send(err).status(500);
+      });
   },
   deleteComment: (req, res) => {
     const db = req.app.get("db");
-    let { comment_id } = req.params;
-    db.deleteComment(comment_id)
+    let { id } = req.params;
+    db.deleteComment(id)
       .then(db => res.status(200).send(db))
       .catch(err => console.log(err));
+  },
+  getCommentById: (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+    db.getCommentById([id])
+      .then(db => res.status(200).send(db))
+      .catch(err => console.log(err));
+    // console.log(res);
   }
 };
