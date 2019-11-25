@@ -1,81 +1,107 @@
-.home{
-    background-color: blue;
-    height: 100vh;
-    width: 414px;
-    
-    flex-direction: column;
-    align-items: center;
+.home {
+  background-image: linear-gradient(
+    99deg,
+    rgb(29, 28, 28),
+    rgb(59, 6, 2),
+    rgb(61, 39, 34) 40%,
+    rgb(29, 28, 28)
+  );
+  display: flex;
+  justify-content: center;
 }
-.home-pic{
-    height: 30vh;
-    background-color: rgb(216, 111, 111);
+.home-container {
+  background-color: black;
+
+  width: 414px;
+
+  flex-direction: column;
+  align-items: center;
 }
-.sub-header{
-    height: 50px;
-    background-color: grey;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.filter-dropdown{
-    height: 30px;
-    width: 120px;
-    background-color: rgb(99, 98, 98);
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    align-items: center;
-    position: relative;
+.home-pic {
+  height: 30vh;
+  background-color: black;
+  margin-top: 9vh;
+  display: flex;
+  justify-content: center;
 }
 
-.filter-dropdown img{
-    width: 25px;
-    margin-right: 5px;
+.artistry {
+  height: 30vh;
+}
+
+.sub-header {
+  height: 50px;
+  background-color: rgb(41, 41, 41);
+  /* background-image: linear-gradient(
+        99deg,
+        rgb(48, 23, 23),
+        rgb(46, 22, 20),
+        rgb(36, 18, 13) 40%,
+        rgb(48, 23, 23)
+      );; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.filter-dropdown {
+  height: 30px;
+  width: 120px;
+  background-color: rgb(73, 30, 30);
+  font-family: "Dancing Script", cursive;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  align-items: center;
+  position: relative;
+  border: solid black;
+}
+
+.filter-dropdown img {
+  width: 25px;
+  margin-right: 5px;
 }
 .dropdown-content {
-    display: none;
-    top: 31px;
-    position: absolute;
-    background-color: #f1f1f1;
-    width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  display: none;
+  top: 31px;
+  position: absolute;
+  background-color: rgb(73, 30, 30);
+  width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 .dropdown-content h4 {
-    color: black;
-    /* padding: 12px 16px; */
-    text-decoration: none;
-    display: block;
+  color: black;
+  /* padding: 12px 16px; */
+  text-decoration: none;
+  display: block;
 }
 .filter-dropdown:hover .dropdown-content {
-display: block;
+  display: block;
 }
 
-    
-.dashboard{
-    display: flex;
-    align-items: center;
-    align-content: space-around;
-    justify-content: space-evenly;
-    margin: 15px 0px;
-    flex-wrap: wrap;
-    
+.dashboard {
+  display: flex;
+  align-items: center;
+  align-content: space-around;
+  justify-content: space-evenly;
+  margin: 15px 0px;
+  flex-wrap: wrap;
 }
-.home-posts{
-    /* background-color: green; */
-    border: 1px solid white;
-    height: 170px;
-    width: 170px;
-    position: relative;
-    margin: 15px;
+.home-posts {
+  /* background-color: green; */
+  border: 1px solid white;
+  height: 170px;
+  width: 170px;
+  position: relative;
+  margin: 15px;
 }
-#save{
-    width: 36px;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
+#save {
+  width: 36px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
 }
-.media{
-    width: 170px;
-    height: 100%;
+.media {
+  width: 170px;
+  height: 100%;
 }
