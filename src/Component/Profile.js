@@ -91,18 +91,18 @@ class Profile extends Component {
             <div className="ProfileGenreTitle">ART</div>
             <button className="ProfileBtn">My Saves</button>
           </div>
+          {/* // */}
           <div className="ProfileGridContainer">
-          <div class="ProfileGrid">
-          <div>
+          {/* <div class="ProfileGrid"> */}
               {this.state.posts.map(e=> {
                 return(
                   <Link to={`/popup/${e.post_id}`}> <img class="GridItem" src = {e.media}/></Link>
                 )
               })}
-            </div>
+        
             {/* <div class="GridItem"></div> */}
            
-          </div>
+          {/* </div> */}
           </div>
           {/* //container end */}
         </div>
