@@ -5,9 +5,10 @@ import IndivPost from "./Component/IndivPost";
 import Profile from "./Component/Profile";
 import Settings from "./Component/Settings";
 import MyPosts from "./Component/MyPosts";
-
+import Upload from "./Component/Upload"
 import Register from "./Component/Register";
 import popUp from "./Component/HomePopUp";
+import { updateExpression } from "@babel/types";
 
 export default (
   <Switch>
@@ -18,5 +19,6 @@ export default (
     <Route path="/myposts" component={MyPosts} />
     <Route path="/register" component={Register} />
     <Route path="/popUp/:id" component={popUp} />
+    <Route path="/upload/:id" component={Upload}/>
   </Switch>
 );

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {getUserById} from '../redux/userReducer';
 import {getPostByUser} from '../redux/postReducer'
 import Axios from "axios";
+import {Link} from 'react-router-dom';
 
 class Profile extends Component {
   constructor(){
@@ -25,9 +26,14 @@ class Profile extends Component {
       })
     })
     Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res=> {
+      console.log(res.data[0].user_id)
       this.setState({
-        posts: res.data
+        posts: res.data,
+        user_id: res.data[0].user_id,
+        post_id: res.data[0].post_id
+     
       })
+      console.log(this.state)
     })
   }
 
@@ -76,8 +82,9 @@ class Profile extends Component {
              
              
             </div>
+            
 
-            <button className="MyPostsBtn">My Posts</button>
+            <Link to = {`/Upload/${this.props.match.params.id}`}><button className="MyPostsBtn">My Posts</button></Link>
           </div>
           <div className="ProfileGenre">
             <button className="ProfileBtn">My Posts</button>
@@ -86,16 +93,15 @@ class Profile extends Component {
           </div>
           <div className="ProfileGridContainer">
           <div class="ProfileGrid">
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
-            <div class="GridItem"></div>
+          <div>
+              {this.state.posts.map(e=> {
+                return(
+                  <Link to={`/popup/${e.post_id}`}> <img class="GridItem" src = {e.media}/></Link>
+                )
+              })}
+            </div>
+            {/* <div class="GridItem"></div> */}
+           
           </div>
           </div>
           {/* //container end */}

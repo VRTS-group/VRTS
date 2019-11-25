@@ -3,6 +3,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateUser} from '../redux/userReducer'
+import "./Register.css";
 class register extends Component{
     constructor(){
         super()
@@ -38,7 +39,8 @@ class register extends Component{
 
     render(){
         return(
-            <div>
+            <div className = "register_page">
+                <div className = "register_filler"></div>
                 <div>
                     <p> email here!</p>
                     <input
