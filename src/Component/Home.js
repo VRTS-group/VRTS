@@ -30,12 +30,7 @@ class Home extends Component {
     });
   };
 
-  // togglePopup = () =>{
-  //   this.setState({
-  //       showPopup: !this.state.showPopup
-  //   })
-  // }
-
+  
   // trying to have it so when you select an item in
   // the drop down it will change the value of the filter
   //to the div or h4 that you select, having trouble
@@ -72,7 +67,7 @@ class Home extends Component {
               <div className="home-posts">
                 <Link to={`/popup/${e.post_id}`}>
                   <img
-                    onClick={this.togglePopup}
+                    //toggle popup goes here
                     className="media"
                     src={e.media}
                     alt=""
@@ -81,8 +76,10 @@ class Home extends Component {
 
                 <img id="save" className="drop-btn" src={save} alt="save" />
               </div>
+              
             );
           })}
+              <div id='popup-div'>{this.showPopup && <HomePopup />}</div>
         </div>
       </div> // closing tag for home
     );

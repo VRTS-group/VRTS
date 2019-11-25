@@ -49,8 +49,8 @@ class Header extends Component {
     if(this.state.toggleProfile === true){
       this.toggleProfile();
       this.setState({toggleProfile: false})
-    }
-    if(this.state.toggleLog === true){
+    } 
+    else if(this.state.toggleLog === true){
       this.toggleLog();
       this.setState({toggleLog: false})
     }
