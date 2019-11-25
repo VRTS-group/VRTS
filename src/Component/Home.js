@@ -7,6 +7,7 @@ import { getPost } from "../redux/postReducer";
 import Axios from "axios";
 import HomePopup from "./HomePopUp";
 import { Link } from "react-router-dom";
+import artistry from '../photos/artistry.png'
 
 class Home extends Component {
   constructor(props) {
@@ -48,41 +49,45 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <div className="home-pic"></div>
-        <div className="sub-header">
-          <div className="filter-dropdown">
-            <img src={downArrow} alt="" />
+        <div className="home-container">
+          <div className="home-pic">
+          <img className="artistry" src={artistry} alt="LogoPic" />
           </div>
-          <div className="filter-dropdown">
-            <span>{this.state.rightFilter}</span>
-            <img className="drop-btn" src={downArrow} alt="" />
-            <div className="dropdown-content">
-              <h4></h4>
-              <h4></h4>
-              <h4></h4>
+          <div className="sub-header">
+            <div className="filter-dropdown">
+              <img src={downArrow} alt="" />
+            </div>
+            <div className="filter-dropdown">
+              <span>{this.state.rightFilter}</span>
+              <img className="drop-btn" src={downArrow} alt="" />
+              <div className="dropdown-content">
+                <h4></h4>
+                <h4></h4>
+                <h4></h4>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="dashboard">
-          {this.state.posts.map(e => {
-            {
-              console.log(e);
-            }
-            return (
-              <div className="home-posts">
-                <Link to={`/popup/${e.post_id}`}>
-                  <img
-                    onClick={this.togglePopup}
-                    className="media"
-                    src={e.media}
-                    alt=""
-                  />
-                </Link>
+          <div className="dashboard">
+            {this.state.posts.map(e => {
+              {
+                console.log(e);
+              }
+              return (
+                <div className="home-posts">
+                  <Link to={`/popup/${e.post_id}`}>
+                    <img
+                      onClick={this.togglePopup}
+                      className="media"
+                      src={e.media}
+                      alt=""
+                    />
+                  </Link>
 
-                <img id="save" className="drop-btn" src={save} alt="save" />
-              </div>
-            );
-          })}
+                  <img id="save" className="drop-btn" src={save} alt="save" />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div> // closing tag for home
     );

@@ -48,6 +48,8 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
           <div className="SettingsCover">
             <div className="SettingsPic"></div>
           </div>
+
+          
           <div className="SettingsInfo">
             <h4>Profile Pic</h4>
 
@@ -84,7 +86,7 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
             />
           </div>
           <div className="SettingsBtns">
-            <button onClick={() => {
+            <button className="SaveBtn" onClick={() => {
               this.props.editUser(this.props.store.userReducer.user.user_id, username, this.state.profile_pic, this.state.cover_pic,
                 this.state.real_name, this.state.contact, this.state.bio)
               this.render()
