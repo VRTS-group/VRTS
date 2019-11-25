@@ -10,17 +10,22 @@ class Header extends Component {
     super();
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      user: [],
+      toggleProfile: false,
+      toggleLog: false,
     };
     this.dropProfile = React.createRef();
     this.dropLog = React.createRef();
-  }
+  }  
 
   toggleProfile = () => {
     let { current } = this.dropProfile;
+    this.setState({toggleProfile: true});
     if (current.classList.contains("show-animation")) {
       current.classList.add("hide-animation");
       current.classList.remove("show-animation");
+      this.setState({toggleProfile: false})
     } else {
       current.classList.add("show-animation");
       current.classList.remove("hide-animation");
@@ -29,15 +34,28 @@ class Header extends Component {
 
   toggleLog = () => {
     let { current } = this.dropLog;
+    this.setState({toggleLog: true})
     if (current.classList.contains("show-animation")) {
       current.classList.add("hide-animation");
       current.classList.remove("show-animation");
+      this.setState({toggleLog: false})
     } else {
       current.classList.add("show-animation");
       current.classList.remove("hide-animation");
     }
   };
 
+  closeToggleProfile = () => {
+    if(this.state.toggleProfile === true){
+      this.toggleProfile();
+      this.setState({toggleProfile: false})
+    }
+    if(this.state.toggleLog === true){
+      this.toggleLog();
+      this.setState({toggleLog: false})
+    }
+  };
+  
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -55,13 +73,22 @@ class Header extends Component {
           username: "",
           password: ""
         });
-        console.log(this.props);
+        // console.log(this.props);
         this.props.updateUser(res.data);
+        axios.get('/auth/user').then(res => {
+          this.setState({
+            user: res.data
+          });
+        })
       })
       .catch(err => console.log(this.props));
   };
 
   handleLogout = () => {
+    if(this.state.toggleProfile === true){
+      this.toggleProfile();
+      this.setState({toggleProfile: false})
+    };
     this.props.logout();
     this.props.history.push("/");
   };
@@ -78,14 +105,14 @@ class Header extends Component {
         <div className="headerTitle">Artistry</div>
         </Link>
         <div className="dropProfile" ref={this.dropProfile}>
-          <Link to="/profile">
-            <button className="linksBtn">profile</button>
+          <Link to={`/profile/${this.state.user.user_id}`}> 
+            <button onClick={this.closeToggleProfile} className="linksBtn">profile</button>
           </Link>
           <Link to="/settings">
-            <button className="linksBtn">settings</button>
+            <button onClick={this.closeToggleProfile} className="linksBtn">settings</button>
           </Link>
           <Link to="/myposts">
-            <button className="linksBtn">my Posts</button>
+            <button onClick={this.closeToggleProfile} className="linksBtn">my Posts</button>
           </Link>
         </div>
 
