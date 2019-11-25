@@ -25,16 +25,18 @@ export function addComment(user_id, post_id, comment) {
   };
 }
 
-export function getComments(post_id) {
-  let get = axios.get(`/api/comment/${post_id}`).then(res => res.data);
+export function getComments() {
+  let get = axios.get(`/api/comment`).then(res => {
+    return res.data;
+  });
   return {
     type: GET_COMMENTS,
     payload: get
   };
 }
 
-export function deleteComment(comment_id) {
-  let gone = axios.delete(`/api/comment/${comment_id}`).then(res => res.data);
+export function deleteComment(id) {
+  let gone = axios.delete(`/api/comment/${id}`).then(res => res.data);
   return {
     type: DELETE_COMMENT,
     payload: gone
