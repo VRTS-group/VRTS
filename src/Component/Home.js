@@ -7,6 +7,7 @@ import { getPost } from "../redux/postReducer";
 import Axios from "axios";
 import HomePopup from "./HomePopUp";
 import { Link } from "react-router-dom";
+import artistry from '../photos/artistry.png'
 
 class Home extends Component {
   constructor(props) {
@@ -30,12 +31,7 @@ class Home extends Component {
     });
   };
 
-  // togglePopup = () =>{
-  //   this.setState({
-  //       showPopup: !this.state.showPopup
-  //   })
-  // }
-
+  
   // trying to have it so when you select an item in
   // the drop down it will change the value of the filter
   //to the div or h4 that you select, having trouble
@@ -48,18 +44,22 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <div className="home-pic"></div>
-        <div className="sub-header">
-          <div className="filter-dropdown">
-            <img src={downArrow} alt="" />
+        <div className="home-container">
+          <div className="home-pic">
+          <img className="artistry" src={artistry} alt="LogoPic" />
           </div>
-          <div className="filter-dropdown">
-            <span>{this.state.rightFilter}</span>
-            <img className="drop-btn" src={downArrow} alt="" />
-            <div className="dropdown-content">
-              <h4></h4>
-              <h4></h4>
-              <h4></h4>
+          <div className="sub-header">
+            <div className="filter-dropdown">
+              <img src={downArrow} alt="" />
+            </div>
+            <div className="filter-dropdown">
+              <span>{this.state.rightFilter}</span>
+              <img className="drop-btn" src={downArrow} alt="" />
+              <div className="dropdown-content">
+                <h4></h4>
+                <h4></h4>
+                <h4></h4>
+              </div>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ class Home extends Component {
               <div className="home-posts">
                 <Link to={`/popup/${e.post_id}`}>
                   <img
-                    onClick={this.togglePopup}
+                    //toggle popup goes here
                     className="media"
                     src={e.media}
                     alt=""
@@ -81,8 +81,10 @@ class Home extends Component {
 
                 <img id="save" className="drop-btn" src={save} alt="save" />
               </div>
+              
             );
           })}
+              <div id='popup-div'>{this.showPopup && <HomePopup />}</div>
         </div>
       </div> // closing tag for home
     );
