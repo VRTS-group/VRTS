@@ -20,8 +20,8 @@ class IndivPost extends Component {
       username: "",
       comment: "",
       comments: [],
-      user_id: 9,
-      post_id: 40,
+      user_id: 0,
+      post_id: 0,
       comment_id: 0
     };
   }
@@ -29,9 +29,11 @@ class IndivPost extends Component {
   componentDidMount = () => {
     //   console.log(this.props.match.params.id)
     axios.get(`/auth/getPostById/${this.props.match.params.id}`).then(res => {
-      // console.log(res.data);
+      console.log(res.data);
       this.setState({
-        posts: res.data
+        posts: res.data,
+        user_id: res.data[0].user_id,
+        post_id: res.data[0].post_id
       });
     });
     axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
@@ -40,6 +42,7 @@ class IndivPost extends Component {
       });
     });
     axios.get(`/auth/getUserById/${this.props.match.params.id}`).then(res => {
+      console.log(res.data);
       this.setState({
         user: res.data
       });
@@ -58,10 +61,11 @@ class IndivPost extends Component {
     });
   };
 
-  handleSave = e => {
+  handleSave = () => {
     this.setState({
-      saves: true
+      saves: !this.state.saves
     });
+    console.log(this.state.saves);
   };
 
   newComment = () => {
@@ -75,16 +79,17 @@ class IndivPost extends Component {
         alert("Comment added");
         this.setState({ comment: "" });
       });
-    // console.log(this.state);
   };
 
   render() {
     let { comment } = this.state;
-    console.log(this.state.username);
+    // console.log(this.state.username);
     return (
       <section className="indiv-post">
         <div className="username">
-          <h3>Username: {this.state.username}</h3>
+          {this.state.user.map(e => {
+            return <h3>Username: {e.username}</h3>;
+          })}
         </div>
         <div className="post-section ">
           {this.state.posts.map(e => {
