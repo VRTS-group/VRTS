@@ -48,9 +48,19 @@ module.exports = {
       .then(db => res.status(200).send(db))
       .catch(err => console.log(err));
   },
-  //   addSave: (req, res) => {
-  //     const db = req.app.get("db");
-  //     const { id } = req.params;
-  //     db.addSave([id]).then(db => res.status(200).send(db));
-  //   }
+  getSavedPost: (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+    db.savedPost([id])
+      .then(db => res.status(200).send(db))
+      .catch(err => console.log(err));
+  },
+  addSave: (req, res) => {
+    const db = req.app.get("db");
+    const { user_id, post_id } = req.body;
+    // console.log(req.body);
+    db.addSave([user_id, post_id])
+      .then(db => res.status(200).send(db))
+      .catch(err => console.log(err));
+  }
 };
