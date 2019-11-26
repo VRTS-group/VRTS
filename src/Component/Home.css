@@ -8,6 +8,8 @@
   );
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .home-container {
   background-color: black;
@@ -85,6 +87,7 @@
   align-content: space-around;
   justify-content: space-evenly;
   margin: 15px 0px;
+  /* width: 414px; uncomment this and check it out */
   flex-wrap: wrap;
 }
 .home-posts {
@@ -105,3 +108,10 @@
   width: 170px;
   height: 100%;
 }
+#popup-div{
+  height: 400px;
+  background-color: blue;
+  display: none;
+}
+
+
