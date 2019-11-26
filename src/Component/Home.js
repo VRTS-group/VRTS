@@ -31,6 +31,22 @@ class Home extends Component {
     });
   };
 
+
+  //trying to conditionally render the popup component
+  //but the popup wont show, see lines 90 - 100
+  togglePopUp = () => {
+    if(this.state.showPopup === false){
+      this.setState({showPopup: true})
+    }
+    
+    // let x = document.getElementById('popup-div');
+    // if(x.style.display === 'none'){
+    //   x.style.display = 'block';
+    // } else {
+    //   x.style.display = 'none'
+    // }
+  }
+
   
   // trying to have it so when you select an item in
   // the drop down it will change the value of the filter
@@ -67,24 +83,27 @@ class Home extends Component {
           {this.state.posts.map(e => {
             {
               console.log(e);
+              console.log(this.state.showPopup)
             }
             return (
               <div className="home-posts">
-                <Link to={`/popup/${e.post_id}`}>
+                {/* <Link to={`/popup/${e.post_id}`}> */}
                   <img
-                    //toggle popup goes here
+                    onClick={this.togglePopUp}
                     className="media"
                     src={e.media}
                     alt=""
                   />
-                </Link>
+              <div id='popup-div-'> 
+                {this.showPopup && <HomePopup/>}
+              </div> 
+                {/* </Link> */}
 
                 <img id="save" className="drop-btn" src={save} alt="save" />
               </div>
               
-            );
-          })}
-              <div id='popup-div'>{this.showPopup && <HomePopup />}</div>
+              );
+            })}
         </div>
       </div> // closing tag for home
     );
