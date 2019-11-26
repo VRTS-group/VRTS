@@ -28,3 +28,8 @@ post_id int references posts(post_id),
 comment text
 );
 
+create table saves (
+    saves_id serial primary key,
+    user_id int references users(user_id),
+    post_id int references posts(post_id)
+);
