@@ -21,18 +21,20 @@ class HomePopUp extends React.Component {
   //gets individual post
   componentDidMount = () => {
     // console.log(this.props.match.params)
-    // console.log(this.props)
+    console.log(this.props)
+    this.setState({post_id: this.props.match.params.id})
+    // console.log(this.state.post_id)
     axios.get(`/auth/getPostById/${this.props.match.params.id}`).then(res => {
-      // console.log(res.data)
+      console.log(res.data)
       console.log(res.data[0].user_id);
       console.log(res.data[0].post_id);
       // console.log(res.data[0].title)
       this.setState({
         posts: res.data,
         user_id: res.data[0].user_id,
-        post_id: res.data[0].post_id
+        // post_id: res.data[0].post_id
       });
-      console.log(this.state);
+      console.log(this.props);
     });
   };
 
@@ -65,7 +67,7 @@ class HomePopUp extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.state.posts);
     return (
       <div className="popup-big-box">
         <div className="popUp">
@@ -76,7 +78,7 @@ class HomePopUp extends React.Component {
               <div id="popup-little-box">
                 <div id="title-box">
                 <Link to={`/profile/${e.user_id}`}>
-                    <h3>username</h3>
+                  <h3>{e.username}</h3>
                   </Link>
                   <h3>{e.title}</h3>
                   
