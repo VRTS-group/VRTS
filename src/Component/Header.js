@@ -111,19 +111,17 @@ class Header extends Component {
           <Link to="/settings">
             <button onClick={this.closeToggleProfile} className="linksBtn">settings</button>
           </Link>
-          <Link to="/myposts">
+          <Link to={`/upload/${this.state.user.user_id}`}>
             <button onClick={this.closeToggleProfile} className="linksBtn">my Posts</button>
           </Link>
         </div>
 
         {this.props.user.email ? (
           <div className="loggedInShiz">
-            <Link to="/myposts">
+            <Link to={`/upload/${this.state.user.user_id}`}>
               <div className="headerNewPost">
                 New Post{" "}
-                <button className="headerPlusBtn">
-                  +{/* upload image link */}
-                </button>
+                <button className="headerPlusBtn">+</button>
               </div>
             </Link>
             {/* <p>User: {this.props.user.username}</p> */}
