@@ -7,61 +7,45 @@ import axios from "axios";
 import "./Upload.css";
 
 class Upload extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user_id: 7,
-      media: "",
-      title: "",
-      description: "",
-      tags: "",
-      views: 0,
-      saves: false,
-      user: [],
-      username: "",
+    constructor() {
+        super();
+        this.state = {
+            user_id: 0,
+            media: "",
+            title: "",
+            description: "",
+            tags: "",
+            views: 0,
+            saves: false,
+            user: [],
+      username: '',
       posts: []
-    };
+        }
+    }
+    componentDidMount = () => {
+        console.log(this.props.match.params.id)
+        axios.get(`/auth/getUserById/${this.props.match.params.id}`).then(res => {
+          console.log(res.data)
+          this.setState({
+            user: res.data
+          })
+        })
+        axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res=> {
+            console.log(res.data)
+          
+          this.setState({
+            posts: res.data,
+            user_id: res.data[0].user_id,
+            post_id: res.data[0].post_id
+         
+          })
+          console.log(this.state)
+          console.log(res.data[0].user_id)
 
-    this.AddPopup = React.createRef();
-    this.EditPopup = React.createRef();
-  }
+        })
+      }
 
-  componentDidMount = () => {
-    console.log(this.props.match.params.id);
-    axios.get(`/auth/getUserById/${this.props.match.params.id}`).then(res => {
-      console.log(res.data);
-      this.setState({
-        user: res.data
-      });
-    });
-    axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res => {
-      console.log(res.data[0].user_id);
-      this.setState({
-        posts: res.data,
-        user_id: res.data[0].user_id,
-        post_id: res.data[0].post_id
-      });
-      console.log(this.state);
-    });
-  };
-
-  handleInput = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-  handleUpload = () => {
-    axios
-      .post("/auth/addPosts", {
-        user_id: this.state.user_id,
-        media: this.state.media,
-        title: this.state.title,
-        description: this.state.description,
-        tags: this.state.tags,
-        views: this.state.views,
-        saves: this.state.saves
-      })
-      .then(res => {
+    handleInput = (e) => {
         this.setState({
           media: "",
           title: "",

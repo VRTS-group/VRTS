@@ -5,6 +5,7 @@ import { addComment, deleteComment } from "../redux/commentReducer";
 import axios from "axios";
 import "./IndivPost.css";
 import Comments from "./Comments";
+import {updateUser} from '../redux/userReducer'
 
 class IndivPost extends Component {
   constructor(props) {
@@ -84,6 +85,10 @@ class IndivPost extends Component {
   render() {
     let { comment } = this.state;
     // console.log(this.state.username);
+    console.log(this.state)
+    console.log(this.state.posts)
+    console.log(this.props.redux.userReducer.user.user_id)
+    console.log(this.props)
     return (
       <section className="indiv-post">
         <div className="username">
@@ -98,10 +103,12 @@ class IndivPost extends Component {
                 <div id="title-box">
                   <h3>{e.title}</h3>
                 </div>
+                <div id="imagen-button">
                 <img src={e.media} className="post-picture" />
                 <button onClick={this.handleSave} className="button-on-top">
                   Save
                 </button>
+                </div>
                 <div className="description">
                   <p>{e.description}</p>
                 </div>
@@ -120,36 +127,75 @@ class IndivPost extends Component {
           <br />
           <button onClick={this.newComment}>Write a comment</button>
           <br />
-          {this.state.user_id ? (
-            <div>
+
+
+
+<div className = "potato">
+  {this.state.posts.map(e=> {
+    return <div>
+  {e.user_id === this.props.redux.userReducer.user.user_id ?(
+         
+         <div>
+         {this.state.comments.map(e => {
+           return (
+             <div className="comment-area">
+               {e.comment}
+               <button
+                 onClick={() => {
+                   deleteComment(e.comment_id);
+                 }}
+               >
+                 Delete
+               </button>
+             </div>
+           );
+         })}
+       </div>
+            
+          ) : (
+           <div>
               {this.state.comments.map(e => {
                 return <div className="comment-area">{e.comment}</div>;
               })}
-            </div>
-          ) : (
-            <div>
-              {this.state.comments.map(e => {
-                return (
-                  <div className="comment-area">
-                    {e.comment}
-                    <button
-                      onClick={() => {
-                        deleteComment(e.comment_id);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
+              
+            </div> 
+
+
+
+
+
           )}
+</div>
+        })}
+</div>
+
+
 
           {/* <button>Show more</button> */}
         </section>
       </section>
     );
+
+
+
+
+    
+
+
+
   }
+
+
+
+
+
+
+
+
+}
+
+const mapDispatchToProps = {
+  deleteComment, updateUser
 }
 
 const mapStateToProps = state => {
@@ -158,4 +204,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, deleteComment)(IndivPost);
+export default connect(mapStateToProps, mapDispatchToProps)(IndivPost);
