@@ -6,6 +6,8 @@ const session = require("express-session");
 const UserCTRL = require("./userController");
 const PostCTRL = require("./postController");
 const CommentCTRL = require("./commentController");
+const MusicCTRL = require("./musicController")
+const WriteCTRL = require("./writeController")
 
 const app = express();
 
@@ -42,6 +44,22 @@ app.get("/auth/getPostById/:id", PostCTRL.getPostById); //for the popup thing
 app.get("/auth/getPostByUser/:id", PostCTRL.getPostByUser);
 app.get("/auth/getSavedPosts/:id", PostCTRL.getSavedPost);
 app.post("/auth/addSave", PostCTRL.addSave);
+
+
+app.get("/auth/getMusic", MusicCTRL.getMusic);
+app.post("/auth/addMusic", MusicCTRL.addMusic);
+app.put("/auth/editMusic/:id", MusicCTRL.editMusic);
+app.delete("/auth/deleteMusic/:id", MusicCTRL.deleteMusic);
+app.get("/auth/getMusicById/:id", MusicCTRL.getMusicById); //for the popup thing
+app.get("/auth/getMusicByUser/:id", MusicCTRL.getMusicByUser);
+
+app.get("/auth/getWrite", WriteCTRL.getWrite);
+app.post("/auth/addWrite", WriteCTRL.addWrite);
+app.put("/auth/editWrite/:id", WriteCTRL.editWrite);
+app.delete("/auth/deleteWrite/:id", WriteCTRL.deleteWrite);
+app.get("/auth/getWriteById/:id", WriteCTRL.getWriteById); //for the popup thing
+app.get("/auth/getWriteByUser/:id", WriteCTRL.getWriteByUser);
+
 
 app.get("/api/comment", CommentCTRL.getComments);
 app.post("/api/comment", CommentCTRL.addComment);

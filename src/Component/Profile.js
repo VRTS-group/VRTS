@@ -22,18 +22,24 @@ class Profile extends Component {
       console.log(res.data);
       this.setState({
         user: res.data
-      });
-    });
-    Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res => {
-      console.log(res.data[0].user_id);
+      })
+    })
+    
+    Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res=> {
+      console.log(this.props.match.params.id)
+      console.log(res.data)
+      if(res.data[0]){ 
+
+      
       this.setState({
         posts: res.data,
         user_id: res.data[0].user_id,
         post_id: res.data[0].post_id
-      });
-      console.log(this.state);
-    });
-  };
+      
+      })}
+      console.log(this.state)
+    })
+  }
 
   render() {
     console.log(this.state.posts);
