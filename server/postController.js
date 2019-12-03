@@ -62,5 +62,10 @@ module.exports = {
     db.addSave([user_id, post_id])
       .then(db => res.status(200).send(db))
       .catch(err => console.log(err));
+  },
+  updateViews: (req,res) => {
+    const {post_id, views} = req.body;
+    const db = req.app.get('db');
+    db.updateViews()
   }
 };

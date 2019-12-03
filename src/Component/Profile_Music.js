@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Profile.css";
 import {connect} from 'react-redux';
 import {getUserById} from '../redux/userReducer';
-import {getPostByUser} from '../redux/postReducer'
+import {getMusicByUser} from '../redux/musicReducer'
 import Axios from "axios";
 import {Link} from 'react-router-dom';
 
@@ -12,7 +12,7 @@ class Profile extends Component {
     this.state = {
       user: [],
       username: '',
-      posts: []
+      music: []
     }
   }
 
@@ -25,25 +25,21 @@ class Profile extends Component {
         user: res.data
       })
     })
-    
-    Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res=> {
-      console.log(this.props.match.params.id)
-      console.log(res.data)
-      if(res.data[0]){ 
-
-      
+    Axios.get(`/auth/getMusicByUser/${this.props.match.params.id}`).then(res=> {
+    //   console.log(res.data[0].user_id)
+      if(res.data[0]){
       this.setState({
-        posts: res.data,
+        music: res.data,
         user_id: res.data[0].user_id,
-        post_id: res.data[0].post_id
-      
+        music_id: res.data[0].music_id
+     
       })}
       console.log(this.state)
     })
   }
 
   render() {
-    console.log(this.state.posts)
+    console.log(this.state.music)
     return (
       <div className="Profile">
        
@@ -93,15 +89,15 @@ class Profile extends Component {
           </div>
           <div className="ProfileGenre">
             <button className="ProfileBtn">My Posts</button>
-            <div className="ProfileGenreTitle">ART</div>
+            <div className="ProfileGenreTitle">MUSIC</div>
             <button className="ProfileBtn">My Saves</button>
           </div>
           {/* // */}
           <div className="ProfileGridContainer">
           
-              {this.state.posts.map(e=> {
+              {this.state.music.map(e=> {
                 return(
-                  <Link to={`/popup/${e.post_id}`}> <img class="GridItem" src = {e.media}/></Link>
+                  <Link to={`/popup/${e.music_id}`}> <img class="GridItem" src = {e.media}/></Link>
                 )
               })}
 
@@ -120,7 +116,7 @@ return{
 }
 
 const mapDispatchToProps = {
-  getUserById, getPostByUser
+  getUserById, getMusicByUser
 };
 export default connect(
   mapStateToProps,

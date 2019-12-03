@@ -52,7 +52,7 @@ class Upload extends Component {
           description: "",
           tags: ""
         });
-      });
+    
   };
 
   toggleAddPopup = () => {

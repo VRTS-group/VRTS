@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import "./Profile.css";
 import {connect} from 'react-redux';
 import {getUserById} from '../redux/userReducer';
-import {getPostByUser} from '../redux/postReducer'
+import {getWriteByUser} from '../redux/writeReducer'
 import Axios from "axios";
 import {Link} from 'react-router-dom';
 
-class Profile extends Component {
+class ProfileWrite extends Component {
   constructor(){
     super();
     this.state = {
       user: [],
       username: '',
-      posts: []
+      write: []
     }
   }
 
@@ -25,25 +25,21 @@ class Profile extends Component {
         user: res.data
       })
     })
-    
-    Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res=> {
-      console.log(this.props.match.params.id)
-      console.log(res.data)
-      if(res.data[0]){ 
-
-      
+    Axios.get(`/auth/getWriteByUser/${this.props.match.params.id}`).then(res=> {
+    //   console.log(res.data[0].user_id)
+      if(res.data[0]){
       this.setState({
-        posts: res.data,
+        write: res.data,
         user_id: res.data[0].user_id,
-        post_id: res.data[0].post_id
-      
+        write_id: res.data[0].write_id
+     
       })}
       console.log(this.state)
     })
   }
 
   render() {
-    console.log(this.state.posts)
+    console.log(this.state.write)
     return (
       <div className="Profile">
        
@@ -93,15 +89,15 @@ class Profile extends Component {
           </div>
           <div className="ProfileGenre">
             <button className="ProfileBtn">My Posts</button>
-            <div className="ProfileGenreTitle">ART</div>
+            <div className="ProfileGenreTitle">WRITE</div>
             <button className="ProfileBtn">My Saves</button>
           </div>
           {/* // */}
           <div className="ProfileGridContainer">
           
-              {this.state.posts.map(e=> {
+              {this.state.write.map(e=> {
                 return(
-                  <Link to={`/popup/${e.post_id}`}> <img class="GridItem" src = {e.media}/></Link>
+                  <Link to={`/popup/${e.write_id}`}> <img class="GridItem" src = {e.media}/></Link>
                 )
               })}
 
@@ -120,10 +116,10 @@ return{
 }
 
 const mapDispatchToProps = {
-  getUserById, getPostByUser
+  getUserById, getWriteByUser
 };
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Profile)
+)(ProfileWrite)
 

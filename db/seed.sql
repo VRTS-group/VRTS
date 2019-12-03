@@ -33,3 +33,25 @@ create table saves (
     user_id int references users(user_id),
     post_id int references posts(post_id)
 );
+
+
+create table music (
+music_id serial primary key,
+user_id int references users(user_id),
+media text,
+title varchar(75),
+description varchar(250), 
+tags varchar(100), 
+views int, 
+saves boolean);
+
+create table write (
+write_id serial primary key,
+user_id int references users(user_id),
+media text,
+cover_photo text,
+title varchar(75),
+description varchar(1000), 
+tags varchar(100), 
+views int,
+saves boolean);
