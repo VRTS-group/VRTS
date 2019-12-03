@@ -1,1 +1,1 @@
-select p.media from posts p full outer join saves s on s.post_id = p.post_id where s.user_id = $1
+select p.media, s.saves_id from posts p full outer join saves s on s.post_id = p.post_id where s.user_id = $1;

@@ -63,9 +63,14 @@ module.exports = {
       .then(db => res.status(200).send(db))
       .catch(err => console.log(err));
   },
-  updateViews: (req,res) => {
-    const {post_id, views} = req.body;
-    const db = req.app.get('db');
-    db.updateViews()
+  deleteSave: (req, res) => {
+    const db = res.app.get("db");
+    const { id } = req.params;
+    db.deleteSave([id]).then(db => res.status(200).send(db));
+  },
+  updateViews: (req, res) => {
+    const { post_id, views } = req.body;
+    const db = req.app.get("db");
+    db.updateViews();
   }
 };
