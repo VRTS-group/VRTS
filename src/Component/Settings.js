@@ -46,7 +46,11 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
         <div className="SettingsContainer">
           <div className="SettingsTitle">Settings</div>
           <div className="SettingsCover">
-            <div className="SettingsPic"></div>
+          <img className="SettingsCover" src={this.state.cover_pic}></img>
+            
+            <div >
+              <img className="SettingsPic" src={this.state.profile_pic}></img>
+            </div>
           </div>
 
           
@@ -83,6 +87,13 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
               value={this.state.bio}
               // placeholder = {this.props.user.bio}
               onChange={e => this.setState({ bio: e.target.value })}
+            />
+            <h4>Contact</h4>
+            <textarea
+              type="text"
+              value={this.state.contact}
+              // placeholder = {this.props.user.bio}
+              onChange={e => this.setState({ contact: e.target.value })}
             />
           </div>
           <div className="SettingsBtns">

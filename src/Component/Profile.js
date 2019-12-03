@@ -87,9 +87,9 @@ class Profile extends Component {
               })}
             </div>
 
-            <Link to={`/Upload/${this.props.match.params.id}`}>
+            {/* <Link to={`/Upload/${this.props.match.params.id}`}>
               <button className="MyPostsBtn">My Posts</button>
-            </Link>
+            </Link> */}
           </div>
           <div className="ProfileGenre">
             <button className="ProfileBtn">My Posts</button>
