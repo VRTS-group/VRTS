@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateUser, getUserById } from "../redux/userReducer";
 import { getPostByUser } from "../redux/postReducer";
+import EditPage from '../Component/EditPage';
 import axios from "axios";
 import "./Upload.css";
 
@@ -19,8 +20,15 @@ class Upload extends Component {
       saves: false,
       user: [],
       username: "",
-      posts: []
+      post_id: "",
+      edit: false,
+      posts: [],
+      currentEdit: "",
+
+      
     };
+    this.AddPopup = React.createRef();
+    this.EditPopup = React.createRef();
   }
   componentDidMount = () => {
     console.log(this.props.match.params.id);
@@ -45,12 +53,52 @@ class Upload extends Component {
 
   handleInput = e => {
     this.setState({
-      media: "",
-      title: "",
-      description: "",
-      tags: ""
+      [e.target.name]: e.target.value
     });
   };
+
+  handleUpload = () => {
+    axios
+      .post("/auth/addPosts", {
+        user_id: this.state.user_id,
+        media: this.state.media,
+        title: this.state.title,
+        description: this.state.description,
+        tags: this.state.tags
+      })
+      .then(res => {
+        alert("Post added: Please refresh");
+        this.setState({
+          user_id: this.state.user_id,
+          media: "",
+          title: "",
+          description: "",
+          tags: ""
+        });
+      })
+      .catch(err => {
+        alert("Problem adding Post to server");
+        console.log("Problem adding product to server", err);
+      });
+    console.log(this.state);
+  };
+
+  // handleEdit = posts => {
+  //   console.log(this.state);
+  //   let {
+  //     media,
+  //     title,
+  //     description,
+  //     tags,
+  //   } = posts;
+  //   this.setState({
+  //     media: media,
+  //     title: title,
+  //     description: description,
+  //     tags: tags,
+  //     edit: true
+  //   })
+  // }
 
   toggleAddPopup = () => {
     let { current } = this.AddPopup;
@@ -64,12 +112,17 @@ class Upload extends Component {
     }
   };
 
-  toggleEditPopup = () => {
+  toggleEditPopup = (id) => {
     let { current } = this.EditPopup;
-
+console.log(id)
+this.setState({
+  currentEdit: id
+})
     if (current.classList.contains("showEdit-animation")) {
+     
       current.classList.add("hideEdit-animation");
       current.classList.remove("showEdit-animation");
+     
     } else {
       current.classList.add("showEdit-animation");
       current.classList.remove("hideEdit-animation");
@@ -77,10 +130,12 @@ class Upload extends Component {
   };
 
   render() {
-    console.log(this.props.posts);
-    console.log(this.props);
-    console.log(this.props.user.user_id);
-    console.log(this.state.posts);
+    // console.log(this.props.posts);
+    // // console.log(this.props);
+    // // console.log(this.props.user.user_id);
+    // console.log(this.state.posts);
+    console.log(this.state)
+    console.log(this.props)
     this.state.user_id = this.props.user.user_id;
     return (
       <div className="Upload">
@@ -110,9 +165,18 @@ class Upload extends Component {
             name="media"
             onChange={e => this.handleInput(e)}
           /> */}
-
+            <div className="placeholder">
+              <input 
+              type="text"
+              value={this.state.media}
+              name="media"
+              onChange={e => this.handleInput(e)}
+              placeholder="Media url"
+              />
+            </div>
             <div className="placeholder">
               <input
+                type="text"
                 value={this.state.title}
                 name="title"
                 onChange={e => this.handleInput(e)}
@@ -122,6 +186,7 @@ class Upload extends Component {
 
             <div className="placeholder">
               <input
+                type="text"
                 value={this.state.description}
                 name="description"
                 onChange={e => this.handleInput(e)}
@@ -131,6 +196,7 @@ class Upload extends Component {
 
             <div className="placeholder">
               <input
+                type="text"
                 value={this.state.tags}
                 name="tags"
                 onChange={e => this.handleInput(e)}
@@ -138,64 +204,84 @@ class Upload extends Component {
               />
             </div>
 
-            <button
-              className="placeholder"
-              onClick={(this.handleUpload, this.toggleAddPopup)}
-            >
+            <button className="placeholder" onClick={this.handleUpload}>
               Upload
+              {/* , this.toggleAddPopup */}
             </button>
           </div>
           {/* //popup end */}
 
           <div className="EditPostsTitle">My Posts</div>
-          <div className="UploadGridContainer">
+          <div className="UploadGridContainer" >
             {this.state.posts.map(e => {
+              console.log(e)
+              
               return (
-                <Link to={`/popup/${e.post_id}`}>
-                  {" "}
+                // <Link to={`/popup/${e.post_id}`}>
+                  // {" "}
+                  <div>
                   <img class="UploadGridItem" src={e.media} />
-                </Link>
-              );
-            })}
+
             <div className="EditBtnBox">
-              <button onClick={this.toggleEditPopup} className="EditBtn">
+              <button onClick={() => this.toggleEditPopup(e.post_id)} className="EditBtn">
                 Edit
               </button>
+            </div>
+                  </div>
+                // </Link>
+                
+              );
+              
+            })}
+            {/* //Edit Pop-up */}
 
-              {/* //Edit Pop-up */}
 
-              <div className="EditPopup" ref={this.EditPopup}>
-                <div className="XContainer">
-                  <div className="XContainerOne"></div>
-                  <button onClick={this.toggleEditPopup}>X</button>
-                </div>
-                <div className="placeholder">
-                  <input
-                    value={this.state.title}
-                    name="title"
-                    onChange={e => this.handleInput(e)}
-                    placeholder="Post Title"
-                  />
-                </div>
-
-                <div className="placeholder">
-                  <input
-                    value={this.state.description}
-                    name="description"
-                    onChange={e => this.handleInput(e)}
-                    placeholder="Description"
-                  />
-                </div>
-
-                <div className="placeholder">
-                  <input
-                    value={this.state.tags}
-                    name="tags"
-                    onChange={e => this.handleInput(e)}
-                    placeholder="Tags"
-                  />
-                </div>
+            <div className="EditPopup" ref={this.EditPopup}>
+              <div className="XContainer">
+                <div className="XContainerOne"></div>
+                <button onClick={this.toggleEditPopup}>X</button>
               </div>
+              
+                <EditPage id={this.state.currentEdit}/>
+              
+              {/* <div className="UploadGridItem"></div> */}
+
+              {/* <div className="placeholder">
+                <div className="EditInputTitles">Media url</div>
+                <input
+                  value={this.state.media}
+                  name="media"
+                  onChange={e => this.handleInput(e)}
+              
+                />
+              </div>
+              <div className="placeholder">
+              <div className="EditInputTitles">Title</div>
+                <input
+                  value={this.state.title}
+                  name="title"
+                  onChange={e => this.handleInput(e)}
+                  
+                />
+              </div>
+              <div className="placeholder">
+              <div className="EditInputTitles">Description</div>
+                <input
+                  value={this.state.description}
+                  name="description"
+                  onChange={e => this.handleInput(e)}
+                  
+                />
+              </div>
+              <div className="placeholder">
+              <div className="EditInputTitles">Tags</div>
+                <input
+                  value={this.state.tags}
+                  name="tags"
+                  onChange={e => this.handleInput(e)}
+                  
+                />
+              </div> */}
             </div>
           </div>
         </div>
