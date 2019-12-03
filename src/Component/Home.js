@@ -4,10 +4,10 @@ import save from "../photos/save.svg";
 import downArrow from "../photos/downArrow.svg";
 import { connect } from "react-redux";
 import { getPost } from "../redux/postReducer";
-import Axios from "axios";
-import HomePopup from "./HomePopUp";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import artistry from "../photos/artistry.png";
+import {addComment} from '../redux/commentReducer';
 
 class Home extends Component {
   constructor(props) {
@@ -18,13 +18,17 @@ class Home extends Component {
       rightFilter: "All",
       filter1: "filter1",
       posts: [],
-      showPopup: false
+      showPopup: false,
+      comment: '',
+      post_id: 0,
+      user_id: 0
     };
+    this.Popup = React.createRef();
   }
 
   //gets all posts
   componentDidMount = () => {
-    Axios.get("/auth/getPosts").then(res => {
+    axios.get("/auth/getPosts").then(res => {
       console.log(this.props);
       this.setState({
         posts: res.data
@@ -33,20 +37,45 @@ class Home extends Component {
     });
   };
 
-  //trying to conditionally render the popup component
-  //but the popup wont show, see lines 90 - 100
-  // togglePopUp = () => {
-  //   if(this.state.showPopup === false){
-  //     this.setState({showPopup: true})
-  //   }
+   newComment = () => {
+  //   axios.post("/api/comment", {
+  //       comment: this.state.comment,
+  //       user_id: this.state.user_id,
+  //       post_id: this.state.post_id
+  //     })
+      // .then(res => {
+        alert("Comment added");
+        this.setState({ comment: "" });
+      // });
+  };
 
-  // let x = document.getElementById('popup-div');
-  // if(x.style.display === 'none'){
-  //   x.style.display = 'block';
-  // } else {
-  //   x.style.display = 'none'
-  // }
-  // }
+
+  handlePopupClose = () => {
+    this.setState({showPopup: false})
+  }
+
+  handlePopup = () => {
+    // let x = document.getElementById('post-hover');
+    this.setState({showPopup: !this.state.showPopup})
+  }
+
+
+  togglePopUp = () => {
+    let x = document.getElementById('post-hover')
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+
+  handleInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
 
   // trying to have it so when you select an item in
   // the drop down it will change the value of the filter
@@ -58,6 +87,7 @@ class Home extends Component {
   };
 
   render() {
+    console.log(this.state.posts)
     return (
       <div className="home">
         <div className="home-container">
@@ -78,26 +108,61 @@ class Home extends Component {
               </div>
             </div>
           </div>
+          <div id='genre-big-box'>
+    <div id="ProfileGenreTitle">ART</div>
+          </div>
         </div>
         <div className="dashboard">
           {this.state.posts.map(e => {
             {
               console.log(e);
-              console.log(this.state.showPopup);
+              // console.log(this.state.showPopup);
             }
+           
             return (
               <div className="home-posts">
-                <Link to={`/popup/${e.post_id}`}>
                 <img
-                  onClick={this.togglePopUp}
+                  onClick={this.handlePopup}
                   className="media"
                   src={e.media}
                   alt={e.title}
                 />
-                </Link>
+                {this.state.showPopup &&<div id='post-hover'>
+                  <div id='x-btn' onClick={this.handlePopupClose} >X</div>
+                  <div id='home-popup-content'>
+                    <div id='popup-pic'>
+                      <Link to={`/indivpost/${e.post_id}`}><img src={e.media} alt={e.title}/></Link>
+                    </div>
+                    <div id='popup-content-info'>
+                      <h3>{e.username}</h3>
+                      <h3>{e.title}</h3>
+                      {/* <h3>{e.post_id}</h3> */}
+                    </div>
 
-                <img id="save" className="drop-btn" src={save} alt="save" />
-                <div id='popup-div'>{this.state.showPopup && <HomePopup {...this.props} key={this.props.location.params}/>}</div>
+                <div id="popup-button-box">
+                  {/* <button onClick={this.onClickDescription}>Description</button>
+                  <button onClick={this.onClickComment}>Comment</button> */}
+                </div>
+                <div id="description">
+                  <p>{e.description}</p>
+                </div>
+                <div id="popup-comment" >
+                  <input
+                  onChange={e => this.handleInput(e)}
+                  value={this.state.comment}
+                  name="comment"
+                  placeholder="type here :)"
+                  // style={{ display: "none" }}
+                  id="popup-input"
+                  type="text-area"
+                  />
+                  
+                <button id='send-btn' onClick={()=>{this.props.addComment(e.user_id, e.post_id, this.state.comment); alert('comment added!'); this.setState({comment: ''})
+                this.render(); }}>Send</button>
+                </div>  
+
+                  </div>
+                </div>}
               </div>
             );
           })}
@@ -113,8 +178,9 @@ const mapStateToProps = state => {
     posts: state.posts
   };
 };
-const mapDispatchToProps = {
-  getPost
-};
+// const mapDispatchToProps = {
+//   getPost,
+//   addComment
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, {addComment})(Home);

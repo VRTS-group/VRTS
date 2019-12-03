@@ -40,37 +40,45 @@ class register extends Component{
     render(){
         return(
             <div className = "register_page">
-                <div className = "register_filler"></div>
-                <div>
-                    <p> email here!</p>
-                    <input
-                    value = {this.state.email}
-                    name = "email"
-                    onChange = {(e) => this.handleInput(e)}/>
-                </div>
-                <div>
-                    <p> username here!</p>
-                    <input
-                    value = {this.state.username}
-                    name = "username"
-                    onChange = {(e) => this.handleInput(e)}/>
-                </div>
-                <div>
-                    <p> password here!</p>
-                    <input
-                    value = {this.state.password}
-                    name = "password"
-                    onChange = {(e) => this.handleInput(e)}/>
-                </div>
-                <button onClick={this.handleRegister}>Register</button>
 
+                <div id='register-container'>
+                    <div className='input-fields'>
+                        <p> email here!</p>
+                        <input
+                        placeholder='email'
+                        className='register-inputs'
+                        value = {this.state.email}
+                        name = "email"
+                        onChange = {(e) => this.handleInput(e)}/>
+                    </div>
+                    <div className='input-fields'>
+                        <p> username here!</p>
+                        <input
+                        placeholder='username'
+                        className='register-inputs'
+                        value = {this.state.username}
+                        name = "username"
+                        onChange = {(e) => this.handleInput(e)}/>
+                    </div>
+                    <div className='input-fields'>
+                        <p> password here!</p>
+                        <input
+                        placeholder='password'
+                        className='register-inputs'
+                        value = {this.state.password}
+                        name = "password"
+                        onChange = {(e) => this.handleInput(e)}/>
+                    </div>
 
+                    <button id='register-btn'>Register</button>
 
+                </div>
             </div>
         )
     }
-
+    
 }
+{/* onClick={this.handleRegister} */}
 
 const mapDispatchToProps = {
     updateUser

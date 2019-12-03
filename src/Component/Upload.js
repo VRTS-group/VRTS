@@ -52,8 +52,8 @@ class Upload extends Component {
           description: "",
           tags: ""
         });
-      });
-  };
+      };
+
 
   toggleAddPopup = () => {
     let { current } = this.AddPopup;
