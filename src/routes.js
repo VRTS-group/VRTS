@@ -8,7 +8,11 @@ import MyPosts from "./Component/MyPosts";
 import Upload from "./Component/Upload";
 import Register from "./Component/Register";
 import popUp from "./Component/HomePopUp";
+
 import Saves from "./Component/Saves";
+
+import EditPage from "./Component/EditPage";
+// import Saves from "./Component/Saves";
 import MusicHome from "./Component/Home_Music";
 import ProfileMusic from "./Component/Profile_Music";
 import ProfileWrite from "./Component/Profile_Write";
@@ -28,6 +32,7 @@ export default (
     <Route path="/popUp/:id" component={popUp} />
     <Route path="/upload/:id" component={Upload} />
     <Route path="/homeM" component={MusicHome} />
+    <Route path="/editpage/:id" component={EditPage} />
     <Route path="/profileM/:id" component={ProfileMusic} />
     <Route path="/profileW/:id" component={ProfileWrite} />
     <Route path="/homeW" component={WriteHome} />
