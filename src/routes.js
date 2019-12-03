@@ -8,10 +8,8 @@ import MyPosts from "./Component/MyPosts";
 import Upload from "./Component/Upload"
 import Register from "./Component/Register";
 import popUp from "./Component/HomePopUp";
-<<<<<<< HEAD
 import { updateExpression } from "@babel/types";
 import EditPage from "./Component/EditPage";
-=======
 // import Saves from "./Component/Saves";
 import MusicHome from "./Component/Home_Music"
 import ProfileMusic from "./Component/Profile_Music"
@@ -22,7 +20,6 @@ import EditWrite from "./Component/EditWrite"
 import WriteEdit from "./Component/WriteEdditor"
 
 
->>>>>>> master
 
 export default (
   <Switch>
@@ -34,9 +31,7 @@ export default (
     <Route path="/register" component={Register} />
     <Route path="/popUp/:id" component={popUp} />
     <Route path="/upload/:id" component={Upload}/>
-<<<<<<< HEAD
     <Route path="/editpage/:id" component={EditPage}/>
-=======
     <Route path="/homeM" component = {MusicHome}/>
     <Route path="/profileM/:id" component={ProfileMusic} />
     <Route path="/profileW/:id" component={ProfileWrite}/>
@@ -45,6 +40,5 @@ export default (
     {/* <Route path="/saves/:id" component={Saves} /> */}
     <Route path="/EditWrite/:id" component={EditWrite}/>
     <Route path="/WriteEdit/:id" component={WriteEdit}/>
->>>>>>> master
   </Switch>
 );
