@@ -9,6 +9,7 @@ import Upload from "./Component/Upload"
 import Register from "./Component/Register";
 import popUp from "./Component/HomePopUp";
 import { updateExpression } from "@babel/types";
+import EditPage from "./Component/EditPage";
 
 export default (
   <Switch>
@@ -20,5 +21,6 @@ export default (
     <Route path="/register" component={Register} />
     <Route path="/popUp/:id" component={popUp} />
     <Route path="/upload/:id" component={Upload}/>
+    <Route path="/editpage/:id" component={EditPage}/>
   </Switch>
 );
