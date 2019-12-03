@@ -1,13 +1,13 @@
 module.exports = {
   getPosts: async (req, res) => {
-    console.log("hit");
+    // console.log("hit");
     const db = req.app.get("db");
     let post = await db.getPost();
     console.log(post);
     res.status(200).send(post);
   },
   addPosts: async (req, res) => {
-    console.log("hit");
+    // console.log("hit");
     const db = req.app.get("db");
     const { user_id, media, title, description, tags, views, saves } = req.body;
     db.addPost([
@@ -29,7 +29,7 @@ module.exports = {
     );
   },
   deletePosts: async (req, res) => {
-    console.log("hit");
+    // console.log("hit");
     const db = req.app.get("db");
     let { id } = req.params;
     db.deletePost([id]).then(db => res.status(200).send(db));
@@ -37,8 +37,12 @@ module.exports = {
   getPostById: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    db.getPostById([id])
-      .then(db => res.status(200).send(db))
+    console.log(req.params)
+    db.getPostById([+id])
+    
+      .then(db => {
+        console.log(db)
+        res.status(200).send(db)})
       .catch(err => console.log(err));
   },
   getPostByUser: (req, res) => {
@@ -63,9 +67,14 @@ module.exports = {
       .then(db => res.status(200).send(db))
       .catch(err => console.log(err));
   },
-  updateViews: (req,res) => {
-    const {post_id, views} = req.body;
-    const db = req.app.get('db');
-    db.updateViews()
+  deleteSave: (req, res) => {
+    const db = res.app.get("db");
+    const { id } = req.params;
+    db.deleteSave([id]).then(db => res.status(200).send(db));
+  },
+  updateViews: (req, res) => {
+    const { post_id, views } = req.body;
+    const db = req.app.get("db");
+    db.updateViews();
   }
 };

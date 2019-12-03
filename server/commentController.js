@@ -3,7 +3,7 @@ module.exports = {
     console.log("hit");
     const db = req.app.get("db");
     let data = await db.getComments();
-    console.log(data);
+    // console.log(data);
     res.status(200).send(data);
   },
   addComment: (req, res) => {

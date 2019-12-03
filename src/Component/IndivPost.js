@@ -52,17 +52,17 @@ class IndivPost extends Component {
       console.log(res.data);
     });
     this.props.getUserById();
-    // axios.get(`/api/comment/${this.props.match.params.id}`).then(res => {
-    //   this.setState({
-    //     comment: res.data
-    //   });
-    //   console.log(res.data);
-    // });
   };
 
   componentDidUpdate(prevState) {
-    if (this.state.comment !== prevState.comments) {
-      this.render();
+    if (prevState.comment !== this.state.comment) {
+      axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
+        if (res.data[0]) {
+          this.setState({
+            comments: res.data
+          });
+        }
+      });
     }
   }
 
