@@ -1,0 +1,21 @@
+.saves-page {
+  width: 414px;
+  height: auto;
+  display: flex;
+  /* align-content: center; */
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--light-red);
+  color: var(--white);
+}
+
+.pics-saved {
+  margin-top: 50%;
+  /* flex-wrap: wrap; */
+  /* flex-direction: row; */
+  border: 1px solid white;
+  height: 170px;
+  width: 170px;
+  position: relative;
+  margin: 15px;
+}

@@ -37,8 +37,8 @@ module.exports = {
         }
     },
     logout: (req,res) => {
-        console.log('hit')
-        console.log(req.session)
+        // console.log('hit')
+        // console.log(req.session)
         req.session.destroy()
         console.log(req.session)
         res.sendStatus(200)
@@ -81,11 +81,11 @@ module.exports = {
     },
 
     getUserById: async (req, res) => {
-        console.log('hit')
+        // console.log('hit')
         let db = req.app.get('db');
         const {id} = req.params
         let user = await db.getUserById(+id)
-        console.log(user)
+        // console.log(user)
         res.status(200).send(user)
         
     }

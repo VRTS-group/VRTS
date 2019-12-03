@@ -1,1 +1,1 @@
-select * from saves where user_id = $1
+select p.media from posts p full outer join saves s on s.post_id = p.post_id where s.user_id = $1
