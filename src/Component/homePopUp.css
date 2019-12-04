@@ -27,21 +27,21 @@
 .popUp h3 {
   margin: 0px;
 }
-#title-box {
+/* #title-box {
   width: 95%;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  /* padding-left: 15px; */
+  padding-left: 15px;
   padding: 0px 10px
-}
-#title-box h3{
+} */
+/* #title-box h3{
     margin: 10px 10px;
     border: 1px black solid;
     background-color: var(--grey);
     font-size: 25px;
     padding: 3px 3px;
-}
+} */
 #popup-comment {
   width: 90%;
   /* height: 30px; */

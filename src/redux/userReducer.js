@@ -47,9 +47,11 @@ export function login(email, password) {
 }
 
 export function stayLogged() {
-  let data = axios.get("/auth/login").then(res => {
+  console.log("stay logged");
+  let data = axios.get("/api/user").then(res => {
     return res.data;
   });
+  // console.log({ data });
   return {
     type: STAY_LOGGED,
     payload: data
@@ -108,7 +110,7 @@ export const editUser = (
   contact,
   bio
 ) => {
-  console.log(username);
+  // console.log(username);
   let data = axios
     .put(`/auth/edituser/${id}`, {
       username,
@@ -131,7 +133,7 @@ export const editUser = (
 
 export const getUserById = id => {
   let data = axios.get(`/auth/getUserById/${id}`).then(res => res.data);
-  console.log(data);
+  // console.log(data);
   return {
     type: GET_USER_BY_ID,
     payload: data
@@ -140,7 +142,7 @@ export const getUserById = id => {
 // default function
 export default function(state = initialState, action) {
   const { type, payload } = action;
-  console.log(payload, "payload");
+  // console.log(payload, "payload");
   switch (type) {
     case LOGIN + "_FULFILLED":
       return { ...state, user: payload };
@@ -154,7 +156,7 @@ export default function(state = initialState, action) {
     case UPDATE_USER:
       return { ...state, user: payload };
     case STAY_LOGGED + "_FULFILLED":
-      return { user: { ...payload, signedIn: true } };
+      return { ...state, user: payload };
     default:
       return state;
     case GET_USER_BY_ID + "_FULFILLED":

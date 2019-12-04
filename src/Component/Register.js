@@ -70,7 +70,7 @@ class register extends Component{
                         onChange = {(e) => this.handleInput(e)}/>
                     </div>
 
-                    <button id='register-btn'>Register</button>
+                    <button id='register-btn' onClick={this.handleRegister}>Register</button>
 
                 </div>
             </div>
@@ -78,7 +78,7 @@ class register extends Component{
     }
     
 }
-{/* onClick={this.handleRegister} */}
+{/*  */}
 
 const mapDispatchToProps = {
     updateUser
