@@ -46,11 +46,10 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
         <div className="SettingsContainer">
           <div className="SettingsTitle">Settings</div>
           <div className="SettingsCover">
-          <img className="SettingsCover" src={this.state.cover_pic}></img>
+            <img className="SettingsCover" src={this.state.cover_pic}/>  
             
-            <div >
-              <img className="SettingsPic" src={this.state.profile_pic}></img>
-            </div>
+              <img className="SettingsPic" src={this.state.profile_pic}/>
+            
           </div>
 
           

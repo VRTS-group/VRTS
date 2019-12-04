@@ -49,6 +49,7 @@
     align-items: flex-end;
     border: solid rgb(70, 66, 66);
     box-sizing: border-box;
+    position: relative;
 }
 
 .SettingsPic {
@@ -57,7 +58,7 @@
     border-radius: 50%;
     background-color: white;
     border: solid rgb(70, 66, 66);
- 
+    position: absolute;
    
 }
 
