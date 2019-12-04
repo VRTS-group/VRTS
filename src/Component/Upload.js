@@ -34,33 +34,34 @@ class Upload extends Component {
   componentDidMount = () => {
     console.log(this.props.match.params.id);
     axios.get(`/auth/getUserById/${this.props.match.params.id}`).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         user: res.data
       });
     });
     axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res => {
-      console.log(res.data);
-
+      // console.log(res.data);
+      if(res.data[0]){ 
       this.setState({
         posts: res.data,
         user_id: res.data[0].user_id,
         post_id: res.data[0].post_id
-      });
-      console.log(this.state);
-      console.log(res.data[0].user_id);
+      })};
+      // console.log(this.state);
+      // console.log(res.data[0].user_id);
     });
   };
 
   componentDidUpdate = () => {
     axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res => {
-     
+      
+      if(res.data[0]){ 
 
       this.setState({
         posts: res.data,
         user_id: res.data[0].user_id,
         post_id: res.data[0].post_id
-      });
+      })};
 
     });
   }
@@ -95,7 +96,7 @@ class Upload extends Component {
         alert("Problem adding Post to server");
         console.log("Problem adding product to server", err);
       });
-    console.log(this.state);
+    // console.log(this.state);
   };
 
   // handleEdit = posts => {
@@ -129,7 +130,7 @@ class Upload extends Component {
 
   toggleEditPopup = (id) => {
     let { current } = this.EditPopup;
-console.log(id)
+// console.log(id)
 this.setState({
   currentEdit: id
 })
@@ -223,8 +224,12 @@ this.setState({
             </button>
           </div>
           {/* //popup end */}
-
+          <div className="EditButtons">
+          <Link to={`/UploadMusic/${this.state.user_id}`}><button className="ProfileBtn"> Music</button></Link>
           <div className="EditPostsTitle">My Posts</div>
+          <Link to={`/EditWrite/${this.state.user_id}`}><button className="ProfileBtn"> Writting</button></Link>
+          </div>
+
           <div className="UploadGridContainer" >
             {this.state.posts.map(e => {
             
@@ -304,10 +309,10 @@ this.setState({
   }
 }
 const mapStateToProps = reduxState => {
-  console.log(reduxState);
+  // console.log(reduxState);
   const { user } = reduxState.userReducer;
-  console.log(user);
-  console.log(reduxState.userReducer);
+  // console.log(user);
+  // console.log(reduxState.userReducer);
   return {
     user
   };

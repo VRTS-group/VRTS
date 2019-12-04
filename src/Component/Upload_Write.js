@@ -70,12 +70,12 @@ class Upload_Write extends Component {
   }
 
   render(props) {
-      console.log("potato2",this.potato)
+      // console.log("potato2",this.potato)
      
-      console.log(this.props)
-      console.log(this.props.getUser)
+      // console.log(this.props)
+      // console.log(this.props.getUser)
       
-      console.log(this.props.store.userReducer.user.user_id)
+      // console.log(this.props.store.userReducer.user.user_id)
 
       return (
         <div>
