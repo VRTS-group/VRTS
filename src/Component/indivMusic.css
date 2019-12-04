@@ -1,0 +1,52 @@
+
+.IndivMusic {
+    height: 100vh;
+    background-image: linear-gradient(
+        99deg,
+        rgb(29, 28, 28),
+        rgb(59, 6, 2),
+        rgb(61, 39, 34) 40%,
+        rgb(29, 28, 28)
+      );
+      display: flex;
+      justify-content: center;
+}
+
+.IndivMusicContainer {
+    width: 414px;
+    background-color: black;
+    box-sizing: border-box;
+    margin-top: 9vh;
+}
+
+.IndivMusicTitle {
+    height: 75px;
+    width: 100%;
+    background-color: gray;
+    
+}
+
+.PostVidBox {
+    width: 100%;
+    height: 360px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PostVid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    background-position: center;
+    background-size: cover
+}
+
+.MusicDescription {
+    height: 100px;
+    background-color: gray;
+}

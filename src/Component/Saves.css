@@ -1,12 +1,23 @@
-.saves-page {
-  width: 414px;
-  height: auto;
+
+.Saves {
+  background-image: linear-gradient(
+    99deg,
+    rgb(29, 28, 28),
+    rgb(59, 6, 2),
+    rgb(61, 39, 34) 40%,
+    rgb(29, 28, 28)
+  );
   display: flex;
-  /* align-content: center; */
   justify-content: center;
-  flex-direction: column;
-  background-color: var(--light-red);
-  color: var(--white);
+}
+
+.SavesContainer {
+    height: 100vh;
+    width: 414px;
+    background-color: black;
+    box-sizing: border-box;
+    margin-top: 9vh;
+
 }
 
 .pics-saved {
@@ -18,4 +29,30 @@
   width: 170px;
   position: relative;
   margin: 15px;
+}
+
+.SavesTitleContainer {
+  height: 75px;
+  width: 165px;
+  display: flex;
+  justify-content: center;
+  
+  align-items: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  text-shadow: 2px 2px rgb(12, 43, 78);
+  color: white;
+}
+
+.SaveGridItem {
+  height: 150px;
+  width: 150px;
+  border: solid white;
+  /* margin-bottom: 3px; */
+}
+
+.DeleteSaveBox {
+  height: 25px;
+  width: 100%;
+  /* background-color: gray; */
 }

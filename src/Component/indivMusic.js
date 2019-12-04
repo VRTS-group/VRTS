@@ -4,6 +4,8 @@ import { deleteComment } from "../redux/commentReducer";
 import axios from "axios";
 import "./IndivPost.css";
 import { updateUser, getUserById } from "../redux/userReducer";
+import ReactPlayer from "react-player";
+import "./indivMusic.css";
 
 class IndivPost extends Component {
   constructor(props) {
@@ -33,9 +35,7 @@ class IndivPost extends Component {
         music_id: res.data[0].music_id,
         title: res.data[0].title,
         media: res.data[0].media,
-        description: res.data[0].description,
-        
-        
+        description: res.data[0].description
       });
       console.log(res.data);
     });
@@ -112,8 +112,8 @@ class IndivPost extends Component {
   };
 
   render() {
-    let { comment } = this.state;
-    console.log(this.state.media)
+    // let { comment } = this.state;
+    console.log(this.state);
     // console.log(this.state.username);
     // console.log(this.state.username);
     // console.log(this.state.posts);
@@ -121,109 +121,36 @@ class IndivPost extends Component {
     // console.log(this.props.redux.userReducer.user.username);
     // console.log(this.props);
     return (
-      <section className="indiv-post">
-      <div className="uFill"></div>
-
-        {/* <div className="username">
+      <div className="IndivMusic">
+        <div className="IndivMusicContainer">
+          <div className="username">
           {this.state.music.map(e => {
             return <h3> {e.username}</h3>;
           })}
-        </div> */}
-        <div className="post-section ">
-          
-              <div id="post-info">
-                <div id="title-box">
-                  <h3>{this.state.title}</h3>
+        </div>
+
+              <div className="IndivMusicTitle">
+                <h3>{this.state.title}</h3>
+              </div>
+              <div className="PostVidBox">
+                <div className="PostVid">
+                  <ReactPlayer url={this.state.media} />
                 </div>
-                <div id="imagen-button">
-                  <img src={this.state.media} className="post-picture" />
-                  {/* <button
+                {/* <img src={this.state.media} className="post-picture" /> */}
+                {/* <button
                     onClick={() => this.handleSave()}
                     className="button-on-top"
                   >
                     Save
                   </button> */}
-                </div>
-                <div className="description">
-                  <p> Description:</p>
-                  <p>{this.state.description}</p>
-                </div>
               </div>
-            
-        </div>
-        {/* <section id="comment-section">
-          <textarea
-            className="text-box"
-            name="comment"
-            value={comment}
-            placeholder="Add a comment here :)"
-            onChange={this.handleText}
-          ></textarea>
-          <br />
-          <button onClick={this.newComment} className="button-indiv">
-            Write a comment
-          </button>
-          <br />
-          <button onClick={this.clear} className="button-indiv">
-            Clear
-          </button> */}
-          {/* <div className="potato">
-            {this.state.posts.map(e => {
-              return (
-                <div>
-                  {e.user_id === this.props.redux.userReducer.user.user_id ? (
-                    <div>
-                      {this.state.comments.map(e => {
-                        return (
-                          <div className="comment-area">
-                            <img
-                              src={e.profile_pic}
-                              className="profile-comment"
-                            />
+              <div className="MusicDescription">
+                <p> Description:</p>
+                <p>{this.state.description}</p>
+              </div>
+            </div>
+          </div>
 
-                            <div className="comment-area">
-                              {e.comment}
-                              <h5>{e.username}</h5>
-                            </div>
-                            <button
-                              className="button-indiv"
-                              onClick={() => {
-                                deleteComment(e.comment_id);
-                              }}
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    <div>
-                      {this.state.comments.map(e => {
-                        return (
-                          <div className="comment-user">
-                            <img
-                              src={e.profile_pic}
-                              className="profile-comment"
-                            />
-
-                            <div className="comment-area">
-                              {e.comment}
-                              <h5>{e.username}</h5>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div> */}
-
-          {/* <button>Show more</button> */}
-        {/* </section> */}
-      </section>
     );
   }
 }
