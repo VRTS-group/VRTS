@@ -8,9 +8,7 @@ import MyPosts from "./Component/MyPosts";
 import Upload from "./Component/Upload";
 import Register from "./Component/Register";
 import popUp from "./Component/HomePopUp";
-import IndivWrite from "./Component/IndivPost_Write";
 
-import IndivMusic from "./Component/indivMusic";
 
 import Saves from "./Component/Saves";
 
@@ -23,6 +21,8 @@ import WriteHome from "./Component/Home_Write";
 import Upload_Write from "./Component/Upload_Write";
 import EditWrite from "./Component/EditWrite";
 import WriteEdit from "./Component/WriteEdditor";
+import IndivWrite from "./Component/IndivPost_Write";
+import IndivMusic from "./Component/indivMusic"
 
 export default (
   <Switch>

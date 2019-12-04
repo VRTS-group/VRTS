@@ -97,7 +97,7 @@ p {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    align-items: flex-end;
+    /* align-items: flex-end; */
     padding: 5px
 }
 
@@ -178,4 +178,35 @@ p {
     width: 100%;
 }
 
+
+.dropDroppers {
+    height: 0px; 
+    width: 20vh;
+    overflow: hidden; 
+    position: fixed;
+    top: 64.5vh;
+    left: 28vw;
+    /* right: 42.5%; */
+    /* right: 0px; */
+    background-color: black;
+    background-image: linear-gradient(
+      99deg,
+      rgb(26, 21, 21),
+      rgb(61, 39, 34) 40%,
+      rgb(65, 28, 28)
+    );
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    flex-direction: column;
+    border-bottom-left-radius: 6px;
+    color: white;
+    z-index: 10;
+  }
+
+  .dropper{
+    display: flex;
+    justify-content: center;
+  }
 

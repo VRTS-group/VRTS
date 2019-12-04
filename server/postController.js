@@ -23,8 +23,8 @@ module.exports = {
   editPosts: async (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    const { title, description, tags } = req.body;
-    db.editPost([id, title, description, tags]).then(db =>
+    const { media, title, description, tags } = req.body;
+    db.editPost([id, media, title, description, tags]).then(db =>
       res.status(200).send(db)
     );
   },
@@ -32,7 +32,8 @@ module.exports = {
     // console.log("hit");
     const db = req.app.get("db");
     let { id } = req.params;
-    db.deletePost([id]).then(db => res.status(200).send(db));
+    db.deletePost([id]).then(db => res.status(200).send(db))
+    .catch(err => console.log(err));
   },
   getPostById: (req, res) => {
     const db = req.app.get("db");
