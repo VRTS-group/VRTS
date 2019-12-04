@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import "./Header.css";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateUser, logout } from "../redux/userReducer";
+import { updateUser, logout, stayLogged } from "../redux/userReducer";
 import axios from "axios";
 
 class Header extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: "",
       password: "",
@@ -19,15 +19,20 @@ class Header extends Component {
     this.dropProfile = React.createRef();
     this.dropLog = React.createRef();
     this.dropBurger = React.createRef();
-  }  
+  }
+
+  componentDidMount() {
+    this.props.stayLogged();
+    this.setState({ user: this.props.user });
+  }
 
   toggleProfile = () => {
     let { current } = this.dropProfile;
-    this.setState({toggleProfile: true});
+    this.setState({ toggleProfile: true });
     if (current.classList.contains("show-animation")) {
       current.classList.add("hide-animation");
       current.classList.remove("show-animation");
-      this.setState({toggleProfile: false})
+      this.setState({ toggleProfile: false });
     } else {
       current.classList.add("show-animation");
       current.classList.remove("hide-animation");
@@ -36,11 +41,11 @@ class Header extends Component {
 
   toggleLog = () => {
     let { current } = this.dropLog;
-    this.setState({toggleLog: true})
+    this.setState({ toggleLog: true });
     if (current.classList.contains("show-animation")) {
       current.classList.add("hide-animation");
       current.classList.remove("show-animation");
-      this.setState({toggleLog: false})
+      this.setState({ toggleLog: false });
     } else {
       current.classList.add("show-animation");
       current.classList.remove("hide-animation");
@@ -49,11 +54,11 @@ class Header extends Component {
 
   toggleBurger = () => {
     let { current } = this.dropBurger;
-    this.setState({toggleBurger: true});
+    this.setState({ toggleBurger: true });
     if (current.classList.contains("show-animation")) {
       current.classList.add("hide-animation");
       current.classList.remove("show-animation");
-      this.setState({toggleBurger: false})
+      this.setState({ toggleBurger: false });
     } else {
       current.classList.add("show-animation");
       current.classList.remove("hide-animation");
@@ -61,17 +66,15 @@ class Header extends Component {
   };
 
   closeToggleProfile = () => {
-    if(this.state.toggleProfile === true){
+    if (this.state.toggleProfile === true) {
       this.toggleProfile();
-      this.setState({toggleProfile: false})
-    } 
-    else if(this.state.toggleLog === true){
+      this.setState({ toggleProfile: false });
+    } else if (this.state.toggleLog === true) {
       this.toggleLog();
-      this.setState({toggleLog: false})
+      this.setState({ toggleLog: false });
     }
   };
-  
-  
+
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -91,20 +94,20 @@ class Header extends Component {
         });
         // console.log(this.props);
         this.props.updateUser(res.data);
-        axios.get('/auth/user').then(res => {
+        axios.get("/auth/user").then(res => {
           this.setState({
             user: res.data
           });
-        })
+        });
       })
       .catch(err => console.log(this.props));
   };
 
   handleLogout = () => {
-    if(this.state.toggleProfile === true){
+    if (this.state.toggleProfile === true) {
       this.toggleProfile();
-      this.setState({toggleProfile: false})
-    };
+      this.setState({ toggleProfile: false });
+    }
     this.props.logout();
     this.props.history.push("/");
   };
@@ -117,26 +120,39 @@ class Header extends Component {
           className="fas fa-bars fa-2x"
           onClick={this.toggleBurger}
         />
-<div className="dropBurger" ref={this.dropBurger}>
-<Link to='/'> <p className="header-s">Art</p></Link>
-<Link to='/homeW'>   <p className="header-s">Writting</p></Link>
-<Link to='/homeM'>   <p className="header-s">Music</p></Link>
+        <div className="dropBurger" ref={this.dropBurger}>
+          <Link to="/">
+            {" "}
+            <p className="header-s">Art</p>
+          </Link>
+          <Link to="/homeW">
+            {" "}
+            <p className="header-s">Writting</p>
+          </Link>
+          <Link to="/homeM">
+            {" "}
+            <p className="header-s">Music</p>
+          </Link>
+        </div>
 
-               
-                </div>
-
-        <Link to='/'>
-        <div className="headerTitle">Artistry</div>
+        <Link to="/">
+          <div className="headerTitle">Artistry</div>
         </Link>
         <div className="dropProfile" ref={this.dropProfile}>
-          <Link to={`/profile/${this.state.user.user_id}`}> 
-            <button onClick={this.closeToggleProfile} className="linksBtn">profile</button>
+          <Link to={`/profile/${this.state.user.user_id}`}>
+            <button onClick={this.closeToggleProfile} className="linksBtn">
+              profile
+            </button>
           </Link>
           <Link to="/settings">
-            <button onClick={this.closeToggleProfile} className="linksBtn">settings</button>
+            <button onClick={this.closeToggleProfile} className="linksBtn">
+              settings
+            </button>
           </Link>
           <Link to={`/upload/${this.state.user.user_id}`}>
-            <button onClick={this.closeToggleProfile} className="linksBtn">my Posts</button>
+            <button onClick={this.closeToggleProfile} className="linksBtn">
+              my Posts
+            </button>
           </Link>
         </div>
 
@@ -144,16 +160,13 @@ class Header extends Component {
           <div className="loggedInShiz">
             <Link to={`/upload/${this.state.user.user_id}`}>
               <div className="headerNewPost">
-                New Post{" "}
-                <button className="headerPlusBtn">+</button>
+                New Post <button className="headerPlusBtn">+</button>
               </div>
             </Link>
             {/* <p>User: {this.props.user.username}</p> */}
             <div className="loggedInPicBox" onClick={this.toggleProfile}>
               {" "}
               <img className="loggedInPic" src={this.props.user.profile_pic} />
-              
-              
             </div>
             <button className="logoutBtn" onClick={this.handleLogout}>
               Log out
@@ -211,7 +224,8 @@ const mapStateToProps = reduxState => {
 
 const mapDispatchToProps = {
   updateUser,
-  logout
+  logout,
+  stayLogged
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
