@@ -20,15 +20,15 @@ const GET_USER = "GET_USER";
 const EDIT_USER = "EDIT_USER";
 const UPDATE_USER = "UPDATE_USER";
 const GET_USER_BY_ID = "GET_USER_BY_ID";
-
+const STAY_LOGGED = "STAY_LOGGED";
 
 //functions
 
-export function updateUser(user){
-  return{
+export function updateUser(user) {
+  return {
     type: UPDATE_USER,
     payload: user
-  }
+  };
 }
 
 export function login(email, password) {
@@ -46,6 +46,16 @@ export function login(email, password) {
   };
 }
 
+export function stayLogged() {
+  let data = axios.get("/auth/login").then(res => {
+    return res.data;
+  });
+  return {
+    type: STAY_LOGGED,
+    payload: data
+  };
+}
+
 export function getUser(id) {
   let data = axios.get(`/auth/user/${id}`).then(res => {
     return res.data;
@@ -57,15 +67,13 @@ export function getUser(id) {
 }
 
 export function logout() {
-  let data = axios.delete('/auth/logout').then(res => {
- return res
-});
+  let data = axios.delete("/auth/logout").then(res => {
+    return res;
+  });
   return {
-
     type: LOGOUT,
     payload: data
   };
-
 }
 
 // export function editUser(
@@ -91,34 +99,48 @@ export function logout() {
 //   };
 // }
 
-
-export const editUser = (id, username, profile_pic, cover_pic, real_name, contact, bio) => {
-  console.log(username)
-  let data =  axios.put(`/auth/edituser/${id}`, {username, profile_pic, cover_pic, real_name, contact, bio})
-  .then(res => {
-    console.log(res)
-    return res.data[0]
-  })
-  console.log(data, 'edit')
-  return{
+export const editUser = (
+  id,
+  username,
+  profile_pic,
+  cover_pic,
+  real_name,
+  contact,
+  bio
+) => {
+  console.log(username);
+  let data = axios
+    .put(`/auth/edituser/${id}`, {
+      username,
+      profile_pic,
+      cover_pic,
+      real_name,
+      contact,
+      bio
+    })
+    .then(res => {
+      console.log(res);
+      return res.data[0];
+    });
+  console.log(data, "edit");
+  return {
     type: EDIT_USER,
     payload: data
-  }
-}
+  };
+};
 
-export const getUserById = (id) => {
-  let data = axios.get(`/auth/getUserById/${id}`)
-  .then(res => res.data)
-  console.log(data)
+export const getUserById = id => {
+  let data = axios.get(`/auth/getUserById/${id}`).then(res => res.data);
+  console.log(data);
   return {
     type: GET_USER_BY_ID,
     payload: data
-  }
-}
+  };
+};
 // default function
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   const { type, payload } = action;
-  console.log(payload, "payload")
+  console.log(payload, "payload");
   switch (type) {
     case LOGIN + "_FULFILLED":
       return { ...state, user: payload };
@@ -126,15 +148,16 @@ export default function (state = initialState, action) {
       return { ...state, user: { signedIn: false } };
     case GET_USER + "_FULFILLED":
       return { ...state, user: payload };
-    case EDIT_USER + "_FULFILLED" :
-      console.log(payload, 'edit')
-      return {user: {...payload, signedIn: true}};
-      case UPDATE_USER:
-        return{...state, user:payload}
+    case EDIT_USER + "_FULFILLED":
+      console.log(payload, "edit");
+      return { user: { ...payload, signedIn: true } };
+    case UPDATE_USER:
+      return { ...state, user: payload };
+    case STAY_LOGGED + "_FULFILLED":
+      return { user: { ...payload, signedIn: true } };
     default:
       return state;
-      case GET_USER_BY_ID + '_FULFILLED':
-        return {...state, user: payload}
-      
+    case GET_USER_BY_ID + "_FULFILLED":
+      return { ...state, user: payload };
   }
 }

@@ -9,7 +9,7 @@ class IndivPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
+      music: [],
       media: "",
       title: "",
       description: "",
@@ -26,11 +26,16 @@ class IndivPost extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(`/auth/getPostById/${this.props.match.params.id}`).then(res => {
+    axios.get(`/auth/getMusicById/${this.props.match.params.id}`).then(res => {
       this.setState({
         posts: res.data,
         user_id: res.data[0].user_id,
-        post_id: res.data[0].post_id
+        music_id: res.data[0].music_id,
+        title: res.data[0].title,
+        media: res.data[0].media,
+        description: res.data[0].description,
+        
+        
       });
       console.log(res.data);
     });
@@ -52,17 +57,17 @@ class IndivPost extends Component {
       console.log(res.data);
     });
     this.props.getUserById();
+    // axios.get(`/api/comment/${this.props.match.params.id}`).then(res => {
+    //   this.setState({
+    //     comment: res.data
+    //   });
+    //   console.log(res.data);
+    // });
   };
 
   componentDidUpdate(prevState) {
-    if (prevState.comment !== this.state.comment) {
-      axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
-        if (res.data[0]) {
-          this.setState({
-            comments: res.data
-          });
-        }
-      });
+    if (this.state.comment !== prevState.comments) {
+      this.render();
     }
   }
 
@@ -108,45 +113,45 @@ class IndivPost extends Component {
 
   render() {
     let { comment } = this.state;
-    console.log(this.state)
+    console.log(this.state.media)
     // console.log(this.state.username);
     // console.log(this.state.username);
-    console.log(this.state.posts);
+    // console.log(this.state.posts);
     // console.log(this.state.user);
     // console.log(this.props.redux.userReducer.user.username);
     // console.log(this.props);
     return (
-      <div id='indiv-post-page'>
       <section className="indiv-post">
-        <div className="username">
-          {this.state.posts.map(e => {
+      <div className="uFill"></div>
+
+        {/* <div className="username">
+          {this.state.music.map(e => {
             return <h3> {e.username}</h3>;
           })}
-        </div>
+        </div> */}
         <div className="post-section ">
-          {this.state.posts.map(e => {
-            return (
+          
               <div id="post-info">
                 <div id="title-box">
-                  <h3>{e.title}</h3>
+                  <h3>{this.state.title}</h3>
                 </div>
                 <div id="imagen-button">
-                  <img src={e.media} className="post-picture" />
-                  <button
+                  <img src={this.state.media} className="post-picture" />
+                  {/* <button
                     onClick={() => this.handleSave()}
                     className="button-on-top"
                   >
                     Save
-                  </button>
+                  </button> */}
                 </div>
                 <div className="description">
-                  <p>{e.description}</p>
+                  <p> Description:</p>
+                  <p>{this.state.description}</p>
                 </div>
               </div>
-            );
-          })}
+            
         </div>
-        <section id="comment-section">
+        {/* <section id="comment-section">
           <textarea
             className="text-box"
             name="comment"
@@ -161,8 +166,8 @@ class IndivPost extends Component {
           <br />
           <button onClick={this.clear} className="button-indiv">
             Clear
-          </button>
-          <div className="potato">
+          </button> */}
+          {/* <div className="potato">
             {this.state.posts.map(e => {
               return (
                 <div>
@@ -214,12 +219,11 @@ class IndivPost extends Component {
                 </div>
               );
             })}
-          </div>
+          </div> */}
 
           {/* <button>Show more</button> */}
-        </section>
+        {/* </section> */}
       </section>
-    </div>
     );
   }
 }

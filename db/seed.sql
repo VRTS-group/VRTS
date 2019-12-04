@@ -43,7 +43,8 @@ title varchar(75),
 description varchar(250), 
 tags varchar(100), 
 views int, 
-saves boolean);
+saves boolean)
+cover_photo text;
 
 create table write (
 write_id serial primary key,

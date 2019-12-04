@@ -6,6 +6,7 @@ import { getPostByUser } from "../redux/postReducer";
 import EditPage from '../Component/EditPage';
 import axios from "axios";
 import "./Upload.css";
+import noPhoto from '../photos/nophoto.jpg'
 
 class Upload extends Component {
   constructor() {
@@ -51,6 +52,19 @@ class Upload extends Component {
     });
   };
 
+  componentDidUpdate = () => {
+    axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res => {
+     
+
+      this.setState({
+        posts: res.data,
+        user_id: res.data[0].user_id,
+        post_id: res.data[0].post_id
+      });
+
+    });
+  }
+
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -67,7 +81,7 @@ class Upload extends Component {
         tags: this.state.tags
       })
       .then(res => {
-        alert("Post added: Please refresh");
+        alert("Post added");
         this.setState({
           user_id: this.state.user_id,
           media: "",
@@ -75,6 +89,7 @@ class Upload extends Component {
           description: "",
           tags: ""
         });
+        this.toggleAddPopup()
       })
       .catch(err => {
         alert("Problem adding Post to server");
@@ -134,8 +149,7 @@ this.setState({
     // // console.log(this.props);
     // // console.log(this.props.user.user_id);
     // console.log(this.state.posts);
-    console.log(this.state)
-    console.log(this.props)
+
     this.state.user_id = this.props.user.user_id;
     return (
       <div className="Upload">
@@ -156,10 +170,9 @@ this.setState({
               <div className="XContainerOne"></div>
               <button onClick={this.toggleAddPopup}>X</button>
             </div>
-            <button className="NewPostUpload">
-              <div className="PlusIcon"></div>
-              <div className="NewPostTitle">Upload Img</div>
-            </button>
+<div className="UploadGridItem">
+<img className="EditPostMedia" src={this.state.media} alt=""/>
+</div>
             {/* <input 
             value={this.state.media}
             name="media"
@@ -214,7 +227,7 @@ this.setState({
           <div className="EditPostsTitle">My Posts</div>
           <div className="UploadGridContainer" >
             {this.state.posts.map(e => {
-              console.log(e)
+            
               
               return (
                 // <Link to={`/popup/${e.post_id}`}>
@@ -242,7 +255,7 @@ this.setState({
                 <button onClick={this.toggleEditPopup}>X</button>
               </div>
               
-                <EditPage id={this.state.currentEdit}/>
+              <EditPage id={this.state.currentEdit}  toggleEditPopup={this.toggleEditPopup}  post_id={this.state.currentEdit}/>
               
               {/* <div className="UploadGridItem"></div> */}
 

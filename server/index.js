@@ -6,9 +6,9 @@ const session = require("express-session");
 const UserCTRL = require("./userController");
 const PostCTRL = require("./postController");
 const CommentCTRL = require("./commentController");
-const MusicCTRL = require("./musicController")
-const WriteCTRL = require("./writeController")
-
+const MusicCTRL = require("./musicController");
+const WriteCTRL = require("./writeController");
+const auth = require("./authmiddleware");
 const app = express();
 
 app.use(express.json());
@@ -33,37 +33,36 @@ app.post("/auth/register", UserCTRL.register);
 app.post("/auth/login", UserCTRL.login);
 app.delete("/auth/logout", UserCTRL.logout);
 app.get("/auth/user", UserCTRL.getUser);
-app.put("/auth/edituser/:id", UserCTRL.editUser);
+app.put("/auth/edituser/:id", auth.usersOnly, UserCTRL.editUser);
 app.get("/auth/getUserById/:id", UserCTRL.getUserById);
 
 app.get("/auth/getPosts", PostCTRL.getPosts);
-app.post("/auth/addPosts", PostCTRL.addPosts);
-app.put("/auth/editPosts/:id", PostCTRL.editPosts);
-app.delete("/auth/deletePosts/:id", PostCTRL.deletePosts);
+app.post("/auth/addPosts", auth.usersOnly, PostCTRL.addPosts);
+app.put("/auth/editPosts/:id", auth.usersOnly, PostCTRL.editPosts);
+app.delete("/auth/deletePosts/:id", auth.usersOnly, PostCTRL.deletePosts);
 app.get("/auth/getPostById/:id", PostCTRL.getPostById); //for the popup thing
 app.get("/auth/getPostByUser/:id", PostCTRL.getPostByUser);
-app.get("/auth/getSavedPosts/:id", PostCTRL.getSavedPost);
-app.post("/auth/addSave", PostCTRL.addSave);
-
+app.get("/auth/getSavedPosts/:id", auth.usersOnly, PostCTRL.getSavedPost);
+app.post("/auth/addSave", auth.usersOnly, PostCTRL.addSave);
+app.delete("/auth/deleteSave/:id", auth.usersOnly, PostCTRL.deleteSave);
 
 app.get("/auth/getMusic", MusicCTRL.getMusic);
-app.post("/auth/addMusic", MusicCTRL.addMusic);
-app.put("/auth/editMusic/:id", MusicCTRL.editMusic);
-app.delete("/auth/deleteMusic/:id", MusicCTRL.deleteMusic);
+app.post("/auth/addMusic", auth.usersOnly, MusicCTRL.addMusic);
+app.put("/auth/editMusic/:id", auth.usersOnly, MusicCTRL.editMusic);
+app.delete("/auth/deleteMusic/:id", auth.usersOnly, MusicCTRL.deleteMusic);
 app.get("/auth/getMusicById/:id", MusicCTRL.getMusicById); //for the popup thing
-app.get("/auth/getMusicByUser/:id", MusicCTRL.getMusicByUser);
+app.get("/auth/getMusicByUser/:id", auth.usersOnly, MusicCTRL.getMusicByUser);
 
 app.get("/auth/getWrite", WriteCTRL.getWrite);
-app.post("/auth/addWrite", WriteCTRL.addWrite);
-app.put("/auth/editWrite/:id", WriteCTRL.editWrite);
-app.delete("/auth/deleteWrite/:id", WriteCTRL.deleteWrite);
+app.post("/auth/addWrite", auth.usersOnly, WriteCTRL.addWrite);
+app.put("/auth/editWrite/:id", auth.usersOnly, WriteCTRL.editWrite);
+app.delete("/auth/deleteWrite/:id", auth.usersOnly, WriteCTRL.deleteWrite);
 app.get("/auth/getWriteById/:id", WriteCTRL.getWriteById); //for the popup thing
-app.get("/auth/getWriteByUser/:id", WriteCTRL.getWriteByUser);
-
+app.get("/auth/getWriteByUser/:id", auth.usersOnly, WriteCTRL.getWriteByUser);
 
 app.get("/api/comment", CommentCTRL.getComments);
-app.post("/api/comment", CommentCTRL.addComment);
-app.delete("/api/comment/:id", CommentCTRL.deleteComment);
+app.post("/api/comment", auth.usersOnly, CommentCTRL.addComment);
+app.delete("/api/comment/:id", auth.usersOnly, CommentCTRL.deleteComment);
 app.get("/api/comments/:id", CommentCTRL.getCommentById);
 
 // app.get('/auth/getList', ListCTRL.getList)

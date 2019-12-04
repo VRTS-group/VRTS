@@ -9,7 +9,7 @@ module.exports = {
     addMusic: async (req, res) => {
       console.log("hit");
       const db = req.app.get("db");
-      const { user_id, media, title, description, tags, views, saves } = req.body;
+      const { user_id, media, title, description, tags, views, saves, cover_photo } = req.body;
       db.addMusic([
         user_id,
         media,
@@ -17,14 +17,15 @@ module.exports = {
         description,
         tags,
         views,
-        saves
+        saves,
+        cover_photo
       ]).then(db => res.status(200).send(db));
     },
     editMusic: async (req, res) => {
       const db = req.app.get("db");
       const { id } = req.params;
-      const { title, description, tags } = req.body;
-      db.editMusic([id, title, description, tags]).then(db =>
+      const { title, description, tags, cover_photo } = req.body;
+      db.editMusic([id, title, description, tags, cover_photo]).then(db =>
         res.status(200).send(db)
       );
     },

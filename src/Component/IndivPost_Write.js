@@ -1,207 +1,204 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getWriteById } from "../redux/writeReducer";
-import { addComment, deleteComment } from "../redux/commentReducer";
-import axios from "axios";
-import "./IndivPost.css";
-import Comments from "./Comments";
-import {updateUser} from '../redux/userReducer'
+import ReactQuill, { Quill } from 'react-quill'; // ES6
+import React,{Component} from 'react'
+import {connect} from 'react-redux'
+import {getWriteById, editWrite} from '../redux/writeReducer'
+import {getUser} from '../redux/userReducer'
 
-class IndivWrite extends Component {
+
+
+
+
+
+import 'react-quill/dist/quill.snow.css'; 
+import axios from 'axios';
+
+
+class Update extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      write: [],
-      media: "",
-      title: "",
-      description: "",
+      super(props);
+      this.modules = {
+          toolbar: [
+            [{ 'header': [false, 1, 2, 3] }],
+            [{ 'align': [] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{'list': 'ordered'}, {'list': 'bullet'}],
+            [{ 'indent': '-1'}, { 'indent': '+1' }],
+            ['link', 'image'],
+            [{ 'font': [] }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],
+            [{ 'color': [] }, { 'background': [] }],
+            ['clean']
+          ]
+      };
+      this.formats = [
+          'header',
+          'align',
+          'bold', 'italic', 'underline', 'strike',
+          'list', 'bullet',
+          'indent', 'indent',
+          'link', 'image',
+          'font',
+          'script', 'script',
+          'color', 'background'
+      ];
+      this.state = {
+          comments: '',
+          title: '',
+          cover_photo: '',
+          description: '',
+          tags: '',
+          posts: [],
+      
+     
       views: 0,
       saves: false,
       user: [],
       username: "",
-    //   comment: "",
-    //   comments: [],
+      
       user_id: 0,
-      write_id: 0,
-    //   comment_id: 0
-    };
+      post_id: 0,
+      comment_id: 0
+          
+      }
+      this.rteChange = this.rteChange.bind(this);
+      this.potato = ''      
   }
 
-  componentDidMount = () => {
-    //   console.log(this.props.match.params.id)
-    axios.get(`/auth/getWriteById/${this.props.match.params.id}`).then(res => {
-      console.log(res.data);
+  componentDidMount(){
+console.log(this.props.match.params.id)
+    axios.get(`/auth/getWriteById/${this.props.match.params.id}`)
+    .then((response) => {
+      console.log(response.data)
+      
       this.setState({
-        write: res.data,
-        user_id: res.data[0].user_id,
-        write_id: res.data[0].write_id
-      });
-    });
+        title: response.data[0].title,
+        comments: response.data[0].media,
+        cover_photo: response.data[0].cover_photo,
+        description: response.data[0].description,
+        tags: response.data[0].tags
+      })
+    })
+
     axios.get(`/api/comments/${this.props.match.params.id}`).then(res => {
-      this.setState({
-        comments: res.data
-      });
+      if (res.data[0]) {
+        this.setState({
+          // user_id: res.data[0].user_id,
+          // username: res.data[0].username,
+          // profile_pic: res.data[0].profile_pic,
+          comments: res.data
+        });
+      }
+      console.log(res.data);
     });
     axios.get(`/auth/getUserById/${this.props.match.params.id}`).then(res => {
-      console.log(res.data);
       this.setState({
         user: res.data
       });
+      console.log(res.data);
     });
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.state.comment !== this.state.comments) {
-      this.render();
-    }
-  }
-
-  handleText = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  handleSave = () => {
-    this.setState({
-      saves: !this.state.saves
-    });
-    console.log(this.state.saves);
-  };
-
-  newComment = () => {
-    axios
-      .post("/api/comment", {
-        comment: this.state.comment,
-        user_id: this.state.user_id,
-        post_id: this.state.post_id
-      })
-      .then(res => {
-        alert("Comment added");
-        this.setState({ comment: "" });
-      });
-  };
-
-  render() {
-    let { comment } = this.state;
-    // console.log(this.state.username);
-    console.log(this.state)
-    console.log(this.state.posts)
-    console.log(this.props.redux.userReducer.user.user_id)
-    console.log(this.props)
-    return (
-      <section className="indiv-post">
-        <div className="username">
-          {this.state.user.map(e => {
-            return <h3>Username: {e.username}</h3>;
-          })}
-        </div>
-        <div className="post-section ">
-          {this.state.write.map(e => {
-            return (
-              <div id="post-info">
-                <div id="title-box">
-                  <h3>{e.title}</h3>
-                </div>
-                <div id="imagen-button">
-                <img src={e.cover_photo} className="post-picture" />
-                <button onClick={this.handleSave} className="button-on-top">
-                  Save
-                </button>
-                </div>
-                <div className="description">
-                  <p>{e.description}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        {/* <section id="comment-section">
-          <textarea
-            className="text-box"
-            name="comment"
-            value={comment}
-            placeholder="Add a comment here :)"
-            onChange={this.handleText}
-          ></textarea>
-          <br />
-          <button onClick={this.newComment}>Write a comment</button>
-          <br />
-
-
-
-<div className = "potato">
-  {this.state.posts.map(e=> {
-    return <div>
-  {e.user_id === this.props.redux.userReducer.user.user_id ?(
-         
-         <div>
-         {this.state.comments.map(e => {
-           return (
-             <div className="comment-area">
-               {e.comment}
-               <button
-                 onClick={() => {
-                   deleteComment(e.comment_id);
-                 }}
-               >
-                 Delete
-               </button>
-             </div>
-           );
-         })}
-       </div>
-            
-          ) : (
-           <div>
-              {this.state.comments.map(e => {
-                return <div className="comment-area">{e.comment}</div>;
-              })}
-              
-            </div> 
-
-
-
-
-
-          )}
-</div>
-        })}
-</div>
-
-
-
-      
-        </section> */}
-      </section>
-    );
-
-
-
-
-    
-
-
-
   }
 
 
-
-
-
-
-
-
+  handleChange = e => {
+    const {name, value} = e.target
+    this.setState ({
+        [name]: value
+    })
 }
 
-const mapDispatchToProps = {
-  deleteComment, updateUser
-}
-
-const mapStateToProps = state => {
-  return {
-    redux: state
-  };
+handleText = e => {
+  this.setState({
+    [e.target.name]: e.target.value
+  });
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(IndivWrite);
+handleSave = () => {
+  axios
+    .post("/auth/addSave", {
+      saves: !this.state.saves,
+      user_id: this.props.redux.userReducer.user.user_id,
+      post_id: this.state.post_id
+    })
+    .then(res => {
+      alert("Saved!");
+    })
+    .catch(err => console.log(err));
+  console.log(this.state.saves);
+};
+
+newComment = () => {
+  axios
+    .post("/api/comment", {
+      user_id: this.props.redux.userReducer.user.user_id,
+      post_id: this.state.post_id,
+      comment: this.state.comment
+    })
+    .then(res => {
+      alert("Comment added");
+      this.setState({ comment: "" });
+    })
+    .catch(err => console.log(err));
+};
+
+clear = () => {
+  this.setState({
+    comment: ""
+  });
+};
+
+componentDidUpdate(prevState) {
+  if (this.state.comment !== prevState.comments) {
+    this.render();
+  }
+}
+
+  rteChange = (content, delta, source, editor) => {
+      this.state.comments = (editor.getHTML()); // rich text
+      this.potato = (editor.getText()); // plain text
+      console.log("potato", this.potato)
+      console.log(editor.getLength()); // number of characters
+      
+  }
+
+  render(props) {
+    
+      const title = this.state
+      const {Text} = this.state
+      console.log(Text)
+      console.log(title)
+      console.log(this.props.store.userReducer.user.user_id)
+      console.log(this.props.match.params.id)
+      
+
+      return (
+        <div>
+         <div className="iFill">p</div> 
+                {/* <p>{this.state.title}</p> */}
+                
+         
+          
+        <div>
+          <ReactQuill 
+              theme="snow"  
+              modules={this.modules}
+              formats={this.formats} 
+              onChange={this.rteChange}
+             
+           
+              value={this.state.comments || ''}
+              />
+        </div>
+       
+      
+        </div>
+      );
+  }
+}
+
+function mapStateToProps (state) {
+  return {
+    store: state
+  }
+}
+
+export default connect(mapStateToProps, {getWriteById, editWrite, getUser })(Update)
