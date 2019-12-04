@@ -14,6 +14,7 @@ class Profile extends Component {
       username: "",
       posts: []
     };
+    this.dropDroppers = React.createRef();
   }
 
   componentDidMount = () => {
@@ -40,6 +41,20 @@ class Profile extends Component {
       console.log(this.state)
     })
   }
+
+  toggleDropper = () => {
+    let { current } = this.dropDroppers;
+    this.setState({toggleDropper: true});
+    if (current.classList.contains("show-animation")) {
+      current.classList.add("hide-animation");
+      current.classList.remove("show-animation");
+      this.setState({toggleBurger: false})
+    } else {
+      current.classList.add("show-animation");
+      current.classList.remove("hide-animation");
+    }
+  };
+
 
   render() {
     console.log(this.state.posts);
@@ -93,7 +108,19 @@ class Profile extends Component {
           </div>
           <div className="ProfileGenre">
             <button className="ProfileBtn">My Posts</button>
-            <div className="ProfileGenreTitle">ART</div>
+            <div id="ProfileGenreTitle"
+            onClick={this.toggleDropper}>ART</div>
+            <div 
+            className="dropper"
+            >
+          <div className="dropDroppers" ref={this.dropDroppers}>
+
+<Link to='/homeW'>   <p className="header-s">Writting</p></Link>
+<Link to='/homeM'>   <p className="header-s">Music</p></Link>
+
+               
+                </div>
+                </div>
             <Link to={`/saves/${this.props.match.params.id}`}>
               <button className="ProfileBtn">My Saves</button>
             </Link>

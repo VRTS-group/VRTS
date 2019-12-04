@@ -4,7 +4,8 @@ import { deleteComment } from "../redux/commentReducer";
 import axios from "axios";
 import "./IndivPost.css";
 import { updateUser, getUserById } from "../redux/userReducer";
-
+import { Link } from 'react-router-dom';
+ 
 class IndivPost extends Component {
   constructor(props) {
     super(props);
@@ -116,10 +117,11 @@ class IndivPost extends Component {
     // console.log(this.props.redux.userReducer.user.username);
     // console.log(this.props);
     return (
+      <div id='indiv-post-page'>
       <section className="indiv-post">
         <div className="username">
           {this.state.posts.map(e => {
-            return <h3> {e.username}</h3>;
+            return <Link to={`/profile/${e.user_id}`}><h3> {e.username} </h3></Link>;
           })}
         </div>
         <div className="post-section ">
@@ -127,7 +129,7 @@ class IndivPost extends Component {
             return (
               <div id="post-info">
                 <div id="title-box">
-                  <h3>{e.title}</h3>
+                  <h2>{e.title}</h2>
                 </div>
                 <div id="imagen-button">
                   <img src={e.media} className="post-picture" />
@@ -139,13 +141,14 @@ class IndivPost extends Component {
                   </button>
                 </div>
                 <div className="description">
-                  <p>{e.description}</p>
+                  <h3>{e.description}</h3>
                 </div>
               </div>
             );
           })}
         </div>
         <section id="comment-section">
+          <div id='comment-bar'>
           <textarea
             className="text-box"
             name="comment"
@@ -154,13 +157,16 @@ class IndivPost extends Component {
             onChange={this.handleText}
           ></textarea>
           <br />
-          <button onClick={this.newComment} className="button-indiv">
-            Write a comment
-          </button>
-          <br />
-          <button onClick={this.clear} className="button-indiv">
-            Clear
-          </button>
+          <div id='baby-button-box'>
+            <button onClick={this.newComment} className="button-indiv">
+              Write a comment
+            </button>
+            <br />
+            <button onClick={this.clear} className="button-indiv">
+              Clear
+            </button>
+          </div>
+          </div>
           <div className="potato">
             {this.state.posts.map(e => {
               return (
@@ -170,23 +176,23 @@ class IndivPost extends Component {
                       {this.state.comments.map(e => {
                         return (
                           <div className="comment-area">
-                            <img
+                            
+                            {/* <img
                               src={e.profile_pic}
                               className="profile-comment"
-                            />
+                            /> */}
 
-                            <div className="comment-area">
-                              {e.comment}
                               <h5>{e.username}</h5>
-                            </div>
+                              {e.comment}
                             <button
-                              className="button-indiv"
+                              className="delete-button-indiv"
                               onClick={() => {
                                 deleteComment(e.comment_id);
                               }}
-                            >
+                              >
                               Delete
                             </button>
+                              
                           </div>
                         );
                       })}
@@ -202,8 +208,8 @@ class IndivPost extends Component {
                             />
 
                             <div className="comment-area">
-                              {e.comment}
                               <h5>{e.username}</h5>
+                                  {e.comment}
                             </div>
                           </div>
                         );
@@ -218,6 +224,7 @@ class IndivPost extends Component {
           {/* <button>Show more</button> */}
         </section>
       </section>
+    </div>
     );
   }
 }

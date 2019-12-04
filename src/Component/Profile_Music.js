@@ -14,6 +14,7 @@ class Profile extends Component {
       username: '',
       music: []
     }
+    this.dropDroppers = React.createRef();
   }
 
 
@@ -37,6 +38,19 @@ class Profile extends Component {
       console.log(this.state)
     })
   }
+
+  toggleDropper = () => {
+    let { current } = this.dropDroppers;
+    this.setState({toggleDropper: true});
+    if (current.classList.contains("show-animation")) {
+      current.classList.add("hide-animation");
+      current.classList.remove("show-animation");
+      this.setState({toggleBurger: false})
+    } else {
+      current.classList.add("show-animation");
+      current.classList.remove("hide-animation");
+    }
+  };
 
   render() {
     console.log(this.state.music)
@@ -85,11 +99,23 @@ class Profile extends Component {
             </div>
             
 
-            <Link to = {`/Upload/${this.props.match.params.id}`}><button className="MyPostsBtn">My Posts</button></Link>
+            {/* <Link to = {`/Upload/${this.props.match.params.id}`}><button className="MyPostsBtn">My Posts</button></Link> */}
           </div>
           <div className="ProfileGenre">
             <button className="ProfileBtn">My Posts</button>
-            <div className="ProfileGenreTitle">MUSIC</div>
+            <div className="ProfileGenreTitle"
+             onClick={this.toggleDropper}>MUSIC</div>
+             <div 
+            className="dropper"
+            >
+          <div className="dropDroppers" ref={this.dropDroppers}>
+
+<Link to='/homeW'>   <p className="header-s">Writting</p></Link>
+<Link to='/homeM'>   <p className="header-s">Music</p></Link>
+
+               
+                </div>
+                </div>
             <button className="ProfileBtn">My Saves</button>
           </div>
           {/* // */}

@@ -43,7 +43,7 @@ class register extends Component{
 
                 <div id='register-container'>
                     <div className='input-fields'>
-                        <p> email here!</p>
+                        <h3 className='input-captions'> email here!</h3>
                         <input
                         placeholder='email'
                         className='register-inputs'
@@ -52,7 +52,7 @@ class register extends Component{
                         onChange = {(e) => this.handleInput(e)}/>
                     </div>
                     <div className='input-fields'>
-                        <p> username here!</p>
+                        <h3 className='input-captions'> username here!</h3>
                         <input
                         placeholder='username'
                         className='register-inputs'
@@ -61,7 +61,7 @@ class register extends Component{
                         onChange = {(e) => this.handleInput(e)}/>
                     </div>
                     <div className='input-fields'>
-                        <p> password here!</p>
+                        <h3 className='input-captions'> password here!</h3>
                         <input
                         placeholder='password'
                         className='register-inputs'
@@ -70,7 +70,7 @@ class register extends Component{
                         onChange = {(e) => this.handleInput(e)}/>
                     </div>
 
-                    <button id='register-btn'>Register</button>
+                    <button id='register-btn' onClick={this.handleRegister}>Register</button>
 
                 </div>
             </div>
@@ -78,7 +78,7 @@ class register extends Component{
     }
     
 }
-{/* onClick={this.handleRegister} */}
+{/*  */}
 
 const mapDispatchToProps = {
     updateUser

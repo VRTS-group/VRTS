@@ -31,6 +31,7 @@ app.use(
 
 app.post("/auth/register", UserCTRL.register);
 app.post("/auth/login", UserCTRL.login);
+app.get("/api/user", UserCTRL.getSession);
 app.delete("/auth/logout", UserCTRL.logout);
 app.get("/auth/user", UserCTRL.getUser);
 app.put("/auth/edituser/:id", auth.usersOnly, UserCTRL.editUser);
