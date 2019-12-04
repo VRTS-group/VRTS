@@ -130,7 +130,7 @@ class Home extends Component {
           </div>
           <div className="dropper">
           <div className="dropDropper" ref={this.dropDropper}>
-<Link to='/'> <p className="header-s">Art</p></Link>
+
 <Link to='/homeW'>   <p className="header-s">Writting</p></Link>
 <Link to='/homeM'>   <p className="header-s">Music</p></Link>
 
