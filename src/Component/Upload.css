@@ -162,6 +162,12 @@
   }
 }
 
+.EditPostMedia {
+background-position: center;
+background-size: cover;
+  background-image: url("https://archive.org/download/no-photo-available/no-photo-available.png");
+}
+
 
 
 .EditPostsTitle {
@@ -265,7 +271,3 @@
     }
   }
 
-  .EditInputTitles {
-    color: white;
-    
-  }
