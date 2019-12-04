@@ -126,11 +126,11 @@ class Home extends Component {
           <div id='genre-big-box'>
     <div id="ProfileGenreTitle"
     onClick={this.toggleDropper}
-    >ART</div>
+    >Writting</div>
           </div>
           <div className="dropper">
           <div className="dropDropper" ref={this.dropDropper}>
-<Link to='/homeW'> <p className="header-s">Writtting</p></Link>
+
 <Link to='/'>   <p className="header-s">Art</p></Link>
 <Link to='/homeM'>   <p className="header-s">Music</p></Link>
 
@@ -159,7 +159,7 @@ class Home extends Component {
                   <div id='x-btn' onClick={this.handlePopupClose} >X</div>
                   <div id='home-popup-content'>
                     <div id='popup-pic'>
-                      <Link to={`/indivpost/${e.write_id}`}>{e.title}<p>{e.description}</p> </Link>
+                      <Link to={`/indivWrite/${e.write_id}`}>{e.title}<p>{e.description}</p> </Link>
                     </div>
                     <div id='popup-content-info'>
                       <h3>{e.username}</h3>
