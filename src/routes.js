@@ -9,7 +9,9 @@ import Upload from "./Component/Upload";
 import Register from "./Component/Register";
 import popUp from "./Component/HomePopUp";
 import IndivWrite from "./Component/IndivPost_Write";
-import IndivMusic from "./Component/indivMusic"
+
+import IndivMusic from "./Component/indivMusic";
+
 import Saves from "./Component/Saves";
 
 import EditPage from "./Component/EditPage";
@@ -35,13 +37,13 @@ export default (
     <Route path="/homeM" component={MusicHome} />
     <Route path="/editpage/:id" component={EditPage} />
     <Route path="/profileM/:id" component={ProfileMusic} />
-    <Route path="/profileW/:id" component={ProfileWrite}/>
-    <Route path="/homeW" component={WriteHome}/>
-    <Route path="/uploadW" component={Upload_Write}/>
+    <Route path="/profileW/:id" component={ProfileWrite} />
+    <Route path="/homeW" component={WriteHome} />
+    <Route path="/uploadW" component={Upload_Write} />
     <Route path="/saves/:id" component={Saves} />
-    <Route path="/EditWrite/:id" component={EditWrite}/>
-    <Route path="/WriteEdit/:id" component={WriteEdit}/>
-    <Route path="/IndivWrite/:id" component={IndivWrite}/>
-    <Route path="/IndivMusic/:id" component={IndivMusic}/>
+    <Route path="/EditWrite/:id" component={EditWrite} />
+    <Route path="/WriteEdit/:id" component={WriteEdit} />
+    <Route path="/IndivWrite/:id" component={IndivWrite} />
+    <Route path="/IndivMusic/:id" component={IndivMusic} />
   </Switch>
 );
