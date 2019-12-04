@@ -8,9 +8,7 @@ import MyPosts from "./Component/MyPosts";
 import Upload from "./Component/Upload";
 import Register from "./Component/Register";
 import popUp from "./Component/HomePopUp";
-import IndivWrite from "./Component/IndivPost_Write";
 
-import IndivMusic from "./Component/indivMusic";
 
 import Saves from "./Component/Saves";
 
