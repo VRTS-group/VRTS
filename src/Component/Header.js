@@ -14,9 +14,11 @@ class Header extends Component {
       user: [],
       toggleProfile: false,
       toggleLog: false,
+      toggleBurger: false
     };
     this.dropProfile = React.createRef();
     this.dropLog = React.createRef();
+    this.dropBurger = React.createRef();
   }  
 
   toggleProfile = () => {
@@ -45,6 +47,19 @@ class Header extends Component {
     }
   };
 
+  toggleBurger = () => {
+    let { current } = this.dropBurger;
+    this.setState({toggleBurger: true});
+    if (current.classList.contains("show-animation")) {
+      current.classList.add("hide-animation");
+      current.classList.remove("show-animation");
+      this.setState({toggleBurger: false})
+    } else {
+      current.classList.add("show-animation");
+      current.classList.remove("hide-animation");
+    }
+  };
+
   closeToggleProfile = () => {
     if(this.state.toggleProfile === true){
       this.toggleProfile();
@@ -55,6 +70,7 @@ class Header extends Component {
       this.setState({toggleLog: false})
     }
   };
+  
   
   handleInput = e => {
     this.setState({
@@ -99,8 +115,16 @@ class Header extends Component {
         <i
           id="hamburger-icon"
           className="fas fa-bars fa-2x"
-          // onClick={this.toggleProfile}
+          onClick={this.toggleBurger}
         />
+<div className="dropBurger" ref={this.dropBurger}>
+<Link to='/'> <p className="header-s">Art</p></Link>
+<Link to='/homeW'>   <p className="header-s">Writting</p></Link>
+<Link to='/homeM'>   <p className="header-s">Music</p></Link>
+
+               
+                </div>
+
         <Link to='/'>
         <div className="headerTitle">Artistry</div>
         </Link>

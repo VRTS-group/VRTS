@@ -24,6 +24,7 @@ class Home extends Component {
       user_id: 0
     };
     this.Popup = React.createRef();
+    this.dropDropper = React.createRef();
   }
 
   //gets all posts
@@ -69,6 +70,20 @@ class Home extends Component {
     }
   }
 
+  toggleDropper = () => {
+    let { current } = this.dropDropper;
+    this.setState({toggleDropper: true});
+    if (current.classList.contains("show-animation")) {
+      current.classList.add("hide-animation");
+      current.classList.remove("show-animation");
+      this.setState({toggleBurger: false})
+    } else {
+      current.classList.add("show-animation");
+      current.classList.remove("hide-animation");
+    }
+  };
+
+
 
   handleInput = e => {
     this.setState({
@@ -109,8 +124,21 @@ class Home extends Component {
             </div>
           </div>
           <div id='genre-big-box'>
-    <div id="ProfileGenreTitle">ART</div>
+    <div id="ProfileGenreTitle"
+    onClick={this.toggleDropper}
+    >ART</div>
           </div>
+          <div className="dropper">
+          <div className="dropDropper" ref={this.dropDropper}>
+<Link to='/'> <p className="header-s">Art</p></Link>
+<Link to='/homeW'>   <p className="header-s">Writting</p></Link>
+<Link to='/homeM'>   <p className="header-s">Music</p></Link>
+
+               
+                </div>
+                </div>
+
+
         </div>
         <div className="dashboard">
           {this.state.posts.map(e => {
