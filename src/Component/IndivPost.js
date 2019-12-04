@@ -116,6 +116,7 @@ class IndivPost extends Component {
     // console.log(this.props.redux.userReducer.user.username);
     // console.log(this.props);
     return (
+      <div id='indiv-post-page'>
       <section className="indiv-post">
         <div className="username">
           {this.state.posts.map(e => {
@@ -218,6 +219,7 @@ class IndivPost extends Component {
           {/* <button>Show more</button> */}
         </section>
       </section>
+    </div>
     );
   }
 }
