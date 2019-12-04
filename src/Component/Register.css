@@ -26,6 +26,7 @@
     width: 260px;
     height: 27px;
     font-size: 25px;
+    font-family: 'Cinzel', serif;
 }
 .input-fields{
     height: 75px;
@@ -44,7 +45,8 @@
 #register-btn{
     font-size: 27px;
     border-radius: 15px;
-    width: 170px
+    width: 170px;
+    font-family: 'Cinzel', serif;
 }
 #register-btn:hover{
     background-color: black;
@@ -55,6 +57,12 @@
     background-color: var(--light-red);
     color: white;
     border: var(--light-red);
+}
+.input-captions{
+    margin: 10px 0px;
+    font-size: 25px;
+    color: white;
+    font-family: 'Cinzel', serif; 
 }
 
 

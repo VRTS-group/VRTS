@@ -1,5 +1,5 @@
 update posts
-set  title = $2, description = $3, tags = $4
+set  media = $2, title = $3, description = $4, tags = $5
 where post_id = $1;
 
-select * from posts
+select * from posts;

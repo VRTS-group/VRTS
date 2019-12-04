@@ -5,8 +5,13 @@
   --grey: #363636;
   --white: #ffffff;
 }
-
+#indiv-post-page{
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
 .indiv-post {
+  margin-top: 100px;
   width: 414px;
   height: auto;
   display: flex;
@@ -22,9 +27,7 @@
   justify-content: center;
 }
 
-/* .username {
-  margin-top: 40%;
-} */
+
 
 .post-picture {
   width: 400px;
@@ -35,7 +38,7 @@
 }
 
 .username {
-  margin-top: 60px;
+  margin-top: 0px;
 }
 
 #imagen-button {
