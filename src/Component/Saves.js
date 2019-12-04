@@ -29,7 +29,7 @@ class Saves extends Component {
         });
     }
   }
-
+  // delete
   deleteSave(id) {
     axios
       .delete(`/auth/deleteSave/${id}`)
