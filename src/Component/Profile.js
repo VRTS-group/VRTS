@@ -18,46 +18,55 @@ class Profile extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props.match.params.id);
+    // console.log(this.props.match.params.id);
     Axios.get(`/auth/getUserById/${this.props.match.params.id}`).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         user: res.data
-      })
-    })
-    
-    Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res=> {
-      console.log(this.props.match.params.id)
-      console.log(res.data)
-      if(res.data[0]){ 
+      });
+    });
 
-      
-      this.setState({
-        posts: res.data,
-        user_id: res.data[0].user_id,
-        post_id: res.data[0].post_id
-      
-      })}
-      console.log(this.state)
-    })
+    Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res => {
+      // console.log(this.props.match.params.id);
+      // console.log(res.data);
+      if (res.data[0]) {
+        this.setState({
+          posts: res.data,
+          user_id: res.data[0].user_id,
+          post_id: res.data[0].post_id
+        });
+      }
+      // console.log(this.state);
+    });
+  };
+
+  componentDidUpdate() {
+    Axios.get(`/auth/getPostByUser/${this.props.match.params.id}`).then(res => {
+      if (res.data[0]) {
+        this.setState({
+          posts: res.data,
+          user_id: res.data[0].user_id,
+          post_id: res.data[0].post_id
+        });
+      }
+    });
   }
 
   toggleDropper = () => {
     let { current } = this.dropDroppers;
-    this.setState({toggleDropper: true});
+    this.setState({ toggleDropper: true });
     if (current.classList.contains("show-animation")) {
       current.classList.add("hide-animation");
       current.classList.remove("show-animation");
-      this.setState({toggleBurger: false})
+      this.setState({ toggleBurger: false });
     } else {
       current.classList.add("show-animation");
       current.classList.remove("hide-animation");
     }
   };
 
-
   render() {
-    console.log(this.state.posts);
+    // console.log(this.state.posts);
     return (
       <div className="Profile">
         <div className="ProfileContainer">
@@ -65,7 +74,7 @@ class Profile extends Component {
 
           <div className="ProfileCover">
             {this.state.user.map(e => {
-              console.log(e);
+              // console.log(e);
               return (
                 <div>
                   <img className="profile_cover_image" src={e.cover_pic}></img>
@@ -74,7 +83,7 @@ class Profile extends Component {
             })}
             <div className="ProfilePic">
               {this.state.user.map(e => {
-                console.log(e);
+                // console.log(e);
                 return (
                   <div>
                     <img
@@ -90,7 +99,7 @@ class Profile extends Component {
           <div className="ProfileInfo">
             <div className="ProfileUser">
               {this.state.user.map(e => {
-                console.log(e);
+                // console.log(e);
                 return (
                   <div>
                     <p>{e.username}</p>
@@ -108,19 +117,22 @@ class Profile extends Component {
           </div>
           <div className="ProfileGenre">
             <button className="ProfileBtn">My Posts</button>
-            <div id="ProfileGenreTitle"
-            onClick={this.toggleDropper}>ART</div>
-            <div 
-            className="dropper"
-            >
-          <div className="dropDroppers" ref={this.dropDroppers}>
+            <div id="ProfileGenreTitle" onClick={this.toggleDropper}>
+              ART
+            </div>
+            <div className="dropper">
+              <div className="dropDroppers" ref={this.dropDroppers}>
+                <Link to={`/profileW/${this.props.match.params.id}`}>
+                  {" "}
+                  <p className="header-s">Writing</p>
+                </Link>
+                <Link to={`/profileM/${this.props.match.params.id}`}>
+                  {" "}
+                  <p className="header-s">Music</p>
+                </Link>
+              </div>
+            </div>
 
-<Link to='/homeW'>   <p className="header-s">Writting</p></Link>
-<Link to='/homeM'>   <p className="header-s">Music</p></Link>
-
-               
-                </div>
-                </div>
             <Link to={`/saves/${this.props.match.params.id}`}>
               <button className="ProfileBtn">My Saves</button>
             </Link>
@@ -129,7 +141,7 @@ class Profile extends Component {
           <div className="ProfileGridContainer">
             {this.state.posts.map(e => {
               return (
-                <Link to={`/popup/${e.post_id}`}>
+                <Link to={`/indivpost/${e.post_id}`}>
                   {" "}
                   <img class="GridItem" src={e.media} />
                 </Link>
