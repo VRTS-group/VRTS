@@ -47,9 +47,11 @@ export function login(email, password) {
 }
 
 export function stayLogged() {
-  let data = axios.get("/auth/login").then(res => {
+  console.log("stay logged");
+  let data = axios.get("/api/user").then(res => {
     return res.data;
   });
+  console.log({ data });
   return {
     type: STAY_LOGGED,
     payload: data
@@ -154,7 +156,7 @@ export default function(state = initialState, action) {
     case UPDATE_USER:
       return { ...state, user: payload };
     case STAY_LOGGED + "_FULFILLED":
-      return { user: { ...payload, signedIn: true } };
+      return { ...state, user: payload };
     default:
       return state;
     case GET_USER_BY_ID + "_FULFILLED":
