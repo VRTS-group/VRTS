@@ -44,10 +44,13 @@
 }
 #popup-comment {
   width: 90%;
-  height: 30px;
+  /* height: 30px; */
   border: 0px;
   padding: 0px;
   margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 #image-box {
   display: flex;
@@ -69,6 +72,7 @@
   align-items: center;
   flex-direction: column;
   width: 414px;
+  height: auto;
 }
 #popup-button-box {
   width: 100%;
@@ -117,4 +121,16 @@
   border: 0px;
   padding: 0px;
   word-wrap: break-word;
+}
+#send-btn{
+   /* margin-top: 10px; */
+  margin-bottom: 15px; 
+  height: 30px;
+  width: 170px;
+  background-color: white;
+  border: 1px white;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 15px;
 }

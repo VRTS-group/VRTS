@@ -32,11 +32,24 @@ class HomePopUp extends React.Component {
       this.setState({
         posts: res.data,
         user_id: res.data[0].user_id,
-        // post_id: res.data[0].post_id
+        post_id: res.data[0].post_id
       });
       console.log(this.props);
     });
   };
+
+  // newComment = () => {
+  //   axios.post("/api/comment", {
+  //       comment: this.state.comment,
+  //       user_id: this.state.user_id,
+  //       post_id: this.state.post_id
+  //     })
+  //     .then(res => {
+  //       alert("Comment added");
+  //       this.setState({ comment: "" });
+  //     });
+  // };
+
 
   handleInput = e => {
     this.setState({
@@ -59,7 +72,7 @@ class HomePopUp extends React.Component {
     let y = document.getElementById("description");
     let x = document.getElementById("popup-comment");
     if (x.style.display === "none") {
-      x.style.display = "block";
+      x.style.display = "flex";
       y.style.display = "none";
     } else {
       x.style.display = "none";
@@ -67,7 +80,7 @@ class HomePopUp extends React.Component {
   };
 
   render() {
-    console.log(this.state.posts);
+    console.log(this.state);
     return (
       <div className="popup-big-box">
         <div className="popUp">
@@ -96,15 +109,17 @@ class HomePopUp extends React.Component {
                   <p>{e.description}</p>
                 </div>
                 <div id="popup-comment" style={{ display: "none" }}>
-                <input
+                  <input
                   onChange={e => this.handleInput(e)}
                   value={this.state.comment}
                   name="comment"
-                  placeholder="type here"
+                  placeholder="type here :)"
                   // style={{ display: "none" }}
                   id="popup-input"
                   type="text"
-                />
+                  />
+                <button id='send-btn' onClick={this.newComment}>Send</button>
+                  
                 </div>
               </div>
             );
