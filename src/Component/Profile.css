@@ -1,212 +1,203 @@
 .Profile {
-    background-image: linear-gradient(
-        99deg,
-        rgb(29, 28, 28),
-        rgb(59, 6, 2),
-        rgb(61, 39, 34) 40%,
-        rgb(29, 28, 28)
-      );
-      display: flex;
-      justify-content: center;
+  background-image: linear-gradient(
+    99deg,
+    rgb(29, 28, 28),
+    rgb(59, 6, 2),
+    rgb(61, 39, 34) 40%,
+    rgb(29, 28, 28)
+  );
+  display: flex;
+  justify-content: center;
 }
 
 .ProfileContainer {
-    /* height: 100vh; */
-    width: 414px;
-    background-color: black;
-    box-sizing: border-box;
-    margin-top: 9vh;
-    
+  /* height: 100vh; */
+  width: 414px;
+  background-color: black;
+  box-sizing: border-box;
+  margin-top: 9vh;
 }
 
-
 .ProfileCover {
-    height: 150px;
-    width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    
-    align-items: flex-end;
-    
+  height: 150px;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+
+  align-items: flex-end;
 }
 
 .ProfilePic {
-    height: 115px;
-    width: 115px;
-    border-radius: 50%;
-    background-color: black;
-    border: solid black;
-    position: absolute;
+  height: 115px;
+  width: 115px;
+  border-radius: 50%;
+  background-color: black;
+  border: solid black;
+  position: absolute;
+  overflow: hidden;
 }
 
 .ProfileInfo {
-    height: 175px;
-    width: 100%;
-    background-image: linear-gradient(
-        99deg,
-        rgb(82, 82, 82),
-        rgb(82, 82, 82) 40%,
-        rgb(29, 28, 28)
-      );
-    color: white;
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    
+  height: 175px;
+  width: 100%;
+  background-image: linear-gradient(
+    99deg,
+    rgb(82, 82, 82),
+    rgb(82, 82, 82) 40%,
+    rgb(29, 28, 28)
+  );
+  color: white;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
 }
 
 .ProfileUser {
-    height: 150px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
- 
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
-    font-family: 'Baskervville', serif;
+  font-family: "Baskervville", serif;
 }
 
-
 .MyPostsBtn {
-    height: 25px;
-    width: 75px;
-    position: relative;
-    left: 320px;
-    border-radius: 10%;
-    background-image: linear-gradient(
-      99deg,
-      rgb(59, 6, 2),
-      rgb(61, 39, 34) 40%,
-      rgb(49, 22, 22)
-    );
-    color: rgb(255, 255, 255);
-    border: none;
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 5px 5px 0 rgba(0, 0, 0, 0.26);
-    font-family: 'Baskervville', serif;
-    
+  height: 25px;
+  width: 75px;
+  position: relative;
+  left: 320px;
+  border-radius: 10%;
+  background-image: linear-gradient(
+    99deg,
+    rgb(59, 6, 2),
+    rgb(61, 39, 34) 40%,
+    rgb(49, 22, 22)
+  );
+  color: rgb(255, 255, 255);
+  border: none;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 5px 5px 0 rgba(0, 0, 0, 0.26);
+  font-family: "Baskervville", serif;
 }
 
 .ProfileGenre {
-    background-color: rgb(41, 41, 41);
-    height: 70px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* align-items: flex-end; */
-    padding: 5px
+  background-color: rgb(41, 41, 41);
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* align-items: flex-end; */
+  padding: 5px;
 }
 
 .ProfileGenreTitle {
-    height: 75px;
-    width: 165px;
-    display: flex;
-    justify-content: center;
-    
-    align-items: center;
-    font-family: 'Dancing Script', cursive;
-    font-size: 30px;
-    text-shadow: 2px 2px rgb(12, 43, 78);
-    color: white;
+  height: 75px;
+  width: 165px;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+  text-shadow: 2px 2px rgb(12, 43, 78);
+  color: white;
 }
 
 .ProfileBtn {
-    height: 25px;
-    width: 75px;
-    position: relative;
-    display: flex;
-    border-radius: 10%;
-    background-image: linear-gradient(
-      99deg,
-      rgb(59, 6, 2),
-      rgb(61, 39, 34) 40%,
-      rgb(49, 22, 22)
-    );
-    color: rgb(255, 255, 255);
-    border: none;
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 5px 5px 0 rgba(0, 0, 0, 0.26);
-    font-family: 'Baskervville', serif;
-
+  height: 25px;
+  width: 75px;
+  position: relative;
+  display: flex;
+  border-radius: 10%;
+  background-image: linear-gradient(
+    99deg,
+    rgb(59, 6, 2),
+    rgb(61, 39, 34) 40%,
+    rgb(49, 22, 22)
+  );
+  color: rgb(255, 255, 255);
+  border: none;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 5px 5px 0 rgba(0, 0, 0, 0.26);
+  font-family: "Baskervville", serif;
 }
 
 .ProfileGridContainer {
-    display: flex;
-    align-items: center;
-    align-content: space-around;
-    justify-content: space-evenly;
-    margin: 15px 0px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  align-content: space-around;
+  justify-content: space-evenly;
+  margin: 15px 0px;
+  flex-wrap: wrap;
 }
 
 .ProfilePost {
-    /* width: 100%; */
-    border: 1px solid white;
-    height: 170px;
-    width: 170px;
-    position: relative;
-    margin: 15px;
-
+  /* width: 100%; */
+  border: 1px solid white;
+  height: 170px;
+  width: 170px;
+  position: relative;
+  margin: 15px;
 }
 
 .GridItem {
-    height: 150px;
-    width: 150px;
-    border: solid white;
-    /* background-color: black; */
+  height: 150px;
+  width: 150px;
+  border: solid white;
+  /* background-color: black; */
 }
 
-.profile_cover_image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.profile_cover_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.profile_pic_profile_page{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.profile_pic_profile_page {
+  width: 100%;
+  height: auto;
+  /* object-fit: cover;
+  border-radius: 50%; */
 }
 
-.profile_filler{
-    height: 9vh;
-    width: 100%;
+.profile_filler {
+  height: 9vh;
+  width: 100%;
 }
-
 
 .dropDroppers {
-    height: 0px; 
-    width: 20vh;
-    overflow: hidden; 
-    position: fixed;
-    top: 64.5vh;
-    left: 28vw;
-    /* right: 42.5%; */
-    /* right: 0px; */
-    background-color: black;
-    background-image: linear-gradient(
-      99deg,
-      rgb(26, 21, 21),
-      rgb(61, 39, 34) 40%,
-      rgb(65, 28, 28)
-    );
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-    flex-direction: column;
-    border-bottom-left-radius: 6px;
-    color: white;
-    z-index: 10;
-  }
+  height: 0px;
+  width: 20vh;
+  overflow: hidden;
+  position: fixed;
+  top: 64.5vh;
+  left: 28vw;
+  /* right: 42.5%; */
+  /* right: 0px; */
+  background-color: black;
+  background-image: linear-gradient(
+    99deg,
+    rgb(26, 21, 21),
+    rgb(61, 39, 34) 40%,
+    rgb(65, 28, 28)
+  );
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-  .dropper{
-    display: flex;
-    justify-content: center;
-  }
+  flex-direction: column;
+  border-bottom-left-radius: 6px;
+  color: white;
+  z-index: 10;
+}
 
+.dropper {
+  display: flex;
+  justify-content: center;
+}
