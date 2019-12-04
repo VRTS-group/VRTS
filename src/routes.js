@@ -21,8 +21,15 @@ import WriteHome from "./Component/Home_Write";
 import Upload_Write from "./Component/Upload_Write";
 import EditWrite from "./Component/EditWrite";
 import WriteEdit from "./Component/WriteEdditor";
+<<<<<<< HEAD
+import IndivWrite from "./Component/IndivPost_Write";
+import IndivMusic from "./Component/indivMusic"
+import UploadMusic from "./Component/Upload_Music"
+import Upload_Music from "./Component/Upload_Music";
+=======
 // import IndivWrite from "./Component/IndivPost_Write";
 // import IndivMusic from "./Component/indivMusic"
+>>>>>>> master
 
 export default (
   <Switch>
@@ -45,5 +52,6 @@ export default (
     <Route path="/WriteEdit/:id" component={WriteEdit} />
     <Route path="/IndivWrite/:id" component={IndivWrite} />
     <Route path="/IndivMusic/:id" component={IndivMusic} />
+    <Route path="/UploadMusic/:id" component={Upload_Music}/>
   </Switch>
 );

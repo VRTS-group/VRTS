@@ -90,10 +90,10 @@ console.log(this.props.match.params.id)
     
       const title = this.state
       const {Text} = this.state
-      console.log(Text)
-      console.log(title)
-      console.log(this.props.store.userReducer.user.user_id)
-      console.log(this.props.match.params.id)
+      // console.log(Text)
+      // console.log(title)
+      // console.log(this.props.store.userReducer.user.user_id)
+      // console.log(this.props.match.params.id)
       
 
       return (

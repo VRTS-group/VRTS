@@ -168,6 +168,16 @@ background-size: cover;
   background-image: url("https://archive.org/download/no-photo-available/no-photo-available.png");
 }
 
+.EditButtons{
+    width: 100%;
+    background-color: rgb(41, 41, 41);
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* align-items: flex-end; */
+    padding: 5px
+}
 
 
 .EditPostsTitle {

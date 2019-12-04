@@ -20,7 +20,7 @@ class EditWrite extends Component {
   componentDidMount = () => {
     console.log(this.props.match.params.id)
     Axios.get(`/auth/getUserById/${this.props.match.params.id}`).then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       this.setState({
         user: res.data
       })
@@ -34,24 +34,30 @@ class EditWrite extends Component {
         write_id: res.data[0].write_id
      
       })}
-      console.log(this.state)
+      // console.log(this.state)
     })
   }
 
   render() {
-    console.log(this.state.write)
+    // console.log(this.state.write)
+    // console.log(this.props.match.params.id)
     return (
       <div className="Profile">
        
         <div className="ProfileContainer">
-        <div className="profile_filler">p</div>
-      
+        {/* <div className="profile_filler">p</div> */}
+        <div className="NewPostBox">
+           <Link to="/uploadW" ><button  className="NewPostAdd">
+              <div className="PlusIcon"></div>
+              <div className="NewPostTitle">New Post</div>
+            </button></Link>
+          </div>
       
 
           <div className="ProfileGenre">
-            <button className="ProfileBtn">Music</button>
-            <div className="ProfileGenreTitle">WRITE</div>
-            <button className="ProfileBtn">Art</button>
+          <Link to={`/uploadMusic/${this.props.match.params.id}`}><button className="ProfileBtn"> Music</button></Link>
+            <div className="ProfileGenreTitle">My Posts</div>
+            <Link to={`/upload/${this.props.match.params.id}`}><button className="ProfileBtn"> Art</button></Link>
           </div>
           {/* // */}
           <div className="ProfileGridContainer">
