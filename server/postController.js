@@ -3,7 +3,7 @@ module.exports = {
     // console.log("hit");
     const db = req.app.get("db");
     let post = await db.getPost();
-    console.log(post);
+    // console.log(post);
     res.status(200).send(post);
   },
   addPosts: async (req, res) => {
@@ -38,12 +38,13 @@ module.exports = {
   getPostById: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    console.log(req.params)
+    // console.log(req.params)
     db.getPostById([+id])
-    
+
       .then(db => {
-        console.log(db)
-        res.status(200).send(db)})
+        // console.log(db)
+        res.status(200).send(db);
+      })
       .catch(err => console.log(err));
   },
   getPostByUser: (req, res) => {
