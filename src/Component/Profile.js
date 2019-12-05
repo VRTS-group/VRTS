@@ -70,7 +70,7 @@ class Profile extends Component {
     return (
       <div className="Profile">
         <div className="ProfileContainer">
-          <div className="profile_filler">p</div>
+          <div className="profile_filler"></div>
 
           <div className="ProfileCover">
             {this.state.user.map(e => {
@@ -116,8 +116,8 @@ class Profile extends Component {
             </Link> */}
           </div>
           <div className="ProfileGenre">
-            <button className="ProfileBtn">My Posts</button>
-            <div id="ProfileGenreTitle" onClick={this.toggleDropper}>
+            <button className="linksBtn">My Posts</button>
+             <div className="ProfileGenreTitle" onClick={this.toggleDropper}>
               ART
             </div>
             <div className="dropper">
@@ -134,7 +134,7 @@ class Profile extends Component {
             </div>
 
             <Link to={`/saves/${this.props.match.params.id}`}>
-              <button className="ProfileBtn">My Saves</button>
+              <button className="linksBtn">My Saves</button>
             </Link>
           </div>
           {/* // */}

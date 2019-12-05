@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Profile.css";
+import "./Upload.css";
 import {connect} from 'react-redux';
 import {getUserById} from '../redux/userReducer';
 import {getWriteByUser} from '../redux/writeReducer'
@@ -44,7 +44,7 @@ class EditWrite extends Component {
     return (
       <div className="Profile">
        
-        <div className="ProfileContainer">
+        <div className="UploadContainer">
         {/* <div className="profile_filler">p</div> */}
         <div className="NewPostBox">
            <Link to="/uploadW" ><button  className="NewPostAdd">
@@ -54,10 +54,10 @@ class EditWrite extends Component {
           </div>
       
 
-          <div className="ProfileGenre">
-          <Link to={`/uploadMusic/${this.props.match.params.id}`}><button className="ProfileBtn"> Music</button></Link>
-            <div className="ProfileGenreTitle">My Posts</div>
-            <Link to={`/upload/${this.props.match.params.id}`}><button className="ProfileBtn"> Art</button></Link>
+          <div className="EditButtons">
+          <Link to={`/uploadMusic/${this.props.match.params.id}`}><button className="ProfileBtn-"> Music</button></Link>
+            <div className="EditPostsTitle">My Posts</div>
+            <Link to={`/upload/${this.props.match.params.id}`}><button className="ProfileBtn-"> Art</button></Link>
           </div>
           {/* // */}
           <div className="ProfileGridContainer">

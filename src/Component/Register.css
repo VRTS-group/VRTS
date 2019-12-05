@@ -4,12 +4,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: linear-gradient(
+    /* background-image: linear-gradient(
         99deg,
         rgb(82, 82, 82),
         rgb(82, 82, 82) 40%,
         rgb(29, 28, 28)
-    );
+    ); */
+    background-color: var(--dark-red);
       text-align: center;
 }
 #register-container{
@@ -21,6 +22,7 @@
     height: 500px;
     border: 2px black solid;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: var(--grey);
 }
 .register-inputs{
     width: 260px;

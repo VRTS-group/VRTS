@@ -1,19 +1,21 @@
 .Profile {
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     99deg,
     rgb(29, 28, 28),
     rgb(59, 6, 2),
     rgb(61, 39, 34) 40%,
     rgb(29, 28, 28)
-  );
+  ); */
+  background-color: rgb(34, 23, 23);
   display: flex;
   justify-content: center;
+
 }
 
 .ProfileContainer {
   /* height: 100vh; */
   width: 414px;
-  background-color: black;
+  background-color: var(--grey);
   box-sizing: border-box;
   margin-top: 9vh;
 }
@@ -36,17 +38,19 @@
   border: solid black;
   position: absolute;
   overflow: hidden;
+  margin-bottom: 50px;
 }
 
 .ProfileInfo {
   height: 175px;
   width: 100%;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     99deg,
     rgb(82, 82, 82),
     rgb(82, 82, 82) 40%,
     rgb(29, 28, 28)
-  );
+  ); */
+  background-color: var(--grey);
   color: white;
   display: flex;
   box-sizing: border-box;
@@ -86,10 +90,12 @@ p {
 }
 
 .ProfileGenre {
-  background-color: rgb(41, 41, 41);
+  /* background-color: rgb(41, 41, 41); */
+  background-color: var(--dark-red);
   height: 70px;
+  position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   /* align-items: flex-end; */
   padding: 5px;
@@ -100,9 +106,9 @@ p {
   width: 165px;
   display: flex;
   justify-content: center;
-
+  font-family: 'Cinzel', serif;
   align-items: center;
-  font-family: "Dancing Script", cursive;
+  /* font-family: "Dancing Script", cursive; */
   font-size: 30px;
   text-shadow: 2px 2px rgb(12, 43, 78);
   color: white;
@@ -114,12 +120,12 @@ p {
   position: relative;
   display: flex;
   border-radius: 10%;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     99deg,
     rgb(59, 6, 2),
     rgb(61, 39, 34) 40%,
     rgb(49, 22, 22)
-  );
+  ); */
   color: rgb(255, 255, 255);
   border: none;
   text-decoration: none;
@@ -175,18 +181,21 @@ p {
   height: 0px;
   width: 20vh;
   overflow: hidden;
-  position: fixed;
-  top: 64.5vh;
-  left: 28vw;
+  position: absolute;
+  top: 80px;
+  left: 133px;
+  /* top: 64.5vh; */
+  /* left: 28vw; */
   /* right: 42.5%; */
   /* right: 0px; */
   background-color: black;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     99deg,
     rgb(26, 21, 21),
     rgb(61, 39, 34) 40%,
     rgb(65, 28, 28)
-  );
+  ); */
+  background-color: var(--dark-red);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -200,4 +209,5 @@ p {
 .dropper {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
