@@ -187,8 +187,9 @@ toggleDropper = () => {
       
 
       return (
-        <div className="wBack">
-          <div className="wFill">p</div>
+        <div className="IndivWrite">
+          <div className="IndivWriteContainer">
+
         
                 {/* <p>{this.state.title}</p> */}
              <h3 className="wover"
@@ -222,6 +223,8 @@ toggleDropper = () => {
         </div>
        
       
+       
+        </div>
         </div>
       );
   }

@@ -159,7 +159,7 @@ class IndivPost extends Component {
           <br />
           <div id='baby-button-box'>
             <button onClick={this.newComment} className="button-indiv">
-              Write a comment
+              Post
             </button>
             <br />
             <button onClick={this.clear} className="button-indiv">
