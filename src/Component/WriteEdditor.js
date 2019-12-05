@@ -50,7 +50,9 @@ class Update extends Component {
           
       }
       this.rteChange = this.rteChange.bind(this);
-      this.potato = ''      
+      this.potato = ''  
+      this.dropDropped = React.createRef(); 
+
   }
 
   componentDidMount(){
@@ -86,6 +88,19 @@ console.log(this.props.match.params.id)
       
   }
 
+  toggleDropper = () => {
+    let { current } = this.dropDropped;
+    this.setState({ toggleDropper: true });
+    if (current.classList.contains("write-show-animation")) {
+      current.classList.add("write-hide-animation");
+      current.classList.remove("write-show-animation");
+      this.setState({ toggleBurger: false });
+    } else {
+      current.classList.add("write-show-animation");
+      current.classList.remove("write-hide-animation");
+    }
+  };
+
   render(props) {
     
       const title = this.state
@@ -97,22 +112,23 @@ console.log(this.props.match.params.id)
       
 
       return (
-        <div>
+        <div
+        className="wBack">
           <div className="uFill">p</div>
-                <button
-                    onClick={()=> {
-                        this.props.editWrite(this.props.match.params.id, this.state.title, this.state.description, this.state.tags, this.state.cover_photo, this.state.comments) 
-                      this.render()
-                    }}    
-                >Save</button>
-                <input
+          <input
           className='title'
           name='title'
           value={this.state.title}
           onChange={e => this.handleChange(e)}
           maxLength='10'
           type='text'/>
-          <input
+          
+          <button onClick={this.toggleDropper} className="linksBtn">Edit</button>
+                
+                <div className="droppers">
+              <div className="dropDropped" ref={this.dropDropped}>
+              
+              <input
           className='cover_photo'
           name='cover_photo'
           value={this.state.cover_photo}
@@ -126,17 +142,22 @@ console.log(this.props.match.params.id)
           onChange={e => this.handleChange(e)}
           maxLength='10'
           type='text'/>
-          <input
-          className='tags'
-          name='tags'
-          value={this.state.tags}
-          onChange={e => this.handleChange(e)}
-          maxLength='10'
-          type='text'/>
+          
+          <button
+          className="linksBtn"
+                    onClick={()=> {
+                        this.props.editWrite(this.props.match.params.id, this.state.title, this.state.description, this.state.tags, this.state.cover_photo, this.state.comments) 
+                      this.render()
+                    }}    
+                >Save</button>
+              </div>
+            </div>
+                
          
           
         <div>
           <ReactQuill 
+          className ="potato"
               theme="snow"  
               modules={this.modules}
               formats={this.formats} 

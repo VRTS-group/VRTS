@@ -9,3 +9,79 @@
     width: 100%;
     background-color: black;
 }
+
+.dropDropped {
+    height: 0px;
+    width: 40vh;
+    overflow: hidden;
+    position: fixed;
+    top: 135px;
+    left:90px;
+    /* top: 64.5vh; */
+    /* left: 28vw; */
+    /* right: 42.5%; */
+    /* right: 0px; */
+    background-color: black;
+    /* background-image: linear-gradient(
+      99deg,
+      rgb(26, 21, 21),
+      rgb(61, 39, 34) 40%,
+      rgb(65, 28, 28)
+    ); */
+    background-color: rgb(41, 41, 41);;
+    border-radius: 90px;
+
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+  
+    flex-direction: column;
+    border-top-right-radius: 6px;
+    color: white;
+    z-index: 10;
+  }
+
+  .WriteTitle{
+      width: 100%
+  }
+  
+  .dropper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .wPopAuthor{
+      display: flex;
+      justify-content: space-around;
+      min-width: 20px;;
+      
+  }
+  
+  .write-hide-animation {
+    animation-name: write-hide;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  .write-show-animation {
+    animation-name: write-show;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  @keyframes write-hide {
+    0% {
+      min-height: auto;
+    }
+    100% {
+      height: 0px;
+    }
+  }
+  @keyframes write-show {
+    0% {
+      height: 0px;
+    }
+    100% {
+      height: auto;
+    }
+  }

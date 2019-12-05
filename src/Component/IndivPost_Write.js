@@ -196,13 +196,13 @@ toggleDropper = () => {
              <div className="po"
              onClick={this.toggleDropper}>i</div>
               <div className="droppers">
-              <div className="dropDroppers" ref={this.dropDroppers}>
+              <div className="dropDropperss" ref={this.dropDroppers}>
                 <p></p>
       <img className="wImage" src={this.state.cover_photo}/>
                 
          <div className = "wPopAuthor">  <p>Author:  </p>   <p>{this.state.user_id}</p> </div>  
       <p>{this.state.description}</p>
-      <button className="linksBtn"> save</button>
+      {/* <button className="linksBtn"> save</button> */}
 <p></p>
               </div>
             </div>

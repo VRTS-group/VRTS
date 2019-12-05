@@ -52,6 +52,7 @@ class Upload_Write extends Component {
       this.rteChange = this.rteChange.bind(this);
       this.potato = ''
       this.porta = "fknewkfjnerkfjnwkejfnwr"
+      this.dropDropped = React.createRef(); 
   }
 
   handleChange = e => {
@@ -69,6 +70,19 @@ class Upload_Write extends Component {
       
   }
 
+  toggleDropper = () => {
+    let { current } = this.dropDropped;
+    this.setState({ toggleDropper: true });
+    if (current.classList.contains("write-show-animation")) {
+      current.classList.add("write-hide-animation");
+      current.classList.remove("write-show-animation");
+      this.setState({ toggleBurger: false });
+    } else {
+      current.classList.add("write-show-animation");
+      current.classList.remove("write-hide-animation");
+    }
+  };
+
   render(props) {
       // console.log("potato2",this.potato)
      
@@ -78,37 +92,49 @@ class Upload_Write extends Component {
       // console.log(this.props.store.userReducer.user.user_id)
 
       return (
-        <div>
+        <div className="wBack">
             <div className="uFill">filler</div>
-          <button
-                    onClick={()=> {
-                        this.props.addWrite(this.props.store.userReducer.user.user_id, this.state.comments, this.state.title, this.state.description, this.state.tags, this.state.views, this.state.saves, this.state.cover_photo  ) 
-                      this.render()
-                    }}    
-                >Save</button>
-          <input
-          className='title'
-          name='title'
-          value={this.state.title}
-          onChange={e => this.handleChange(e)}
-          maxLength='10'
-          type='text'/>
-          <input
+            <button onClick={this.toggleDropper} className="linksBtn"><b>UPLOAD</b></button>
+            <div className="droppers">
+              <div className="dropDropped" ref={this.dropDropped}>
+              <input
           className='cover_photo'
           name='cover_photo'
           value={this.state.cover_photo}
           onChange={e => this.handleChange(e)}
-          maxLength='10'
-          type='text'/>
+          
+          type='text'
+          placeholder="Media url"/>
           <input
           className='description'
           name='description'
           value={this.state.description}
           onChange={e => this.handleChange(e)}
-          maxLength='10'
-          type='text'/>
+          maxLength='1000'
+          type='text'
+          placeholder="Media url"/>
+              <button className="linksBtn"
+                    onClick={()=> {
+                        this.props.addWrite(this.props.store.userReducer.user.user_id, this.state.comments, this.state.title, this.state.description, this.state.tags, this.state.views, this.state.saves, this.state.cover_photo  ) 
+                      this.render()
+                      
+                    }}    
+                ><b>Save</b></button>
+              </div>
+            </div>
+         
+          <input
+          className='title'
+          name='title'
+          value={this.state.title}
+          onChange={e => this.handleChange(e)}
+          maxLength='75'
+          type='text'
+          placeholder="Title"
+          className="WriteTitle"/>
           
-        <div>
+          
+        <div className ="potato">
           <ReactQuill 
               theme="snow"  
               modules={this.modules}
