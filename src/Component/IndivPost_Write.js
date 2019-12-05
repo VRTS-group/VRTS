@@ -3,6 +3,7 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {getWriteById, editWrite} from '../redux/writeReducer'
 import {getUser} from '../redux/userReducer'
+import './IndivPost_WRite.css'
 
 
 
@@ -18,28 +19,28 @@ class Update extends Component {
       super(props);
       this.modules = {
           toolbar: [
-            [{ 'header': [false, 1, 2, 3] }],
-            [{ 'align': [] }],
-            ['bold', 'italic', 'underline', 'strike'],
-            [{'list': 'ordered'}, {'list': 'bullet'}],
-            [{ 'indent': '-1'}, { 'indent': '+1' }],
-            ['link', 'image'],
-            [{ 'font': [] }],
-            [{ 'script': 'sub'}, { 'script': 'super' }],
-            [{ 'color': [] }, { 'background': [] }],
-            ['clean']
+            // [{ 'header': [false, 1, 2, 3] }],
+            // [{ 'align': [] }],
+            // ['bold', 'italic', 'underline', 'strike'],
+            // [{'list': 'ordered'}, {'list': 'bullet'}],
+            // [{ 'indent': '-1'}, { 'indent': '+1' }],
+            // ['link', 'image'],
+            // [{ 'font': [] }],
+            // [{ 'script': 'sub'}, { 'script': 'super' }],
+            // [{ 'color': [] }, { 'background': [] }],
+            // ['clean']
           ]
       };
       this.formats = [
-          'header',
-          'align',
-          'bold', 'italic', 'underline', 'strike',
-          'list', 'bullet',
-          'indent', 'indent',
-          'link', 'image',
-          'font',
-          'script', 'script',
-          'color', 'background'
+          // 'header',
+          // 'align',
+          // 'bold', 'italic', 'underline', 'strike',
+          // 'list', 'bullet',
+          // 'indent', 'indent',
+          // 'link', 'image',
+          // 'font',
+          // 'script', 'script',
+          // 'color', 'background'
       ];
       this.state = {
           comments: '',
@@ -60,8 +61,9 @@ class Update extends Component {
       comment_id: 0
           
       }
-      this.rteChange = this.rteChange.bind(this);
-      this.potato = ''      
+      // this.rteChange = this.rteChange.bind(this);
+      this.potato = ''    
+      this.dropDroppers = React.createRef();  
   }
 
   componentDidMount(){
@@ -99,18 +101,18 @@ console.log(this.props.match.params.id)
   }
 
 
-  handleChange = e => {
-    const {name, value} = e.target
-    this.setState ({
-        [name]: value
-    })
-}
+//   handleChange = e => {
+//     const {name, value} = e.target
+//     this.setState ({
+//         [name]: value
+//     })
+// }
 
-handleText = e => {
-  this.setState({
-    [e.target.name]: e.target.value
-  });
-};
+// handleText = e => {
+//   this.setState({
+//     [e.target.name]: e.target.value
+//   });
+// };
 
 handleSave = () => {
   axios
@@ -152,37 +154,67 @@ componentDidUpdate(prevState) {
   }
 }
 
-  rteChange = (content, delta, source, editor) => {
-      this.state.comments = (editor.getHTML()); // rich text
-      this.potato = (editor.getText()); // plain text
-      console.log("potato", this.potato)
-      console.log(editor.getLength()); // number of characters
-      
+toggleDropper = () => {
+  let { current } = this.dropDroppers;
+  this.setState({ toggleDropper: true });
+  if (current.classList.contains("write-show-animation")) {
+    current.classList.add("write-hide-animation");
+    current.classList.remove("write-show-animation");
+    this.setState({ toggleBurger: false });
+  } else {
+    current.classList.add("write-show-animation");
+    current.classList.remove("write-hide-animation");
   }
+};
+
+  // rteChange = (content, delta, source, editor) => {
+  //     this.state.comments = (editor.getHTML()); // rich text
+  //     this.potato = (editor.getText()); // plain text
+  //     console.log("potato", this.potato)
+  //     console.log(editor.getLength()); // number of characters
+      
+  // }
 
   render(props) {
     
-      const title = this.state
-      const {Text} = this.state
-      console.log(Text)
-      console.log(title)
-      console.log(this.props.store.userReducer.user.user_id)
-      console.log(this.props.match.params.id)
+      // const title = this.state
+      // const {Text} = this.state
+      // console.log(Text)
+      // console.log(title)
+      // console.log(this.props.store.userReducer.user.user_id)
+      // console.log(this.props.match.params.id)
+      // console.log(this.state.title)
       
 
       return (
-        <div>
-         <div className="iFill">p</div> 
+        <div className="wBack">
+          <div className="wFill">p</div>
+        
                 {/* <p>{this.state.title}</p> */}
+             <h3 className="wover"
+             >     {this.state.title} </h3> 
+             <div className="po"
+             onClick={this.toggleDropper}>i</div>
+              <div className="droppers">
+              <div className="dropDroppers" ref={this.dropDroppers}>
+                <p></p>
+      <img className="wImage" src={this.state.cover_photo}/>
                 
-         
+         <div className = "wPopAuthor">  <p>Author:  </p>   <p>{this.state.user_id}</p> </div>  
+      <p>{this.state.description}</p>
+      <button className="linksBtn"> save</button>
+<p></p>
+              </div>
+            </div>
+
+
           
-        <div>
+        <div className ="potato">
           <ReactQuill 
               theme="snow"  
               modules={this.modules}
               formats={this.formats} 
-              onChange={this.rteChange}
+              // onChange={this.rteChange}
              
            
               value={this.state.comments || ''}
