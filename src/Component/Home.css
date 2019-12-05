@@ -327,9 +327,9 @@
   /* width: 100px; */
   padding: 5px 5px;
   background-color: transparent;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   color: white;
-  border: 3px solid black;
+  border-bottom: 3px solid var(--grey);
   font-family: 'Cinzel', serif;
   font-size: 27px;
   margin: 10px 0px;
