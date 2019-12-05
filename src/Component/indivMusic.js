@@ -115,23 +115,20 @@ class IndivPost extends Component {
   render() {
     let { comment } = this.state;
     console.log(this.state.music);
-    // console.log(this.state.username);
-    // console.log(this.state.username);
-    // console.log(this.state.posts);
-    // console.log(this.state.user);
-    // console.log(this.props.redux.userReducer.user.username);
-    // console.log(this.props);
+
     return (
       <div className="IndivMusic">
         <div className="IndivMusicContainer">
             <div className="IndivMusicTitle">
-          <div className="username">
+          <div className="IndivMusicPostTitle">
           {this.state.music.map(e => {
             return <Link to={`/profile/${e.user_id}`}><h3>{e.username}</h3></Link>;
+            console.log(e)
           })}
-        </div>
+          <h3>{this.state.title}</h3>
+            </div>
+        
 
-                <h3>{this.state.title}</h3>
               </div>
               <div className="PostVidBox">
                 <div className="PostVid">
@@ -145,14 +142,13 @@ class IndivPost extends Component {
                     Save
                   </button> */}
               </div>
-              <div className="description">
+              <div className="IndivMusicDescription">
                 {/* <h3> Description:</h3> */}
                 <h3 style={{marginTop: 10, marginBottom: 10}}>{this.state.description}</h3>
               </div>
 
-            </div>
-            <section id="comment-section">
-          <div id='comment-bar'>
+            <di className="IndivMusicComment">
+          <div className="IndivMusicCommentBar">
           <textarea
             className="text-box"
             name="comment"
@@ -226,8 +222,8 @@ class IndivPost extends Component {
           </div>
 
           {/* <button>Show more</button> */}
-        </section>
-
+        </di>
+        </div>
           </div>
 
     );
