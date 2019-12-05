@@ -163,7 +163,7 @@ class Home extends Component {
                     <div id="home-popup-content">
                       <div id="popup-pic">
                         <Link to={`/indivpost/${e.post_id}`}>
-                          <img src={e.media} alt={e.user_id} />
+                          <img src={e.media} alt={e.title} />
                         </Link>
                       </div>
                       <div id="popup-content-info">
