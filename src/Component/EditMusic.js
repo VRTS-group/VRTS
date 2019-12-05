@@ -101,7 +101,7 @@ class EditPage extends Component {
     //   console.log(this.props)
     // console.log(this.state);
     // console.log(this.state.posts);
-
+console.log(this.state)
     return (
       <div className="EditContainer">
 
@@ -109,7 +109,7 @@ class EditPage extends Component {
           return (
               <div className="EditInfo">
                   <div className="UploadGridItemTwo">
-                    <img className="EditPostMedia" src={this.state.media}/>
+                    <img className="EditPostMedia" src={this.state.cover_photo}/>
                   </div>
                   <div className="EditInputs">
                   <div className="EditInputTitles">Media url</div>
