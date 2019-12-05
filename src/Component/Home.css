@@ -6,7 +6,7 @@
     rgb(61, 39, 34) 40%,
     rgb(29, 28, 28)
   ); */
-  background-color: var(--grey);
+  background-color: rgb(34, 23, 23);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -15,14 +15,15 @@
   padding-bottom: 200px;
 }
 .home-container {
-  background-color: black;
+  background-color: var(--grey);
 
   width: 414px;
 
   /* flex-direction: column; */
   flex-wrap: wrap;
   align-items: center;
-  width: 100%;
+  border: solid black;
+  
 }
 .home-pic {
   height: 30vh;
@@ -232,9 +233,9 @@
   height: 40px;
   /* width: 100px; */
   background-color: transparent;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   color: white;
-  border: 3px solid black;
+  border-bottom: solid var(--grey);
   font-family: 'Cinzel', serif;
   font-size: 27px;
   margin: 10px 0px;

@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   font-family: 'Baskervville', serif;
+  background-color: rgb(34, 23, 23);
   /* margin-bottom: 100px; */
 }
 
@@ -23,7 +24,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
+  border: solid black;
+  min-height: 100vh;
+  
 }
 
 .NewPostBox {
@@ -71,17 +75,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 155px;
-    margin-top: 25px;
+    font-size: 125px;
+    margin-top: 50px;
     height: 120px;
+    color: white;
     /* font-family: 'Cinzel', serif; */
     
   }
 
 .NewPostTitle {
     margin-bottom: 70px;
-    font-size: 25px;
-    /* color: white; */
+    font-size: 17px;
+    color: white;
     font-family: 'Cinzel', serif;
 }
 
@@ -192,12 +197,13 @@ background-size: cover;
     justify-content: space-around;
     align-items: center;
     /* align-items: flex-end; */
-    padding: 5px
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 
 .EditPostsTitle {
-    height: 75px;
+    /* height: 75px; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -209,6 +215,25 @@ background-size: cover;
     font-size: 30px;
     text-shadow: 2px 2px rgb(12, 43, 78);
     color: white;
+}
+
+.EditGenreBox {
+  height: 50px;
+  width: 100%;
+  background-color: rgb(30, 30, 30);
+  display: flex;
+  justify-content: center;
+
+}
+
+.EditGenreTitle {
+  height: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  
 }
 
 .UploadGridContainer {

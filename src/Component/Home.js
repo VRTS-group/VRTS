@@ -122,9 +122,9 @@ class Home extends Component {
             </div>
           </div> */}
           <div id="genre-big-box">
-            <button id="ProfileGenreTitle" onClick={this.toggleDropper}>
+            <div id="ProfileGenreTitle" onClick={this.toggleDropper}>
               ART
-            </button>
+            </div>
           </div>
           <div className="dropper">
 
@@ -139,7 +139,7 @@ class Home extends Component {
                 </div>
 
 
-        </div>
+        
         <div className="dashboard">
           {this.state.posts.map(e => {
             {
@@ -212,6 +212,7 @@ class Home extends Component {
               </div>
             );
           })}
+        </div>
         </div>
       </div> // closing tag for home
     );

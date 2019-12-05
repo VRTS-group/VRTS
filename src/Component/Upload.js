@@ -231,6 +231,9 @@ this.setState({
           <div className="EditPostsTitle">My Posts</div>
           <Link to={`/EditWrite/${this.state.user_id}`}><button className="ProfileBtn-"> Writting</button></Link>
           </div>
+          <div className="EditGenreBox">
+            <div className="EditGenreTitle">Art</div>
+          </div>
 
           <div className="UploadGridContainer" >
             {this.state.posts.map(e => {

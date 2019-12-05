@@ -3,6 +3,7 @@ import "./Settings.css";
 import {connect} from 'react-redux';
 import {getUserById} from '../redux/userReducer';
 import {editUser} from '../redux/userReducer';
+import {Link} from 'react-router-dom'
 
 class Settings extends Component {
   constructor(props) {
@@ -101,11 +102,16 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
               onChange={e => this.setState({ contact: e.target.value })}
             />
           <div className="SettingsBtns">
+          <Link to={`/profile/${this.props.store.userReducer.user.user_id}`}>
+
             <button className="SaveBtn" onClick={() => {
+              alert("Saved")
               this.props.editUser(this.props.store.userReducer.user.user_id, username, this.state.profile_pic, this.state.cover_pic,
                 this.state.real_name, this.state.contact, this.state.bio)
               this.render()
+              
             }}>Save</button>
+          </Link>
           </div>
           </div>
           {/* //end */}
