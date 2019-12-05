@@ -67,7 +67,7 @@ class EditWrite extends Component {
           
               {this.state.write.map(e=> {
                 return(
-                  <Link to={`/WriteEdit/${e.write_id}`}> <img class="GridItem" src = {e.media}/></Link>
+                  <Link to={`/WriteEdit/${e.write_id}`}> <img class="GridItem" src = {e.cover_photo}/></Link>
                 )
               })}
 
