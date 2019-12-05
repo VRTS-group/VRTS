@@ -51,9 +51,10 @@ module.exports = {
       req.session.user = foundUser;
       res.status(200).send(req.session.user);
     } else {
+      // alert("wrong password");
       res.status(401).send("incorrect password");
     }
-    console.log(req.session);
+    // console.log(req.session);
   },
   logout: (req, res) => {
     // console.log('hit')

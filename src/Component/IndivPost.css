@@ -5,12 +5,11 @@
   /* --grey: #363636; */
   --white: #ffffff;
 }
-#indiv-post-page{
+#indiv-post-page {
   display: flex;
   /* align-items: center; */
   justify-content: center;
   background-color: var(--grey);
-  
 }
 .indiv-post {
   margin-top: 100px;
@@ -30,9 +29,6 @@
   justify-content: center;
 }
 
-
-
-
 .post-picture {
   width: 400px;
   height: 300px;
@@ -40,9 +36,8 @@
   align-items: center;
   justify-content: center;
 }
-#indiv-user-info{
+#indiv-user-info {
   display: flex;
-
 }
 .username {
   margin-top: 0px;
@@ -50,14 +45,14 @@
   width: 400px;
   display: flex;
 }
-#p-pic{
+#p-pic {
   height: 30px;
 }
-.username h3{
+.username h3 {
   margin-bottom: 5px;
   margin-top: 0px;
 }
-#title-box{
+#title-box {
   padding: 0px;
   padding-left: 3px;
   /* background-color: white; */
@@ -68,7 +63,7 @@
   font-size: 18px;
   margin-bottom: 10px;
 }
-#title-box h2{
+#title-box h2 {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -83,60 +78,59 @@
   height: 5vh;
   color: var(--white);
 } */
-.delete-button-indiv{
-  box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 5px 5px 0 rgba(0, 0, 0, 0.26); 
-    font-family: 'Cinzel', serif;
-    /* height: 30px; */
-    /* width: 50px; */
-    background-color: white;
-    border: 1px white;
-    color: black;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 15px;
-    margin: 10px 0px;
-    font-size: 15px;
+.delete-button-indiv {
+  box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 5px 5px 0 rgba(0, 0, 0, 0.26);
+  font-family: "Cinzel", serif;
+  height: 30px;
+  width: 50px;
+  background-color: white;
+  border: 1px white;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 15px;
+  margin: 10px 0px;
+  font-size: 15px;
+  margin-top: 13%;
 }
 .button-indiv {
-    box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 5px 5px 0 rgba(0, 0, 0, 0.26); 
-    font-family: 'Cinzel', serif;
-    height: 30px;
-    width: 170px;
-    background-color: white;
-    border: 1px white;
-    color: black;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 15px;
-    margin: 0px 15px;
-    font-size: 16px;
+  box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 5px 5px 0 rgba(0, 0, 0, 0.26);
+  font-family: "Cinzel", serif;
+  height: 30px;
+  width: 170px;
+  background-color: white;
+  border: 1px white;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 15px;
+  margin: 0px 15px;
+  font-size: 16px;
 }
 .button-indiv:active {
   background-color: black;
   color: white;
 }
-.description{
+.description {
   background-color: white;
   color: black;
   font-size: 17px;
   /* padding: 5px; */
   /* margin: 5px; */
-  
 }
-.description h3{
+.description h3 {
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px;
-  
 }
-#comment-bar{
+#comment-bar {
   width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-#baby-button-box{
+#baby-button-box {
   display: flex;
   justify-content: center;
   /* flex-direction: column; */
@@ -146,7 +140,12 @@
 .button-on-top {
   position: absolute;
   top: 92%;
-  left: 89%;
+  left: 94%;
+  background-color: var(--grey);
+  border-radius: 50%;
+  border: none;
+  color: white;
+  /* width: 50px; */
 }
 
 .text-box {
@@ -191,22 +190,26 @@
   color: white;
   position: relative;
 }
-.comment-area h5{
+.comment-area h5 {
   margin: 9px;
 }
 .profile-comment {
-  width: 15%;
-  height: 25%;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  margin-top: 55%;
+  margin-left: 2.5%;
 }
 
 .comment-user {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  border: 1px white solid;
+  /* border: 1px white solid; */
   margin-bottom: 5%;
   width: 400px;
+  /* background-color: transparent; */
 }
