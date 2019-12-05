@@ -70,27 +70,27 @@ class Profile extends Component {
     return (
       <div className="Profile">
         <div className="ProfileContainer">
-          <div className="profile_filler"></div>
+          {/* <div className="profile_filler"></div> */}
 
           <div className="ProfileCover">
             {this.state.user.map(e => {
               // console.log(e);
               return (
-                <div>
+                // <div>
                   <img className="profile_cover_image" src={e.cover_pic}></img>
-                </div>
+                // </div>
               );
             })}
             <div className="ProfilePic">
               {this.state.user.map(e => {
                 // console.log(e);
                 return (
-                  <div>
+                  // <div>
                     <img
                       className="profile_pic_profile_page"
                       src={e.profile_pic}
                     ></img>
-                  </div>
+                  // {/* </div> */}
                 );
               })}
               {/* <img src = {this} */}
@@ -118,7 +118,7 @@ class Profile extends Component {
           <div className="ProfileGenre">
             <button className="linksBtn">My Posts</button>
              <div className="ProfileGenreTitle" onClick={this.toggleDropper}>
-              ART
+              <div id='genre-title'>ART</div>
             </div>
             <div className="dropper">
               <div className="dropDroppers" ref={this.dropDroppers}>
