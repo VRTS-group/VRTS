@@ -122,15 +122,3 @@
   padding: 0px;
   word-wrap: break-word;
 }
-#send-btn{
-   /* margin-top: 10px; */
-  margin-bottom: 15px; 
-  height: 30px;
-  width: 170px;
-  background-color: white;
-  border: 1px white;
-  color: black;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 15px;
-}

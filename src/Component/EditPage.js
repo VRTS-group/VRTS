@@ -138,7 +138,7 @@ class EditPage extends Component {
             <div className="SaveEdit">
               <button className="SaveEditBtn" onClick={this.saveEdit}
               >Save</button>
-              <button onClick={this.editDelete}>Delete</button>
+              <button onClick={this.editDelete} className="SaveEditBtn">Delete</button>
               </div>
             </div>
           );

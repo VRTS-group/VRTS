@@ -147,6 +147,7 @@ class IndivPost extends Component {
             );
           })}
         </div>
+        
         <section id="comment-section">
           <div id='comment-bar'>
           <textarea

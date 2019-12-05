@@ -166,7 +166,7 @@ this.setState({
         <div className="UploadContainer">
           <div className="NewPostBox">
             <button onClick={this.toggleAddPopup} className="NewPostAdd">
-              <div className="PlusIcon"></div>
+              <div className="PlusIcon">+</div>
               <div className="NewPostTitle">New Post</div>
             </button>
           </div>
@@ -241,9 +241,9 @@ this.setState({
           </div>
           {/* //popup end */}
           <div className="EditButtons">
-          <Link to={`/upload/${this.state.user_id}`}><button className="ProfileBtn">Art</button></Link>
+          <Link to={`/upload/${this.state.user_id}`}><button className="ProfileBtn-">Art</button></Link>
           <div className="EditPostsTitle">My Posts</div>
-          <Link to={`/EditWrite/${this.state.user_id}`}><button className="ProfileBtn"> Writting</button></Link>
+          <Link to={`/EditWrite/${this.state.user_id}`}><button className="ProfileBtn-"> Writting</button></Link>
           </div>
 
           <div className="UploadGridContainer" >

@@ -84,10 +84,10 @@ class Saves extends Component {
           </div>
           <div className="ProfileGenre">
             <Link to={`/profile/${this.props.match.params.id}`}>
-            <button className="ProfileBtn">My Posts</button>
+            <button className="linksBtn">My Posts</button>
             </Link>
             <div className="ProfileGenreTitle">My Saves</div>
-              <button className="ProfileBtn">My Saves</button>
+              <button className="linksBtn">My Saves</button>
           </div>
           <div className="ProfileGridContainer">
         {this.state.saves.map(e => {

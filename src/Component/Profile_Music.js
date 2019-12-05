@@ -58,7 +58,7 @@ class Profile extends Component {
     return (
       <div className="Profile">
         <div className="ProfileContainer">
-          <div className="profile_filler">p</div>
+          <div className="profile_filler"></div>
 
           <div className="ProfileCover">
             {this.state.user.map(e => {
@@ -102,7 +102,7 @@ class Profile extends Component {
             {/* <Link to = {`/Upload/${this.props.match.params.id}`}><button className="MyPostsBtn">My Posts</button></Link> */}
           </div>
           <div className="ProfileGenre">
-            <button className="ProfileBtn">My Posts</button>
+            <button className="linksBtn">My Posts</button>
             <div className="ProfileGenreTitle" onClick={this.toggleDropper}>
               MUSIC
             </div>
@@ -118,7 +118,7 @@ class Profile extends Component {
                 </Link>
               </div>
             </div>
-            <button className="ProfileBtn">My Saves</button>
+            <button className="linksBtn">My Saves</button>
           </div>
           {/* // */}
           <div className="ProfileGridContainer">

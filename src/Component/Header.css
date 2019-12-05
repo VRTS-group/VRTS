@@ -2,7 +2,7 @@
   --black: #222222;
   --dark-red: #2C0703;
   --light-red: #6F1A07;
-  --grey: #363636;
+  --grey: #808080;
   --white: #FFFFFF;
 }
 
@@ -10,18 +10,19 @@
     height: 9vh;
     width: 100vw;
     /* background-color: var(--light-red); */
-    background-image: linear-gradient(
+    /* background-image: linear-gradient(
       99deg,
       rgb(59, 6, 2),
       rgb(61, 39, 34) 40%,
       rgb(29, 28, 28)
-    );
+    ); */
+    background-color: var(--dark-red);
     color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
+    
     align-items: center;
-    padding-left: 1vh;
-    padding-right: 3vh;
+    padding: 0px 15px;
     box-sizing: border-box;
     box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25),
     0 10px 10px 0 rgba(0, 0, 0, 0.26); 
@@ -30,16 +31,16 @@
 }
 
 .headerTitle {
-    width: 115px;
+    /* width: 105px; */
     /* background-color: gray; */
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Cinzel', serif;
     font-size: 28px;
     color: white;
     text-shadow:  2px 2px var(--grey);
     display: flex;
     justify-content: center;
-
-
+    /* margin-left: 9%; */
+    /* position: fixed; */
 }
 .header-logo{
   height: 25px;
@@ -47,27 +48,24 @@
   padding-left:  10px;
 
 }
-.header-s{
-  font-family: 'Dancing Script', cursive;
-  font-size: 24px;
-
-}
 
 .linksBtn {
   height: 40px;
   width: 100px;
-  background-color: var(--grey);
-  color: white;
-  border: solid rgb(31, 31, 31);
+  background-color: white;
+  border-radius: 15px;
+  color: black;
+  border: 1px solid black;
   font-family: 'Cinzel', serif;
 }
 
 .registerBtn {
   height: 25px;
   width: 80px;
-  background-color: var(--grey);
-  color: white;
-  border: solid rgb(31, 31, 31);
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 15px;
   font-family: 'Cinzel', serif;
   font-size: 12px;
 }
@@ -86,17 +84,16 @@
   top: 9vh;
   /* right: 0; */
   right: 0px;
-  background-color: black;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     99deg,
     rgb(26, 21, 21),
     rgb(61, 39, 34) 40%,
     rgb(65, 28, 28)
-  );
+  ); */
+  background-color: var(--dark-red);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  
   flex-direction: column;
   border-bottom-left-radius: 6px;
   color: white
@@ -109,13 +106,13 @@
   /* position: fixed; */
   top: 9vh;
   right: 0;
-  background-color: rgb(221, 213, 213);
-  background-image: linear-gradient(
+  background-color: var(--dark-red);
+  /* background-image: linear-gradient(
     99deg,
     rgb(26, 21, 21),
     rgb(61, 39, 34) 40%,
     rgb(65, 28, 28)
-  );
+  ); */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -125,6 +122,7 @@
   color: white;
 
 }
+
 .dropBurger {
   height: 0px; 
   width: 20vh;
@@ -132,13 +130,13 @@
   /* position: fixed; */
   top: 9vh;
   left: 0;
-  background-color: rgb(221, 213, 213);
-  background-image: linear-gradient(
+  background-color: var(--dark-red);
+  /* background-image: linear-gradient(
     99deg,
     rgb(26, 21, 21),
     rgb(61, 39, 34) 40%,
     rgb(65, 28, 28)
-  );
+  ); */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -146,7 +144,7 @@
   flex-direction: column;
   border-bottom-left-radius: 6px;
   color: white;
-
+  font-family: 'Cinzel', serif;
 }
 
 .loginInputs {
@@ -160,19 +158,19 @@
 }
 .inputBox {
   width: 15vh;
-  background-color: var(--grey);
-  border: solid rgb(31, 31, 31);
-  color: white;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
   font-family: 'Cinzel', serif;
 
 }
 
 .loggedInShiz {
-  width: 350px;
+  width: 100px;
   height: 60px;
   /* background-color: gray; */
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   cursor: pointer;
   
@@ -192,7 +190,8 @@
   /* border: solid rgb(31, 31, 31); */
   background-color: transparent;
   border: none;
-  /* font-family: 'Cinzel', serif; */
+  font-family: 'Cinzel', serif;
+  font-size: 49px;
 }
 
 .loggedInPicBox {
@@ -203,6 +202,7 @@
   justify-content: center;
   border-radius: 50px;
   overflow: hidden;
+  margin-left: 15px;
 }
 
 .loggedInPic {
@@ -219,6 +219,7 @@
   font-family: 'Cinzel', serif;
   background-color: transparent;
   border: none;
+  margin-left: 15px;
 }
 
 .hide-animation {

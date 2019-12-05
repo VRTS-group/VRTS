@@ -6,6 +6,7 @@ import "./IndivPost.css";
 import { updateUser, getUserById } from "../redux/userReducer";
 import ReactPlayer from "react-player";
 import "./indivMusic.css";
+import { Link } from 'react-router-dom';
 
 class IndivPost extends Component {
   constructor(props) {
@@ -112,8 +113,8 @@ class IndivPost extends Component {
   };
 
   render() {
-    // let { comment } = this.state;
-    console.log(this.state);
+    let { comment } = this.state;
+    console.log(this.state.music);
     // console.log(this.state.username);
     // console.log(this.state.username);
     // console.log(this.state.posts);
@@ -123,13 +124,13 @@ class IndivPost extends Component {
     return (
       <div className="IndivMusic">
         <div className="IndivMusicContainer">
+            <div className="IndivMusicTitle">
           <div className="username">
           {this.state.music.map(e => {
-            return <h3> {e.username}</h3>;
+            return <Link to={`/profile/${e.user_id}`}><h3>{e.username}</h3></Link>;
           })}
         </div>
 
-              <div className="IndivMusicTitle">
                 <h3>{this.state.title}</h3>
               </div>
               <div className="PostVidBox">
@@ -144,11 +145,89 @@ class IndivPost extends Component {
                     Save
                   </button> */}
               </div>
-              <div className="MusicDescription">
-                <p> Description:</p>
-                <p>{this.state.description}</p>
+              <div className="description">
+                {/* <h3> Description:</h3> */}
+                <h3 style={{marginTop: 10, marginBottom: 10}}>{this.state.description}</h3>
               </div>
+
             </div>
+            <section id="comment-section">
+          <div id='comment-bar'>
+          <textarea
+            className="text-box"
+            name="comment"
+            value={comment}
+            placeholder="Add a comment here :)"
+            onChange={this.handleText}
+          ></textarea>
+          <br />
+          <div id='baby-button-box'>
+            <button onClick={this.newComment} className="button-indiv">
+              Write a comment
+            </button>
+            <br />
+            <button onClick={this.clear} className="button-indiv">
+              Clear
+            </button>
+          </div>
+          </div>
+          <div className="potato">
+            {this.state.music.map(e => {
+              return (
+                <div>
+                  {e.user_id === this.props.redux.userReducer.user.user_id ? (
+                    <div>
+                      {this.state.comments.map(e => {
+                        return (
+                          <div className="comment-area">
+                            
+                            {/* <img
+                              src={e.profile_pic}
+                              className="profile-comment"
+                            /> */}
+
+                              <h5>{e.username}</h5>
+                              {e.comment}
+                            <button
+                              className="delete-button-indiv"
+                              onClick={() => {
+                                deleteComment(e.comment_id);
+                              }}
+                              >
+                              Delete
+                            </button>
+                              
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div>
+                      {this.state.comments.map(e => {
+                        return (
+                          <div className="comment-user">
+                            <img
+                              src={e.profile_pic}
+                              className="profile-comment"
+                            />
+
+                            <div className="comment-area">
+                              <h5>{e.username}</h5>
+                                  {e.comment}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* <button>Show more</button> */}
+        </section>
+
           </div>
 
     );
