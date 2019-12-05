@@ -6,6 +6,21 @@ import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
+const login = [
+  {
+    id: 1,
+    email: 'sid@sid.com',
+  },
+  {
+    id: 2,
+    password: 'sid'
+  },
+  {
+    id: 3,
+    button: 'login'
+  }
+]
+
 function App() {
   return (
     <Provider store={store}>
