@@ -18,6 +18,8 @@
   background-color: var(--grey);
   box-sizing: border-box;
   margin-top: 9vh;
+  min-height: 100vh;
+  border: solid black;
 }
 
 .ProfileCover {
@@ -26,10 +28,14 @@
   background-color: black;
   display: flex;
   justify-content: center;
-
   align-items: flex-end;
+  background-position: center;
+  background-size: cover;
 }
-
+.profile_pic_profile_page{
+  background-position: center;
+  background-size: cover;
+}
 .ProfilePic {
   height: 115px;
   width: 115px;
@@ -39,6 +45,10 @@
   position: absolute;
   overflow: hidden;
   margin-bottom: 50px;
+  background-position: center;
+  background-size: cover;
+  
+
 }
 
 .ProfileInfo {
@@ -112,6 +122,10 @@ p {
   font-size: 30px;
   text-shadow: 2px 2px rgb(12, 43, 78);
   color: white;
+}
+#genre-title{
+  border-bottom: 2px var(--grey) solid;
+  /* border-radius: 15px; */
 }
 
 .ProfileBtn {

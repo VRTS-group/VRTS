@@ -56,7 +56,7 @@ class ProfileWrite extends Component {
     return (
       <div className="Profile">
         <div className="ProfileContainer">
-          <div className="profile_filler"></div>
+          {/* <div className="profile_filler"></div> */}
 
           <div className="ProfileCover">
             {this.state.user.map(e => {
@@ -102,7 +102,7 @@ class ProfileWrite extends Component {
           <div className="ProfileGenre">
             <button className="linksBtn">My Posts</button>
             <div className="ProfileGenreTitle" onClick={this.toggleDropper}>
-              WRITE
+              <div id='genre-title'>WRITE</div>
             </div>
             <div className="dropper">
               <div className="dropDroppers" ref={this.dropDroppers}>
