@@ -57,18 +57,21 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
             <h4>Profile Pic</h4>
 
             <input
+              className='settings-inputs-long'
               type="text"
               value={this.state.profile_pic}
               onChange={e => this.setState({ profile_pic: e.target.value })}
             />
             <h4>Cover Photo</h4>
             <input
+              className='settings-inputs-long'
               type="text"
               value={this.state.cover_pic}
               onChange={e => this.setState({ cover_pic: e.target.value })}
             />
             <h4>Username</h4>
             <input
+              className='settings-inputs'
               type="text"
               name="username"
               value={this.state.username}
@@ -76,12 +79,14 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
             />
             <h4>Real Name</h4>
             <input
+              className='settings-inputs'
               type="text"
               value={this.state.real_name}
               onChange={e => this.setState({ real_name: e.target.value })}
             />
             <h4>Bio</h4>
             <textarea
+              className='settings-inputs-long'
               type="text"
               value={this.state.bio}
               // placeholder = {this.props.user.bio}
@@ -89,18 +94,19 @@ if (this.props.store.userReducer.user !== prevProps.store.userReducer.user)
             />
             <h4>Contact</h4>
             <textarea
+              className='settings-inputs-long'
               type="text"
               value={this.state.contact}
               // placeholder = {this.props.user.bio}
               onChange={e => this.setState({ contact: e.target.value })}
             />
-          </div>
           <div className="SettingsBtns">
             <button className="SaveBtn" onClick={() => {
               this.props.editUser(this.props.store.userReducer.user.user_id, username, this.state.profile_pic, this.state.cover_pic,
                 this.state.real_name, this.state.contact, this.state.bio)
               this.render()
             }}>Save</button>
+          </div>
           </div>
           {/* //end */}
         </div>
