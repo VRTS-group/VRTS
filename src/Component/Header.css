@@ -22,7 +22,7 @@
     justify-content: space-between;
     
     align-items: center;
-    padding: 0px 15px;
+    padding: 0px 25px;
     box-sizing: border-box;
     box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25),
     0 10px 10px 0 rgba(0, 0, 0, 0.26); 
@@ -166,7 +166,7 @@
 }
 
 .loggedInShiz {
-  width: 100px;
+  width: 150px;
   height: 60px;
   /* background-color: gray; */
   display: flex;
@@ -202,7 +202,8 @@
   justify-content: center;
   border-radius: 50px;
   overflow: hidden;
-  margin-left: 15px;
+  /* margin-left: 15px; */
+  margin: 0px 15px
 }
 
 .loggedInPic {

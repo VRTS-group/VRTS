@@ -58,7 +58,7 @@ class Profile extends Component {
     return (
       <div className="Profile">
         <div className="ProfileContainer">
-          <div className="profile_filler"></div>
+          {/* <div className="profile_filler"></div> */}
 
           <div className="ProfileCover">
             {this.state.user.map(e => {
@@ -104,7 +104,7 @@ class Profile extends Component {
           <div className="ProfileGenre">
             <button className="linksBtn">My Posts</button>
             <div className="ProfileGenreTitle" onClick={this.toggleDropper}>
-              MUSIC
+            <div id='genre-title'>MUSIC</div>
             </div>
             <div className="dropper">
               <div className="dropDroppers" ref={this.dropDroppers}>
