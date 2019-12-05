@@ -72,14 +72,17 @@ class Home extends Component {
 
   toggleDropper = () => {
     let { current } = this.dropDropper;
-    this.setState({toggleDropper: true});
-    if (current.classList.contains("show-animation")) {
-      current.classList.add("hide-animation");
-      current.classList.remove("show-animation");
-      this.setState({toggleBurger: false})
+
+    if (current.classList.contains("genre-show-animation")) {
+      this.setState({ toggleBurger: false });
+      current.classList.add("genre-hide-animation");
+      current.classList.remove("genre-show-animation");
+      // this.setState({ toggleBurger: false });
     } else {
-      current.classList.add("show-animation");
-      current.classList.remove("hide-animation");
+      this.setState({ toggleDropper: true });
+      current.classList.remove("genre-hide-animation")
+      current.classList.add("genre-show-animation");
+      current.classList.remove("genre-hide-animation");
     }
   };
 
@@ -109,7 +112,7 @@ class Home extends Component {
           <div className="home-pic">
             <img className="artistry" src={artistry} alt="LogoPic" />
           </div>
-          <div className="sub-header">
+          {/* <div className="sub-header">
             <div className="filter-dropdown">
               <img src={downArrow} alt="" />
             </div>
@@ -122,17 +125,17 @@ class Home extends Component {
                 <h4></h4>
               </div>
             </div>
-          </div>
+          </div> */}
           <div id='genre-big-box'>
     <div id="ProfileGenreTitle"
     onClick={this.toggleDropper}
     >Music</div>
           </div>
           <div className="dropper">
-          <div className="dropDropper" ref={this.dropDropper}>
+          <div className="dropDropper genre-hide-animation" ref={this.dropDropper}>
 
-<Link to='/homeW'>   <p className="header-s">Writting</p></Link>
-<Link to='/'>   <p className="header-s">Art</p></Link>
+<Link to='/homeW'>   <div className="header-s">Writting</div></Link>
+<Link to='/'>   <div className="header-s">Art</div></Link>
 
                
                 </div>

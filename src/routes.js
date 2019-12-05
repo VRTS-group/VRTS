@@ -9,7 +9,6 @@ import Upload from "./Component/Upload";
 import Register from "./Component/Register";
 import popUp from "./Component/HomePopUp";
 
-
 import Saves from "./Component/Saves";
 
 import EditPage from "./Component/EditPage";
@@ -22,8 +21,8 @@ import Upload_Write from "./Component/Upload_Write";
 import EditWrite from "./Component/EditWrite";
 import WriteEdit from "./Component/WriteEdditor";
 import IndivWrite from "./Component/IndivPost_Write";
-import IndivMusic from "./Component/indivMusic"
-import UploadMusic from "./Component/Upload_Music"
+import IndivMusic from "./Component/indivMusic";
+import UploadMusic from "./Component/Upload_Music";
 import Upload_Music from "./Component/Upload_Music";
 
 export default (
@@ -47,6 +46,6 @@ export default (
     <Route path="/WriteEdit/:id" component={WriteEdit} />
     <Route path="/IndivWrite/:id" component={IndivWrite} />
     <Route path="/IndivMusic/:id" component={IndivMusic} />
-    <Route path="/UploadMusic/:id" component={Upload_Music}/>
+    <Route path="/UploadMusic/:id" component={Upload_Music} />
   </Switch>
 );

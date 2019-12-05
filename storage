@@ -1,0 +1,29 @@
+font-family: 'Cinzel', serif;
+border-radius: 15px;
+
+
+\\button styling//
+height: 40px;
+width: 100px;
+background-color: white;
+border-radius: 15px;
+color: black;
+border: 1px solid black;
+font-family: 'Cinzel', serif;
+
+
+toggleDropper = () => {
+    let { current } = this.dropDropper;
+
+    if (current.classList.contains("genre-show-animation")) {
+      this.setState({ toggleBurger: false });
+      current.classList.add("genre-hide-animation");
+      current.classList.remove("genre-show-animation");
+      // this.setState({ toggleBurger: false });
+    } else {
+      this.setState({ toggleDropper: true });
+      current.classList.remove("genre-hide-animation")
+      current.classList.add("genre-show-animation");
+      current.classList.remove("genre-hide-animation");
+    }
+  };

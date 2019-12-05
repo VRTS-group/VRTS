@@ -119,19 +119,20 @@ class Header extends Component {
           id="hamburger-icon"
           className="fas fa-bars fa-2x"
           onClick={this.toggleBurger}
+          style={{marginRight: 25}}
         />
         <div className="dropBurger" ref={this.dropBurger}>
           <Link to="/">
             {" "}
-            <p className="header-s">Art</p>
+            <button className="linksBtn">Art</button>
           </Link>
           <Link to="/homeW">
             {" "}
-            <p className="header-s">Writting</p>
+            <button className="linksBtn">Writting</button>
           </Link>
           <Link to="/homeM">
             {" "}
-            <p className="header-s">Music</p>
+            <button className="linksBtn">Music</button>
           </Link>
         </div>
 
@@ -154,13 +155,16 @@ class Header extends Component {
               my Posts
             </button>
           </Link>
+          <button className="linksBtn" onClick={this.handleLogout}>
+                Logout
+          </button>
         </div>
 
         {this.props.user.email ? (
           <div className="loggedInShiz">
             <Link to={`/upload/${this.state.user.user_id}`}>
               <div className="headerNewPost">
-                New Post <button className="headerPlusBtn">+</button>
+                <button className="headerPlusBtn">+</button>
               </div>
             </Link>
             {/* <p>User: {this.props.user.username}</p> */}
@@ -168,9 +172,9 @@ class Header extends Component {
               {" "}
               <img className="loggedInPic" src={this.props.user.profile_pic} />
             </div>
-            <button className="logoutBtn" onClick={this.handleLogout}>
+            {/* <button className="logoutBtn" onClick={this.handleLogout}>
               Log out
-            </button>
+            </button> */}
           </div>
         ) : (
           <>
