@@ -92,7 +92,6 @@ class Header extends Component {
           username: "",
           password: ""
         });
-        alert("Welcome to Artistry");
         // console.log(this.props);
         this.props.updateUser(res.data);
         axios.get("/auth/user").then(res => {
