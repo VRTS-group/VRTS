@@ -48,7 +48,7 @@ class EditWrite extends Component {
         {/* <div className="profile_filler">p</div> */}
         <div className="NewPostBox">
            <Link to="/uploadW" ><button  className="NewPostAdd">
-              <div className="PlusIcon"></div>
+              <div className="PlusIcon">+</div>
               <div className="NewPostTitle">New Post</div>
             </button></Link>
           </div>
@@ -58,6 +58,9 @@ class EditWrite extends Component {
           <Link to={`/uploadMusic/${this.props.match.params.id}`}><button className="ProfileBtn-"> Music</button></Link>
             <div className="EditPostsTitle">My Posts</div>
             <Link to={`/upload/${this.props.match.params.id}`}><button className="ProfileBtn-"> Art</button></Link>
+          </div>
+          <div className="EditGenreBox">
+            <div className="EditGenreTitle">Writing</div>
           </div>
           {/* // */}
           <div className="ProfileGridContainer">

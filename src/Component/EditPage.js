@@ -82,6 +82,7 @@ class EditPage extends Component {
   }
 
   editDelete = () => {
+    this.props.toggleEditPopup(this.props.post_id)
     Axios.delete(`/auth/deletePosts/${this.props.post_id}`).then(res => {
       alert("Post Deleted");
       this.setState({

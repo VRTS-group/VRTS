@@ -27,3 +27,5 @@ toggleDropper = () => {
       current.classList.remove("genre-hide-animation");
     }
   };
+
+  background-color: rgb(34, 23, 23);
