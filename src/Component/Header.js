@@ -92,15 +92,17 @@ class Header extends Component {
           username: "",
           password: ""
         });
+        alert("Welcome to Artistry");
         // console.log(this.props);
         this.props.updateUser(res.data);
         axios.get("/auth/user").then(res => {
           this.setState({
             user: res.data
           });
+          // alert("Welcome to Artistry");
         });
       })
-      .catch(err => console.log(this.props));
+      .catch(err => alert("Invalid Username or Password"));
   };
 
   handleLogout = () => {
@@ -119,7 +121,7 @@ class Header extends Component {
           id="hamburger-icon"
           className="fas fa-bars fa-2x"
           onClick={this.toggleBurger}
-          style={{marginRight: 25}}
+          style={{ marginRight: 25 }}
         />
         <div className="dropBurger" ref={this.dropBurger}>
           <Link to="/">
@@ -156,7 +158,7 @@ class Header extends Component {
             </button>
           </Link>
           <button className="linksBtn" onClick={this.handleLogout}>
-                Logout
+            Logout
           </button>
         </div>
 
@@ -199,6 +201,7 @@ class Header extends Component {
                   onChange={e => this.handleInput(e)}
                   className="inputBox"
                   placeholder="password"
+                  type="password"
                 />
               </div>
 
