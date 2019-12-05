@@ -28,13 +28,13 @@ class Profile extends Component {
     Axios.get(`/auth/getMusicByUser/${this.props.match.params.id}`).then(
       res => {
         //   console.log(res.data[0].user_id)
-        if (res.data[0]) {
+        
           this.setState({
             music: res.data,
             user_id: res.data[0].user_id,
             music_id: res.data[0].music_id
           });
-        }
+        
         // console.log(this.state);
       }
     );
@@ -124,9 +124,9 @@ class Profile extends Component {
           <div className="ProfileGridContainer">
             {this.state.music.map(e => {
               return (
-                <Link to={`/popup/${e.music_id}`}>
+                <Link to={`/IndivMusic/${e.music_id}`}>
                   {" "}
-                  <img class="GridItem" src={e.media} />
+                  <img class="GridItem" src={e.cover_photo} />
                 </Link>
               );
             })}

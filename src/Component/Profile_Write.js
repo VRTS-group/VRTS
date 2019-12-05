@@ -122,9 +122,9 @@ class ProfileWrite extends Component {
           <div className="ProfileGridContainer">
             {this.state.write.map(e => {
               return (
-                <Link to={`/popup/${e.write_id}`}>
+                <Link to={`/IndivWrite/${e.write_id}`}>
                   {" "}
-                  <img class="GridItem" src={e.media} />
+                  <img class="GridItem" src={e.cover_photo} />
                 </Link>
               );
             })}

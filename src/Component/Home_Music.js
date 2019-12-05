@@ -162,7 +162,7 @@ class Home extends Component {
                   <div id='x-btn' onClick={this.handlePopupClose} >X</div>
                   <div id='home-popup-content'>
                     <div id='popup-pic'>
-                      <Link to={`/indivMusic/${e.music_id}`}><img src={e.media} alt={e.title}/></Link>
+                      <Link to={`/indivMusic/${e.music_id}`}><img src={e.cover_photo} alt={e.title}/></Link>
                     </div>
                     <div id='popup-content-info'>
                       <h3>{e.username}</h3>
